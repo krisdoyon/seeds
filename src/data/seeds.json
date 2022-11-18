@@ -3,616 +3,616 @@
     "id": "BEAN1",
     "title": "Kentucky Wonder",
     "category": "beans",
-    "price": "3.99",
+    "price": 3.99,
     "salePrice": "",
     "description": "This 1800s variety is known for its exceptional flavor and tenderness. One of the oldest and most popular green beans on the market. The 9\" pods are produced in clusters and are thick and stringless. Delicious fresh, frozen, or dried and shell beans. Early maturing and extremely productive.",
-    "inStock": "15",
-    "details": { "seedCount": "100", "daysToMaturity": "58" },
-    "reviews": { "avg": "4", "num": "36" }
+    "inStock": 15,
+    "details": { "seedCount": 100, "daysToMaturity": 58 },
+    "reviews": { "avg": 4, "num": 36 }
   },
   {
     "id": "BEAN2",
     "title": "Blue Lake",
     "category": "beans",
-    "price": "3.99",
-    "salePrice": "2.99",
+    "price": 3.99,
+    "salePrice": 2.99,
     "description": "Save space growing this traditional bean vertically. A popular variety for decades and a favorite among market growers due to the reliable yields, good size, and overall output throughout the season. This cold and heat tolerant variety produces insane amounts of dark green, stringless pods containing white beans measuring around seven inches in length. ",
-    "inStock": "20",
-    "details": { "seedCount": "100", "daysToMaturity": "65" },
-    "reviews": { "avg": "4", "num": "53" }
+    "inStock": 20,
+    "details": { "seedCount": 100, "daysToMaturity": 65 },
+    "reviews": { "avg": 4, "num": 53 }
   },
   {
     "id": "BEAN3",
     "title": "Contender",
     "category": "beans",
-    "price": "3.99",
+    "price": 3.99,
     "salePrice": "",
     "description": "One of the best bush beans ever! This variety produces a week earlier than others and has a strong distinctive flavor that isn't lost during canning. Produces 6-8\" bright green, oval, stringless pods. A great variety to choose from for both early season cool temperatures and can withstand the heat in the summer.",
-    "inStock": "18",
-    "details": { "seedCount": "100", "daysToMaturity": "50" },
-    "reviews": { "avg": "3", "num": "22" }
+    "inStock": 18,
+    "details": { "seedCount": 100, "daysToMaturity": 50 },
+    "reviews": { "avg": 3, "num": 22 }
   },
   {
     "id": "BEET1",
     "title": "Detroit Dark Red",
     "category": "beets",
-    "price": "3.99",
+    "price": 3.99,
     "salePrice": "",
     "description": "Use the deep green tops raw for salads, or cooked like Swiss Chard as a nutrient side dish. Beet bottoms can be steamed, roasted, grilled, pickled, or added with other root vegetables and are incredible in just about any application. One of the more large beet varieties. Awesome for preserving. Fun Fact: This beet dates as late as the 1800s.",
-    "inStock": "30",
-    "details": { "seedCount": "100", "daysToMaturity": "60" },
-    "reviews": { "avg": "4.5", "num": "75" }
+    "inStock": 30,
+    "details": { "seedCount": 100, "daysToMaturity": 60 },
+    "reviews": { "avg": 4.5, "num": 75 }
   },
   {
     "id": "BEET2",
     "title": "Cylindra",
     "category": "beets",
-    "price": "4.99",
-    "salePrice": "3.99",
+    "price": 4.99,
+    "salePrice": 3.99,
     "description": "Best beet variety for preservation. Cylindra Beets grow to be 5\" in length and 2\" in diameter. The cylindrical growth pattern makes for uniform slices, perfect for canning. A unique and must-try for the buttery-silk texture, with a rich sweet flavor perfect for eating on fresh salads.",
-    "inStock": "4",
-    "details": { "seedCount": "100", "daysToMaturity": "55" },
-    "reviews": { "avg": "3.5", "num": "32" }
+    "inStock": 4,
+    "details": { "seedCount": 100, "daysToMaturity": 55 },
+    "reviews": { "avg": 3.5, "num": 32 }
   },
   {
     "id": "BEET3",
     "title": "Early Wonder ",
     "category": "beets",
-    "price": "2.99",
+    "price": 2.99,
     "salePrice": "",
     "description": "A top contender for market growers. The Early Wonder Tall Top Beet grows uniform spears that reach 3-4 inches. Great for pickling and fresh eating or juicing!",
-    "inStock": "0",
-    "details": { "seedCount": "100", "daysToMaturity": "45" },
-    "reviews": { "avg": "4", "num": "41" }
+    "inStock": 0,
+    "details": { "seedCount": 100, "daysToMaturity": 45 },
+    "reviews": { "avg": 4, "num": 41 }
   },
   {
     "id": "CAR1",
     "title": "Scarlet Nantes",
     "category": "carrots",
-    "price": "3.99",
+    "price": 3.99,
     "salePrice": "",
     "description": "This carrot is one of the most popular carrots for home gardeners and market gardeners alike. Consistent 6-7 inch roots, consistent shape, and a sweet flavor make it great for fresh eating or long storage.",
-    "inStock": "3",
-    "details": { "seedCount": "250", "daysToMaturity": "65" },
-    "reviews": { "avg": "5", "num": "83" }
+    "inStock": 3,
+    "details": { "seedCount": 250, "daysToMaturity": 65 },
+    "reviews": { "avg": 5, "num": 83 }
   },
   {
     "id": "CAR2",
     "title": "Danvers",
     "category": "carrots",
-    "price": "2.99",
+    "price": 2.99,
     "salePrice": "",
     "description": "Bright orange conical roots with rugged tops, strong. Perfect for heavy soil! Versatile variety for canning, freezing, storing, and carrot juice. Resists splitting. Make an ABC juice with this carrot, one apple, 1/4 of a beet, and 1 carrot – nutrient-packed and tasty!",
-    "inStock": "25",
-    "details": { "seedCount": "250", "daysToMaturity": "70" },
-    "reviews": { "avg": "3.5", "num": "71" }
+    "inStock": 25,
+    "details": { "seedCount": 250, "daysToMaturity": 70 },
+    "reviews": { "avg": 3.5, "num": 71 }
   },
   {
     "id": "CAR3",
     "title": "Purple",
     "category": "carrots",
-    "price": "4.99",
+    "price": 4.99,
     "salePrice": "",
     "description": "This variety produces sweet, long carrots around 1 inch in diameter. They are cold hardy and will overwinter in the ground. Grown for its showy color and vibrance, it has the added bonus of being one of the most nutritious carrots out there. The deep purple color offers more antioxidants than orange carrots and is higher in minerals and vitamins.",
-    "inStock": "21",
-    "details": { "seedCount": "250", "daysToMaturity": "60" },
-    "reviews": { "avg": "4", "num": "35" }
+    "inStock": 21,
+    "details": { "seedCount": 250, "daysToMaturity": 60 },
+    "reviews": { "avg": 4, "num": 35 }
   },
   {
     "id": "CAR4",
     "title": "Yellow",
     "category": "carrots",
-    "price": "4.99",
-    "salePrice": "3.99",
+    "price": 4.99,
+    "salePrice": 3.99,
     "description": "Yellow carrot is a wonderful way to add more color and vibrancy to your dishes! Perfect for planting for the spring and fall time.",
-    "inStock": "19",
-    "details": { "seedCount": "250", "daysToMaturity": "60" },
-    "reviews": { "avg": "3.5", "num": "28" }
+    "inStock": 19,
+    "details": { "seedCount": 250, "daysToMaturity": 60 },
+    "reviews": { "avg": 3.5, "num": 28 }
   },
   {
     "id": "CUC1",
     "title": "Marketmore",
     "category": "cucumbers",
-    "price": "2.99",
+    "price": 2.99,
     "salePrice": "",
     "description": "This dark green variety is the perfect slicing cucumber. Long and slender with tough skin, they are perfect on salads and sandwiches. Bright refreshing flavor with heavy yields! 8-9\" long fruit.",
-    "inStock": "30",
-    "details": { "seedCount": "50", "daysToMaturity": "70" },
-    "reviews": { "avg": "3.5", "num": "68" }
+    "inStock": 30,
+    "details": { "seedCount": 50, "daysToMaturity": 70 },
+    "reviews": { "avg": 3.5, "num": 68 }
   },
   {
     "id": "CUC2",
     "title": "Muncher",
     "category": "cucumbers",
-    "price": "3.99",
-    "salePrice": "2.99",
+    "price": 3.99,
+    "salePrice": 2.99,
     "description": "The muncher cucumber is one of our favorite cucumbers when it comes to a small salad or pickling cucumbers. The skin is tender and burpless. When pickled it holds up the firm texture that you want when pickling. Produces small-medium cucumbers 4-6 inches in length and produces late into the season.",
-    "inStock": "20",
-    "details": { "seedCount": "50", "daysToMaturity": "55" },
-    "reviews": { "avg": "4", "num": "44" }
+    "inStock": 20,
+    "details": { "seedCount": 50, "daysToMaturity": 55 },
+    "reviews": { "avg": 4, "num": 44 }
   },
   {
     "id": "CUC3",
     "title": "National Pickling",
     "category": "cucumbers",
-    "price": "2.99",
+    "price": 2.99,
     "salePrice": "",
     "description": "Developed specially by the National Pickle Packers Association, this variety was made to fit perfectly into a pickle jar! This variety produces an abundance of 5-7 inch cucumbers. Eat them fresh, in salads, or juiced. When turned into dill or bread and butter pickles (wedged or whole), their flavor and crunch are out of this world. Low on seeds, and what seeds are produced are small and don't affect the texture. The cucumber is very tolerant to powdery mildew, but not resistant to it, the national pickling cucumber is far more “resistant” than almost any other pickling variety!",
-    "inStock": "14",
-    "details": { "seedCount": "50", "daysToMaturity": "60" },
-    "reviews": { "avg": "4.5", "num": "53" }
+    "inStock": 14,
+    "details": { "seedCount": 50, "daysToMaturity": 60 },
+    "reviews": { "avg": 4.5, "num": 53 }
   },
   {
     "id": "HERB1",
     "title": "Genovese Basil",
     "category": "herbs",
-    "price": "2.99",
+    "price": 2.99,
     "salePrice": "",
     "description": "From Italy, this variety has a powerful flavor that is ideal for making fresh pesto. Large consistent leaves are great for a refreshing Caprese salad too! Easy to grow in containers to use in cooking all year. Great for not only outdoor gardens, but for greenhouse and aquaponic growing as well.",
-    "inStock": "45",
-    "details": { "seedCount": "200", "daysToMaturity": "68" },
-    "reviews": { "avg": "5", "num": "105" }
+    "inStock": 45,
+    "details": { "seedCount": 200, "daysToMaturity": 68 },
+    "reviews": { "avg": 5, "num": 105 }
   },
   {
     "id": "HERB2",
     "title": "Purple Basil",
     "category": "herbs",
-    "price": "4.99",
-    "salePrice": "2.99",
+    "price": 4.99,
+    "salePrice": 2.99,
     "description": "This beautiful variety is grown as much for decoration as it is for its flavor. With deep purple leaves, dark stems, and lilac flowers, this variety is the perfect garnish and can add a pop of color to pestos and salad dressings. Not only is this variety delicious, but it is also a stunning filler for bouquets and arrangments.",
-    "inStock": "28",
-    "details": { "seedCount": "200", "daysToMaturity": "65" },
-    "reviews": { "avg": "3.5", "num": "37" }
+    "inStock": 28,
+    "details": { "seedCount": 200, "daysToMaturity": 65 },
+    "reviews": { "avg": 3.5, "num": 37 }
   },
   {
     "id": "HERB3",
     "title": "Thyme",
     "category": "herbs",
-    "price": "3.99",
+    "price": 3.99,
     "salePrice": "",
     "description": "Thyme is one of the most widely used culinary herbs. An intensely lemony aroma with a subtle Mediterranean feel. Great cooked or added fresh to salad dressings. Dry over the winter or grow fresh on the windowsill. Leaves are green at the base of the plant and become a beautiful bluish-green as the leaf grows and matures. Can be grown as a perennial.",
-    "inStock": "0",
-    "details": { "seedCount": "300", "daysToMaturity": "60" },
-    "reviews": { "avg": "4.5", "num": "64" }
+    "inStock": 0,
+    "details": { "seedCount": 300, "daysToMaturity": 60 },
+    "reviews": { "avg": 4.5, "num": 64 }
   },
   {
     "id": "HERB4",
     "title": "Oregano",
     "category": "herbs",
-    "price": "3.99",
+    "price": 3.99,
     "salePrice": "",
     "description": "A key herb in any Italian, Greek, or Mexican cooking. This attractive shrub-like perennial grows flavorful leaves perfect for using fresh or dried. Divide out clumps and plant around the garden for natural pest control or give to friends and family. Attracts honeybees and beneficial pollinators to the garden when it flowers.",
-    "inStock": "10",
-    "details": { "seedCount": "300", "daysToMaturity": "60" },
-    "reviews": { "avg": "4.5", "num": "68" }
+    "inStock": 10,
+    "details": { "seedCount": 300, "daysToMaturity": 60 },
+    "reviews": { "avg": 4.5, "num": 68 }
   },
   {
     "id": "HERB5",
     "title": "Rosemary",
     "category": "herbs",
-    "price": "3.99",
+    "price": 3.99,
     "salePrice": "",
     "description": "Rosemary is one of the most popular herbs used in Mediterranean cooking. Rosemary will grow in dry conditions making it great for gardens that receive less rainfall and does well in containers. Prefers partial sun, but can survive in full sun if need be. The flavor is earthy, with notes of pine and citrus. Does well in a kitchen windowsill garden because of its low light tolerance. ",
-    "inStock": "19",
-    "details": { "seedCount": "100", "daysToMaturity": "90" },
-    "reviews": { "avg": "4", "num": "72" }
+    "inStock": 19,
+    "details": { "seedCount": 100, "daysToMaturity": 90 },
+    "reviews": { "avg": 4, "num": 72 }
   },
   {
     "id": "HERB6",
     "title": "Mint",
     "category": "herbs",
-    "price": "2.99",
+    "price": 2.99,
     "salePrice": "",
     "description": "Common mint, otherwise known as spearmint is one of the most widely used mentha strains for its strong fragrance and flavor. It is greate for lemonade and teas. Spearmint will grow large and makes a wonderful groundcover. While the flowers attract pollinators to the area. Mint can be harvested at any stage, but is most fragrant when the shoots are new. Mint is a fast growning will growing plant that grows back year after year and can tolerate cold weather well.",
-    "inStock": "45",
-    "details": { "seedCount": "300", "daysToMaturity": "60" },
-    "reviews": { "avg": "4", "num": "54" }
+    "inStock": 45,
+    "details": { "seedCount": 300, "daysToMaturity": 60 },
+    "reviews": { "avg": 4, "num": 54 }
   },
   {
     "id": "HERB7",
     "title": "German Chamomile",
     "category": "herbs",
-    "price": "3.99",
+    "price": 3.99,
     "salePrice": "",
     "description": "The blooms on this petite variety resemble daisies with their bright white petals coming off their vibrant yellow discs. The sweet flavor resembles apples and has a calming ability. This medicinal herb has been a staple for centuries. Grows up to 20\" tall and can produce hundreds of flower heads if properly maintained. Ideal for making a homemade calming tea, drying for decorations, or making perfume.",
-    "inStock": "32",
-    "details": { "seedCount": "500", "daysToMaturity": "50" },
-    "reviews": { "avg": "4.5", "num": "36" }
+    "inStock": 32,
+    "details": { "seedCount": 500, "daysToMaturity": 50 },
+    "reviews": { "avg": 4.5, "num": 36 }
   },
   {
     "id": "HERB8",
     "title": "Parsley",
     "category": "herbs",
-    "price": "3.99",
+    "price": 3.99,
     "salePrice": "",
     "description": "Savory and lemony! This parsley is great for all fresh Italian dishes or as a garnish for soups. Dried or fresh, it is one of the most common household herbs used around the world. Parsley is rich in vitamin C and is regarded as a superfood because of its high concentration of vitamins and minerals. Perennial. First to grow in the spring, and last to die in the winter. This parsley is great on any dish that requires lemon! Delicious dried or fresh.",
-    "inStock": "3",
-    "details": { "seedCount": "100", "daysToMaturity": "75" },
-    "reviews": { "avg": "4", "num": "82" }
+    "inStock": 3,
+    "details": { "seedCount": 100, "daysToMaturity": 75 },
+    "reviews": { "avg": 4, "num": 82 }
   },
   {
     "id": "KALE1",
     "title": "Dinosaur",
     "category": "kale",
-    "price": "4.99",
+    "price": 4.99,
     "salePrice": "",
     "description": "An heirloom variety with 3″ wide blue-green leaves. The leaves reach up to 18″ long and are healthy and delicious. The plant is very cold tolerant and a prolific producer. Leaves become more tender and flavorful after a hard frost. Tastes great when steamed or stir-fried, versatile enough for juicing. Replace these kale leaves with traditional lettuce wraps for a crunchier wrap, make sure to massage the leaves in lemon juice before serving for the best nutrients and flavor! Excellent Source Of Vitamins C and A, Phytonutrients, Iron, and Calcium.",
-    "inStock": "0",
-    "details": { "seedCount": "100", "daysToMaturity": "45" },
-    "reviews": { "avg": "4", "num": "60" }
+    "inStock": 0,
+    "details": { "seedCount": 100, "daysToMaturity": 45 },
+    "reviews": { "avg": 4, "num": 60 }
   },
   {
     "id": "KALE2",
     "title": "Blue Curled Scotch",
     "category": "kale",
-    "price": "2.99",
+    "price": 2.99,
     "salePrice": "",
     "description": "Blue curled scotch kale is a large-leaf kale variety that produces many leaves per plant, dark green in color, and tightly crinkled. The leaves are sweet, tender, and crunchy especially when harvested after exposure to cool frosty weather. It is often seen as a garnish, however; this kale is a superfood! Loaded with antioxidants, vitamins, and minerals, this variety is perfect for juicing. It is also amazing in smoothies, salads, microgreens, and even kale chips.",
-    "inStock": "18",
-    "details": { "seedCount": "200", "daysToMaturity": "50" },
-    "reviews": { "avg": "5", "num": "72" }
+    "inStock": 18,
+    "details": { "seedCount": 200, "daysToMaturity": 50 },
+    "reviews": { "avg": 5, "num": 72 }
   },
   {
     "id": "KALE3",
     "title": "Red Russian",
     "category": "kale",
-    "price": "2.99",
-    "salePrice": "1.99",
+    "price": 2.99,
+    "salePrice": 1.99,
     "description": "This beautiful variety is sage green with purple-veined leaves. Softer than most kale, the leaves reach up to 15″ long and are slightly fuzzy. Add to smoothies and juices as a nutrient-dense green, or add to stir-fries for a robust flavor. Very frost tolerant and the leaves become more tender and appetizing after a hard frost. This tastes delectable with a honey mustard dressing! Excellent source of vitamins C and A.",
-    "inStock": "35",
-    "details": { "seedCount": "200", "daysToMaturity": "50" },
-    "reviews": { "avg": "3.5", "num": "33" }
+    "inStock": 35,
+    "details": { "seedCount": 200, "daysToMaturity": 50 },
+    "reviews": { "avg": 3.5, "num": 33 }
   },
   {
     "id": "LET1",
     "title": "Red Sails",
     "category": "lettuce",
-    "price": "3.99",
-    "salePrice": "2.99",
+    "price": 3.99,
+    "salePrice": 2.99,
     "description": "This tender, mahogany purple leaf lettuce is a fun variety to toss-up in your crunchier green mix! The flavor is bold and fresh! It always tastes great in a light fruity vinaigrette or a creamy dressing.",
-    "inStock": "98",
-    "details": { "seedCount": "750", "daysToMaturity": "50" },
-    "reviews": { "avg": "5", "num": "65" }
+    "inStock": 98,
+    "details": { "seedCount": 750, "daysToMaturity": 50 },
+    "reviews": { "avg": 5, "num": 65 }
   },
   {
     "id": "LET2",
     "title": "Black Seeded Simpson",
     "category": "lettuce",
-    "price": "1.99",
+    "price": 1.99,
     "salePrice": "",
     "description": "Black seeded Simpson lettuce is one of the most popular forms of lettuce for the home gardener. Cut and come again style lettuce provides tons of food from just a single plant. Easy to grow, very versatile, and a delicious non-bitter variety of lettuce.",
-    "inStock": "52",
-    "details": { "seedCount": "1000", "daysToMaturity": "40" },
-    "reviews": { "avg": "4", "num": "62" }
+    "inStock": 52,
+    "details": { "seedCount": 1000, "daysToMaturity": 40 },
+    "reviews": { "avg": 4, "num": 62 }
   },
   {
     "id": "LET3",
     "title": "Romaine",
     "category": "lettuce",
-    "price": "2.99",
+    "price": 2.99,
     "salePrice": "",
     "description": "Named for an island off the coast of South Carolina, this variety was introduced in 1952. Crisp and sweet, this beloved heirloom has been a favorite for generations (especially on the Eastern Seaboard where it originates). Tall, uniform leaves create the perfect shape for lettuce wraps or boats for dips and dressings.",
-    "inStock": "65",
-    "details": { "seedCount": "1000", "daysToMaturity": "45" },
-    "reviews": { "avg": "4.5", "num": "80" }
+    "inStock": 65,
+    "details": { "seedCount": 1000, "daysToMaturity": 45 },
+    "reviews": { "avg": 4.5, "num": 80 }
   },
   {
     "id": "LET4",
     "title": "Red Romaine",
     "category": "lettuce",
-    "price": "2.99",
+    "price": 2.99,
     "salePrice": "",
     "description": "Plants produce heads if left long enough, and the leaves are the deepest shade of red you can imagine. Amazing in salads, on sandwiches, or in wraps. Adds a pop of color to anything. The deep red color also means you are getting some amazing antioxidants! This variety is cold-hardy, grows amazing in containers, and is heat and cold-tolerant.",
-    "inStock": "60",
-    "details": { "seedCount": "750", "daysToMaturity": "45" },
-    "reviews": { "avg": "4", "num": "35" }
+    "inStock": 60,
+    "details": { "seedCount": 750, "daysToMaturity": 45 },
+    "reviews": { "avg": 4, "num": 35 }
   },
   {
     "id": "LET5",
     "title": "Salad Bowl",
     "category": "lettuce",
-    "price": "2.99",
+    "price": 2.99,
     "salePrice": "",
     "description": "This variety has tender, medium-green leaves resembling those of an oak tree. The heads are slow bolting and compact. Wonderful for the container-growing gardener. The quick growing time makes Oakleaf lettuce good for areas with short growing seasons.",
-    "inStock": "0",
-    "details": { "seedCount": "1000", "daysToMaturity": "45" },
-    "reviews": { "avg": "3", "num": "54" }
+    "inStock": 0,
+    "details": { "seedCount": 1000, "daysToMaturity": 45 },
+    "reviews": { "avg": 3, "num": 54 }
   },
   {
     "id": "LET6",
     "title": "Buttercrunch",
     "category": "lettuce",
-    "price": "2.99",
+    "price": 2.99,
     "salePrice": "",
     "description": "A buttery sweet variety that is a staple in every garden. The leaves are soft and crisp, making them the perfect base for any salad. The plants are great for square foot gardening because of their ability to be planted closely together. Can be started earlier in the season because of a very high tolerance for cold weather.",
-    "inStock": "3",
-    "details": { "seedCount": "750", "daysToMaturity": "55" },
-    "reviews": { "avg": "3.5", "num": "20" }
+    "inStock": 3,
+    "details": { "seedCount": 750, "daysToMaturity": 55 },
+    "reviews": { "avg": 3.5, "num": 20 }
   },
   {
     "id": "ON1",
     "title": "Patterson",
     "category": "onions",
-    "price": "4.99",
-    "salePrice": "3.99",
+    "price": 4.99,
+    "salePrice": 3.99,
     "description": "A great storage onion. Produces 3-4\" bulbs with sweet yellow flesh. Great for fresh eating as well! Long day variety, plant in Northern regions.",
-    "inStock": "33",
-    "details": { "seedCount": "200", "daysToMaturity": "100" },
-    "reviews": { "avg": "4.5", "num": "72" }
+    "inStock": 33,
+    "details": { "seedCount": 200, "daysToMaturity": 100 },
+    "reviews": { "avg": 4.5, "num": 72 }
   },
   {
     "id": "ON2",
     "title": "Red Wethersfield",
     "category": "onions",
-    "price": "3.99",
+    "price": 3.99,
     "salePrice": "",
     "description": "Red Wethersfield Onion put Wethersfield, Connecticut on the map In 1834. This impressive dark red onion with unmatched flavor was the main export of the area. Its flattened purple globes and pungent flesh made this variety a fast favorite. Extremely rare and sought after in the culinary world. This variety is a delicious addition to salads, canning, and fresh eating. ",
-    "inStock": "18",
-    "details": { "seedCount": "200", "daysToMaturity": "100" },
-    "reviews": { "avg": "4", "num": "52" }
+    "inStock": 18,
+    "details": { "seedCount": 200, "daysToMaturity": 100 },
+    "reviews": { "avg": 4, "num": 52 }
   },
   {
     "id": "ON3",
     "title": "White Lisbon",
     "category": "onions",
-    "price": "2.99",
+    "price": 2.99,
     "salePrice": "",
     "description": "These onions are extremely space-efficient and easy to grow. Tender, flavorful, and delicious; this variety is perfect for a cut and comes again garden. Excellent for potted gardens and small spaces. The uses for this onion are endless!",
-    "inStock": "0",
-    "details": { "seedCount": "500", "daysToMaturity": "70" },
-    "reviews": { "avg": "4", "num": "20" }
+    "inStock": 0,
+    "details": { "seedCount": 500, "daysToMaturity": 70 },
+    "reviews": { "avg": 4, "num": 20 }
   },
   {
     "id": "PEA1",
     "title": "Cascadia",
     "category": "peas",
-    "price": "2.99",
+    "price": 2.99,
     "salePrice": "",
     "description": "Produces heavy yeilds of juicy, thick walled pods. Short vines make this variety a great space saver and grows great in containers. Ripens early and resistant to powdery mildew.",
-    "inStock": "2",
-    "details": { "seedCount": "100", "daysToMaturity": "58" },
-    "reviews": { "avg": "4.5", "num": "44" }
+    "inStock": 2,
+    "details": { "seedCount": 100, "daysToMaturity": 58 },
+    "reviews": { "avg": 4.5, "num": 44 }
   },
   {
     "id": "PEA2",
     "title": "Super Sugar Snap",
     "category": "peas",
-    "price": "3.99",
-    "salePrice": "2.99",
+    "price": 3.99,
+    "salePrice": 2.99,
     "description": "The sugar snap pea is the go-to choice for everyone who loves a productive, sweet, and crisp pea. This variety produces small, cute pods that are delicious and able to be eaten raw, cooked, pods, or peas! The plant produces early and abundantly producing pods around 3-4 inches in length. flowers attract pollinators into the garden and are a great early spring crop to grow since sugar snap peas are extremely cold hardy. Many have reported being able to have snow on them without being negatively affected.",
-    "inStock": "40",
-    "details": { "seedCount": "100", "daysToMaturity": "70" },
-    "reviews": { "avg": "4.5", "num": "79" }
+    "inStock": 40,
+    "details": { "seedCount": 100, "daysToMaturity": 70 },
+    "reviews": { "avg": 4.5, "num": 79 }
   },
   {
     "id": "PEP1",
     "title": "California Wonder",
     "category": "peppers",
-    "price": "2.99",
+    "price": 2.99,
     "salePrice": "",
     "description": "This variety has been the most popular bell variety since its introduction in 1928. A standard go-to bell pepper for decades. The perfect blocky, four-lobed stuffing pepper. Thick-walled and bursting with flavor. The largest open-pollinated heirloom bell pepper on the market!",
-    "inStock": "80",
-    "details": { "seedCount": "50", "daysToMaturity": "75" },
-    "reviews": { "avg": "5", "num": "110" }
+    "inStock": 80,
+    "details": { "seedCount": 50, "daysToMaturity": 75 },
+    "reviews": { "avg": 5, "num": 110 }
   },
   {
     "id": "PEP2",
     "title": "Jimmy Nardello",
     "category": "peppers",
-    "price": "4.99",
+    "price": 4.99,
     "salePrice": "",
     "description": "A highly prized grilling pepper used in Italian cooking. Plants produce many deep red medium/mild peppers that are curved at the top and measure around 5 inches long. Excellent fresh or dried. Genetics can be traced back to the early 1900s.",
-    "inStock": "2",
-    "details": { "seedCount": "25", "daysToMaturity": "75" },
-    "reviews": { "avg": "5", "num": "24" }
+    "inStock": 2,
+    "details": { "seedCount": 25, "daysToMaturity": 75 },
+    "reviews": { "avg": 5, "num": 24 }
   },
   {
     "id": "PEP3",
     "title": "Sweet Banana",
     "category": "peppers",
-    "price": "3.99",
+    "price": 3.99,
     "salePrice": "",
     "description": "This sweet and tasty variety bears pointed yellow fruit about 7 inches long. Thick-walled fruit matures from light yellow to bright red. Popular for salads, frying, and pickling. These sweet banana peppers are great to top pizzas, salads, and sandwiches!",
-    "inStock": "0",
-    "details": { "seedCount": "50", "daysToMaturity": "75" },
-    "reviews": { "avg": "3", "num": "38" }
+    "inStock": 0,
+    "details": { "seedCount": 50, "daysToMaturity": 75 },
+    "reviews": { "avg": 3, "num": 38 }
   },
   {
     "id": "PEP4",
     "title": "Jalapeño",
     "category": "peppers",
-    "price": "2.99",
+    "price": 2.99,
     "salePrice": "",
     "description": "The Early Jalapeño Pepper is a great variety for Northern Gardeners. This variety reigns early, dark green to red in color. The peppers grow up to 3 inches, prolific producers. Can be eaten raw, cooked, or pickled! These peppers are a wonderful ingredient to traditional guacamole or can be sautéed and added to fajitas!",
-    "inStock": "45",
-    "details": { "seedCount": "50", "daysToMaturity": "75" },
-    "reviews": { "avg": "4.5", "num": "60" }
+    "inStock": 45,
+    "details": { "seedCount": 50, "daysToMaturity": 75 },
+    "reviews": { "avg": 4.5, "num": 60 }
   },
   {
     "id": "PEP5",
     "title": "Habanero",
     "category": "peppers",
-    "price": "4.99",
-    "salePrice": "3.99",
+    "price": 4.99,
+    "salePrice": 3.99,
     "description": "Caution! This innocent-looking pepper is very hot! Originating in Amazonian Brazil before making its way to Northern Mexico and the Caribbean, this variety packs a punch. Fruit matures from green to bright orange and has a taste of tangy citrus flavor accompanied by amazing heat. Fruits reach 3-5 cm long. Best suited for the daring, and those that love spicy food.",
-    "inStock": "21",
-    "details": { "seedCount": "25", "daysToMaturity": "100" },
-    "reviews": { "avg": "4", "num": "29" }
+    "inStock": 21,
+    "details": { "seedCount": 25, "daysToMaturity": 100 },
+    "reviews": { "avg": 4, "num": 29 }
   },
   {
     "id": "PEP6",
     "title": "Cayenne",
     "category": "peppers",
-    "price": "3.99",
+    "price": 3.99,
     "salePrice": "",
     "description": "Do not be deceived by the size, these peppers pack a lot of heat and flavor. This variety is high-yielding and grows 4-6\" long and 1/2\" wide. Slightly hotter than jalapenos, this variety has a multitude of uses in the kitchen. Fresh, canned, used in pickling or dried, cayenne is the perfect type for adding a kick to any recipe.",
-    "inStock": "33",
-    "details": { "seedCount": "25", "daysToMaturity": "75" },
-    "reviews": { "avg": "3.5", "num": "44" }
+    "inStock": 33,
+    "details": { "seedCount": 25, "daysToMaturity": 75 },
+    "reviews": { "avg": 3.5, "num": 44 }
   },
   {
     "id": "RAD1",
     "title": "Early Scarlet Globe",
     "category": "radishes",
-    "price": "2.99",
-    "salePrice": "1.99",
+    "price": 2.99,
+    "salePrice": 1.99,
     "description": "The early scarlet globe radish is a bright red radish, with white flesh that is truly sweet and crispy. Easy to grow with a short maturity date. Perfect size for snacking on with a bit of salt or slicing onto fresh salads.",
-    "inStock": "40",
-    "details": { "seedCount": "250", "daysToMaturity": "22" },
-    "reviews": { "avg": "5", "num": "80" }
+    "inStock": 40,
+    "details": { "seedCount": 250, "daysToMaturity": 22 },
+    "reviews": { "avg": 5, "num": 80 }
   },
   {
     "id": "RAD2",
     "title": "German Giant",
     "category": "radishes",
-    "price": "3.99",
+    "price": 3.99,
     "salePrice": "",
     "description": "Absolutely massive radishes, this variety is often confused for beets. These are fast maturing for their size, and if you like a spicy radish then you are in luck. These are hot, delicious, and if you like garden-fresh snacks, then these are for you. Beautiful red roots that can be as large as a golf ball!",
-    "inStock": "0",
-    "details": { "seedCount": "250", "daysToMaturity": "30" },
-    "reviews": { "avg": "4", "num": "29" }
+    "inStock": 0,
+    "details": { "seedCount": 250, "daysToMaturity": 30 },
+    "reviews": { "avg": 4, "num": 29 }
   },
   {
     "id": "RAD3",
     "title": "French Breakfast",
     "category": "radishes",
-    "price": "2.99",
+    "price": 2.99,
     "salePrice": "",
     "description": "The French Breakfast Radish is a blunt finger-shaped radish growing to about 3″ long. The roots are red blending to white at the tip. The flesh is crisp and white with a little kick. The short shelf life makes this variety perfect for the home gardener. Plant French Breakfast Radish Seeds very early in the spring in a sunny location as soon as the ground may be cultivated and enriched with organic material. For an extended harvest period, plant at two-week intervals avoiding hot summer temperatures. Press soil firmly over seeds.",
-    "inStock": "15",
-    "details": { "seedCount": "250", "daysToMaturity": "24" },
-    "reviews": { "avg": "3", "num": "46" }
+    "inStock": 15,
+    "details": { "seedCount": 250, "daysToMaturity": 24 },
+    "reviews": { "avg": 3, "num": 46 }
   },
   {
     "id": "RAD4",
     "title": "Cherry Belle",
     "category": "radishes",
-    "price": "2.99",
+    "price": 2.99,
     "salePrice": "",
     "description": "A crisp radish is what you get with Cherry Belle. It is a mildly spicy radish that gets hotter with a later season. It is also larger than most radishes allowing you to have quite a great snack from just a few of them. Great to grow in the early spring and fall. Perfect for growing with kids, let them grow their own after-school snack!",
-    "inStock": "4",
-    "details": { "seedCount": "250", "daysToMaturity": "24" },
-    "reviews": { "avg": "4", "num": "65" }
+    "inStock": 4,
+    "details": { "seedCount": 250, "daysToMaturity": 24 },
+    "reviews": { "avg": 4, "num": 65 }
   },
   {
     "id": "SQ1",
     "title": "Cocozelle",
     "category": "squash",
-    "price": "4.99",
+    "price": 4.99,
     "salePrice": "",
     "description": "If you are someone who enjoys growing giant vegetables, this is one for you. The average size of the squash is around 45 pounds when at full maturity. However, in its native Italy, this variety is harvested very early when the fruits are under 8\" in length for the best flavor. When small it is tender, delicious, and isn't stringy at all. This delicious summer squash is great for grilling. Harvest early to extend the harvest on each plant.",
-    "inStock": "0",
-    "details": { "seedCount": "50", "daysToMaturity": "50" },
-    "reviews": { "avg": "4", "num": "15" }
+    "inStock": 0,
+    "details": { "seedCount": 50, "daysToMaturity": 50 },
+    "reviews": { "avg": 4, "num": 15 }
   },
   {
     "id": "SQ2",
     "title": "Black Beauty",
     "category": "squash",
-    "price": "2.99",
-    "salePrice": "1.99",
+    "price": 2.99,
+    "salePrice": 1.99,
     "description": "Black Beauty Zucchini is the cultivar you most frequently find in the grocery store. The plants produce dark green, glossy, straight, and slender zucchini. May grow up to the size of a baseball bat or bigger if you forget about it! Firm, very tender, with amazing flavor. Great to add to your grilled recipes such as kebabs or incorporate into zucchini bread for a sweet treat.",
-    "inStock": "62",
-    "details": { "seedCount": "50", "daysToMaturity": "50" },
-    "reviews": { "avg": "5", "num": "84" }
+    "inStock": 62,
+    "details": { "seedCount": 50, "daysToMaturity": 50 },
+    "reviews": { "avg": 5, "num": 84 }
   },
   {
     "id": "SQ3",
     "title": "Yellow Crookneck",
     "category": "squash",
-    "price": "3.99",
+    "price": 3.99,
     "salePrice": "",
     "description": "This variety is one of the oldest squash still being grown. Seeds were brought over from Europe and cultivated in the Americas as early as the 1500s. The namesake comes from the bent neck of the gourd with its rounded bottom. This shape provides good meat with minimal seeds. Pick them small, and they are the best thing for a summer stir-fry or vegetable salad.",
-    "inStock": "15",
-    "details": { "seedCount": "50", "daysToMaturity": "65" },
-    "reviews": { "avg": "4", "num": "48" }
+    "inStock": 15,
+    "details": { "seedCount": 50, "daysToMaturity": 65 },
+    "reviews": { "avg": 4, "num": 48 }
   },
   {
     "id": "SQ4",
     "title": "Table King Acorn",
     "category": "squash",
-    "price": "3.99",
+    "price": 3.99,
     "salePrice": "",
     "description": "This variety is a compact plant that is great for home gardeners. The plant usually sets 5-8 two-pound delicious fruits. Great for storing and even developing better flavor when stored briefly. Drizzle with brown sugar and butter place in the oven to bake at 350º for 15-20 minutes, and enjoy! Excellent source of Minerals and Vitamins C, K, E and an excellent source of Fiber.",
-    "inStock": "3",
-    "details": { "seedCount": "50", "daysToMaturity": "80" },
-    "reviews": { "avg": "4", "num": "35" }
+    "inStock": 3,
+    "details": { "seedCount": 50, "daysToMaturity": 80 },
+    "reviews": { "avg": 4, "num": 35 }
   },
   {
     "id": "SQ5",
     "title": "Butterbush",
     "category": "squash",
-    "price": "3.99",
+    "price": 3.99,
     "salePrice": "",
     "description": "This compact butternut squash is a crowd favorite for its standard fruit size and long shelf life—amazingly compact plants. Ideal in small gardens and containers, this squash will produce between 3-6 squash.",
-    "inStock": "20",
-    "details": { "seedCount": "50", "daysToMaturity": "75" },
-    "reviews": { "avg": "3.5", "num": "40" }
+    "inStock": 20,
+    "details": { "seedCount": 50, "daysToMaturity": 75 },
+    "reviews": { "avg": 3.5, "num": 40 }
   },
   {
     "id": "TOM1",
     "title": "Roma",
     "category": "tomatoes",
-    "price": "3.99",
+    "price": 3.99,
     "salePrice": "",
     "description": "This classic plum-shaped tomato is grown for its massive yields, strong growing habits, and disease resistance. The Roma Tomato can be used in pasta, spaghetti sauce, salads, and fresh eating. It is a meatier variety with less juice so it is also good for breakfast. This cultivar is Verticillium Wilt resistant, and Fusarium wilt resistant. Drought tolerant, and a must-have for the homestead!",
-    "inStock": "80",
-    "details": { "seedCount": "50", "daysToMaturity": "65" },
-    "reviews": { "avg": "3", "num": "82" }
+    "inStock": 80,
+    "details": { "seedCount": 50, "daysToMaturity": 65 },
+    "reviews": { "avg": 3, "num": 82 }
   },
   {
     "id": "TOM2",
     "title": "San Marzano",
     "category": "tomatoes",
-    "price": "3.99",
+    "price": 3.99,
     "salePrice": "",
     "description": "The San Marzano tomato is the undisputed king of paste tomatoes. Each plant produces insane amounts of medium 3-5 ounce tomatoes. Expect high production up to the first frost. The flavor is acidic; making it great for canning, tomato paste, pizza sauce, pasta sauce, and even fresh eating in salads! Gourmet and home chefs seek out the San Marzano for its amazing flavor and perfect texture.",
-    "inStock": "46",
-    "details": { "seedCount": "25", "daysToMaturity": "85" },
-    "reviews": { "avg": "4", "num": "43" }
+    "inStock": 46,
+    "details": { "seedCount": 25, "daysToMaturity": 85 },
+    "reviews": { "avg": 4, "num": 43 }
   },
   {
     "id": "TOM3",
     "title": "Super Sweet 100",
     "category": "tomatoes",
-    "price": "2.99",
+    "price": 2.99,
     "salePrice": "",
     "description": "These cherry tomatoes are bursting with flavor. Produces 100s of cherry sized fruits in long clusters right up to frost. Grows great on stakes or a trellis. Higher vitamin C content than any other tomato!",
-    "inStock": "16",
-    "details": { "seedCount": "50", "daysToMaturity": "65" },
-    "reviews": { "avg": "4.5", "num": "89" }
+    "inStock": 16,
+    "details": { "seedCount": 50, "daysToMaturity": 65 },
+    "reviews": { "avg": 4.5, "num": 89 }
   },
   {
     "id": "TOM4",
     "title": "Sun Gold",
     "category": "tomatoes",
-    "price": "6.99",
-    "salePrice": "4.99",
+    "price": 6.99,
+    "salePrice": 4.99,
     "description": "Exceptionally sweet, bright tangerine-orange cherry tomatoes. Vigorous plants start yielding early and bear right through the season. Great for snacking while working in the garden!",
-    "inStock": "3",
-    "details": { "seedCount": "25", "daysToMaturity": "65" },
-    "reviews": { "avg": "4.5", "num": "62" }
+    "inStock": 3,
+    "details": { "seedCount": 25, "daysToMaturity": 65 },
+    "reviews": { "avg": 4.5, "num": 62 }
   },
   {
     "id": "TOM5",
     "title": "Costoluto Genovese",
     "category": "tomatoes",
-    "price": "5.99",
+    "price": 5.99,
     "salePrice": "",
     "description": "This Italian slicing tomato bares high, disease resistant yields. The fruits are red and ribbed – a unique shape compared to the traditional round tomato. Use this sweet and juicy variety as a right-off-the-vine snack, or slice up to toss onto a salad! Early maturing.",
-    "inStock": "14",
-    "details": { "seedCount": "25", "daysToMaturity": "75" },
-    "reviews": { "avg": "4", "num": "27" }
+    "inStock": 14,
+    "details": { "seedCount": 25, "daysToMaturity": 75 },
+    "reviews": { "avg": 4, "num": 27 }
   },
   {
     "id": "TOM6",
     "title": "Black Krim",
     "category": "tomatoes",
-    "price": "4.99",
+    "price": 4.99,
     "salePrice": "",
     "description": "This beefsteak variety tomato produces burgundy purple fruits with minor pleating at the shoulders and a rust red bottom that transitions to a deep burgundy top. The inside of the fruit is deep purple with very few seeds. Fruits weigh an average of 1lb and often exceeds that. Sweet, slightly smoky, low acid, and rich in flavor. Originally crossed with a beefsteak and a cherokee purple, the result is high yields and a resistance to disease and cracking. A top choice for warm climates but will also do very well in cooler climates.",
-    "inStock": "0",
-    "details": { "seedCount": "25", "daysToMaturity": "80" },
-    "reviews": { "avg": "4", "num": "25" }
+    "inStock": 0,
+    "details": { "seedCount": 25, "daysToMaturity": 80 },
+    "reviews": { "avg": 4, "num": 25 }
   }
 ]

@@ -19,17 +19,17 @@ function writeJSON() {
       id: product.id,
       title: product.title,
       category: product.category,
-      price: product.price,
-      salePrice: product.salePrice,
+      price: +product.price,
+      salePrice: +product.salePrice || "",
       description: product.description,
-      inStock: product.inStock,
+      inStock: +product.inStock,
       details: {
-        seedCount: product.seedCount,
-        daysToMaturity: product.daysToMaturity,
+        seedCount: +product.seedCount,
+        daysToMaturity: +product.daysToMaturity,
       },
       reviews: {
-        avg: product.avgReview,
-        num: product.numReviews,
+        avg: +product.avgReview,
+        num: +product.numReviews,
       },
     };
   });
