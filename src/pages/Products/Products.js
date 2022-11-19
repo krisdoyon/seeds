@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import ProductNav from "./ProductNav";
 import { useGlobalContext } from "../../context/context";
 import ProductCard from "./ProductCard";
+import Breadcrumb from "../../components/Breadcrumb";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
@@ -32,6 +33,7 @@ const Products = () => {
   return (
     <Wrapper className="container">
       <h2 className="heading">{category || "all"}</h2>
+      <Breadcrumb title={category || "shop"} category={category} />
       <div className="content">
         <ProductNav />
         <div className="products">
