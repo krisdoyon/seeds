@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import ProductNav from "../../components/ProductNav";
+import ProductNav from "./ProductNav";
 import { useGlobalContext } from "../../context/context";
 import ProductCard from "./ProductCard";
 import styled from "styled-components";
