@@ -1,34 +1,43 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { navLinks } from "../data/navLinks";
+import styled from "styled-components";
 
-const navLinks = [
-  {
-    text: "Home",
-    to: "/",
-  },
-  {
-    text: "About",
-    to: "/about",
-  },
-  {
-    text: "Shop",
-    to: "/shop",
-  },
-];
+const Wrapper = styled.header`
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  padding: 2.4rem 0;
+  background-color: #f7f7f7;
+  box-shadow: 0 1.2rem 2.4rem rgba(0, 0, 0, 0.075);
+
+  .list {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    justify-content: center;
+  }
+
+  .link {
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #000;
+  }
+
+  .link.active {
+    font-weight: 600;
+  }
+`;
 
 const Navbar = () => {
   return (
-    <header className="header">
+    <Wrapper>
       <nav className="nav">
-        <ul className="nav__list">
+        <ul className="list">
           {navLinks.map((link, i) => {
             return (
               <li key={i}>
-                <NavLink
-                  to={link.to}
-                  className={`nav__link ${({ isActive }) =>
-                    isActive ? "nav__link--active" : ""}`}
-                >
+                <NavLink to={link.to} className="link">
                   {link.text}
                 </NavLink>
               </li>
@@ -36,7 +45,7 @@ const Navbar = () => {
           })}
         </ul>
       </nav>
-    </header>
+    </Wrapper>
   );
 };
 
