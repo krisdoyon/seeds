@@ -1,8 +1,7 @@
-@use "../abstracts/mixins" as *;
+@use "./mixins" as *;
 
 ////////////////////////////////////////////////////////////////////
 // GLOBAL RESETS
-
 *,
 *::before,
 *::after {
