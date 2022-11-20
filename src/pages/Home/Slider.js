@@ -9,6 +9,8 @@ const Wrapper = styled.div`
   height: 65rem;
   position: relative;
   overflow: hidden;
+  border: 8px solid #777;
+  margin-top: 2rem;
 
   .controls {
     position: absolute;
@@ -28,7 +30,6 @@ const Wrapper = styled.div`
   .active {
     opacity: 1;
     transform: translateX(0);
-    z-index: 2;
   }
 
   .prev {
@@ -57,7 +58,7 @@ const Wrapper = styled.div`
     color: #f7f7f7;
   }
 
-  .active {
+  .active-btn {
     border: 2px solid #f7f7f7;
     background-color: #999;
   }
@@ -104,7 +105,7 @@ const Slider = () => {
           return (
             <button
               key={i}
-              className={`btn btn-circle ${index === i ? "active" : ""}`}
+              className={`btn btn-circle ${index === i ? "active-btn" : ""}`}
               onClick={() => setIndex(i)}
             ></button>
           );
