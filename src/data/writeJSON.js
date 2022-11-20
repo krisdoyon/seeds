@@ -19,8 +19,8 @@ function writeJSON() {
       id: product.id,
       title: product.title,
       category: product.category,
-      price: +product.price,
-      salePrice: +product.salePrice || "",
+      price: +product.price * 100,
+      salePrice: +product.salePrice * 100 || "",
       description: product.description,
       inStock: +product.inStock,
       details: {
