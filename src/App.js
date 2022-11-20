@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 // REACT ROUTER
 import { Routes, Route } from "react-router-dom";
 // PAGE COMPONENTS
@@ -10,8 +10,23 @@ import PageNotFound from "./pages/PageNotFound";
 import Layout from "./pages/Layout";
 // SASS
 import "./sass/main.scss";
+import Cart from "./pages/Cart";
+
+import { calculateTotals } from "./features/cartSlice";
+import { useSelector, useDispatch } from "react-redux";
 
 function App() {
+  const dispatch = useDispatch();
+  const { cartItems, promo } = useSelector((state) => state.cart);
+
+  useEffect(() => {
+    dispatch(calculateTotals());
+  }, [dispatch, cartItems, promo]);
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cartItems));
+  }, [cartItems]);
+
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
@@ -22,7 +37,7 @@ function App() {
           <Route path=":category" element={<Products />} />
         </Route>
         <Route path="/shop/:category/:id" element={<SingleProduct />} />
-
+        <Route path="cart" element={<Cart />} />
         <Route path="*" element={<PageNotFound />} />
       </Route>
     </Routes>
