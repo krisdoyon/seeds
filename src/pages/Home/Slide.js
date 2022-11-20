@@ -9,12 +9,11 @@ const Wrapper = styled.article`
   width: 100%;
   background-color: rgb(255, 148, 148);
   opacity: 0;
-  transition: transform 0.3s, opacity 0.3s;
+  transition: all 0.3s linear;
   background-size: cover;
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  margin-top: 2rem;
 
   .content {
     background-color: rgba(255, 255, 255, 0.7);
@@ -47,7 +46,6 @@ const Wrapper = styled.article`
 `;
 
 const Slide = ({ title, text, to, image, slideClass, position }) => {
-  console.log(image);
   return (
     <Wrapper
       className={slideClass}
