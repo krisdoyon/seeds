@@ -2,9 +2,20 @@
   cursor: pointer;
   text-decoration: none;
   color: inherit;
+  font-family: inherit;
+  border: none;
+  background-color: transparent;
+  border-radius: var(--var-border-radius);
+  text-transform: uppercase;
+  font-weight: 500;
 }
 
 .btn:hover {
+}
+
+.btn--fill {
+  background-color: #000;
+  color: #fff;
 }
 
 .btn-shop {
