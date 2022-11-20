@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { formatPrice } from "../../helpers/helpers";
+import { OnSale, LowStock, SoldOut } from "../../components/Tags";
 
 const Wrapper = styled.article`
   background-color: #ccc;
@@ -33,20 +35,7 @@ const Wrapper = styled.article`
 
     & > * {
       align-self: flex-end;
-      padding: 0.4rem 0.8rem;
     }
-  }
-
-  .on-sale {
-    background-color: greenyellow;
-  }
-
-  .low-stock {
-    background-color: orange;
-  }
-
-  .no-stock {
-    background-color: red;
   }
 
   .img-container {
@@ -72,11 +61,9 @@ const ProductCard = ({ id, title, category, price, salePrice, inStock }) => {
   return (
     <Wrapper>
       <div className="tags">
-        {inStock === 0 && <div className="no-stock">OUT OF STOCK</div>}
-        {inStock <= 5 && inStock >= 1 && (
-          <div className="low-stock">LOW STOCK</div>
-        )}
-        {salePrice && <div className="on-sale">ON SALE</div>}
+        {inStock === 0 && <SoldOut />}
+        {inStock <= 5 && inStock >= 1 && <LowStock />}
+        {salePrice && <OnSale />}
       </div>
       <div className="img-container">
         <img src={`/img/${id}.webp`} alt="" />
@@ -84,8 +71,8 @@ const ProductCard = ({ id, title, category, price, salePrice, inStock }) => {
       <div className="info">
         <h2>{title}</h2>
         <div className="prices">
-          <p className={`${salePrice ? "strike" : ""}`}>${price}</p>
-          {salePrice && <p>${salePrice}</p>}
+          <p className={`${salePrice ? "strike" : ""}`}>{formatPrice(price)}</p>
+          {salePrice && <p>{formatPrice(salePrice)}</p>}
         </div>
         <Link to={`/shop/${category}/${id}`}>MORE INFO</Link>
       </div>
