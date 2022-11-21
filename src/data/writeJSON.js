@@ -24,6 +24,7 @@ function writeJSON() {
       description: product.description,
       inStock: +product.inStock,
       details: {
+        isNew: product.isNew === "true" ? true : false,
         seedCount: +product.seedCount,
         daysToMaturity: +product.daysToMaturity,
       },
