@@ -1,11 +1,35 @@
-.on-sale {
-  background-color: greenyellow;
+.tag {
+  font-weight: 500;
+  color: var(--color-white);
 }
 
-.low-stock {
-  background-color: orange;
+.tag--on-sale {
+  background-color: var(--color-primary-dark);
+  border-radius: var(--border-radius);
 }
 
-.sold-out {
-  background-color: red;
+.tag--low-stock {
+  background-color: var(--color-orange);
+  border-radius: var(--border-radius) 0 0 var(--border-radius);
+}
+
+.tag--sold-out {
+  background-color: var(--color-red-dark);
+  border-radius: var(--border-radius) 0 0 var(--border-radius);
+}
+
+.tag--new {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1000rem;
+  text-transform: uppercase;
+  height: 5rem;
+  width: 5rem;
+  font-size: 1.3rem;
+  position: absolute;
+  top: 0.6rem;
+  left: 0.6rem;
+  background-color: var(--color-secondary);
+  font-weight: 500;
 }
