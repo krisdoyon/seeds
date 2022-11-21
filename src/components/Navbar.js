@@ -32,10 +32,16 @@ const Wrapper = styled.header`
     color: #000;
     font-size: 1.6rem;
     letter-spacing: 2px;
+
+    &:hover {
+      font-weight: 700;
+      color: var(--color-primary-dark);
+    }
   }
 
   .link.active {
     font-weight: 700;
+    color: var(--color-primary-dark);
   }
 
   .icon {
@@ -52,7 +58,7 @@ const Wrapper = styled.header`
     height: 2rem;
     width: 2rem;
     padding: 1.2rem;
-    background-color: green;
+    background-color: var(--color-primary-dark);
     color: #fff;
     position: absolute;
     top: -3rem;
@@ -62,6 +68,16 @@ const Wrapper = styled.header`
     justify-content: center;
     border-radius: 1000rem;
     font-weight: 600;
+    font-size: 1.1rem;
+  }
+
+  .cart-preview {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 25rem;
+    height: 20rem;
+    background-color: red;
   }
 `;
 
@@ -83,7 +99,7 @@ const Navbar = () => {
           })}
         </ul>
         <div className="icons">
-          <Link to="/cart" className="btn btn-cart">
+          <Link to="/cart" className="btn-cart btn">
             <BsCart3 className="icon" />
             <div className="cart-amount">{amount}</div>
           </Link>
