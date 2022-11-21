@@ -4,7 +4,6 @@ import styled from "styled-components";
 
 const Wrapper = styled.div`
   text-transform: capitalize;
-  margin-bottom: 2rem;
   font-size: 1.4rem;
   a {
     text-decoration: none;
@@ -24,9 +23,20 @@ const Wrapper = styled.div`
 const Breadcrumb = ({ title, category, product }) => {
   return (
     <Wrapper>
-      <Link to="/">Home</Link> /
-      {(category || product) && <Link to="/shop"> Shop /</Link>}
-      {product && <Link to={`/shop/${category}`}> {category} /</Link>}
+      <Link to="/">Home</Link>
+      <span> / </span>
+      {(category || product) && (
+        <>
+          <Link to="/shop">Shop</Link>
+          <span> / </span>
+        </>
+      )}
+      {product && (
+        <>
+          <Link to={`/shop/${category}`}>{category}</Link>
+          <span> / </span>
+        </>
+      )}
       <span className="breadcrumb__title"> {title}</span>
     </Wrapper>
   );
