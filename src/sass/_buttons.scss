@@ -1,21 +1,28 @@
 .btn {
-  cursor: pointer;
   text-decoration: none;
-  color: inherit;
-  font-family: inherit;
   border: none;
+  font-family: inherit;
+  font-size: 1.4rem;
+  border-radius: var(--border-radius);
+  color: inherit;
   background-color: transparent;
-  border-radius: var(--var-border-radius);
   text-transform: uppercase;
   font-weight: 500;
+  transition: all 0.2s;
 }
 
 .btn:hover {
+  cursor: pointer;
 }
 
 .btn--fill {
-  background-color: #000;
+  background-color: var(--color-primary-dark);
   color: #fff;
+  padding: 1rem 2rem;
+
+  &:hover {
+    background-color: var(--color-primary-dark-hover);
+  }
 }
 
 .btn-shop {
