@@ -8,13 +8,17 @@ const Wrapper = styled.div`
 `;
 
 export const OnSale = () => {
-  return <Wrapper className="tag on-sale">on sale</Wrapper>;
+  return <Wrapper className="tag tag--on-sale">on sale</Wrapper>;
 };
 
 export const LowStock = () => {
-  return <Wrapper className="tag low-stock">low stock</Wrapper>;
+  return <Wrapper className="tag tag--low-stock">low stock</Wrapper>;
 };
 
 export const SoldOut = () => {
-  return <Wrapper className="tag sold-out">sold out</Wrapper>;
+  return <Wrapper className="tag tag--sold-out">sold out</Wrapper>;
+};
+
+export const NewTag = () => {
+  return <div className="tag--new">new</div>;
 };
