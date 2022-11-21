@@ -22,26 +22,28 @@ const Wrapper = styled.article`
     display: flex;
     flex-direction: column;
     gap: 0.4rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .tag {
+    font-size: 1.1rem;
   }
 
   .in-stock {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
+  }
+
+  .low-stock {
+    color: var(--color-red-dark);
   }
 
   img {
     height: 9rem;
   }
 
-  .btn-view {
-    font-size: 1.1rem;
-    text-transform: uppercase;
-    padding: 0.4rem 0.8rem;
-    font-weight: 500;
-    align-self: flex-start;
-  }
-
   .title {
     font-size: 1.6rem;
+    font-weight: 600;
   }
 
   .price,
@@ -59,6 +61,7 @@ const Wrapper = styled.article`
   .btn-remove {
     text-transform: uppercase;
     padding: 0.4rem 0.8rem;
+    justify-self: center;
     font-weight: 700;
     border-radius: 0.4rem;
   }
@@ -77,6 +80,8 @@ const Wrapper = styled.article`
   .btn-toggle {
     height: 2rem;
     width: 2rem;
+    padding: 0;
+    color: var(--color-primary-dark);
   }
 
   .toggle-icon {
@@ -100,14 +105,13 @@ const CartItem = ({
       <div className="title-wrapper">
         <img src={`img/${id}.webp`} alt="" />
         <div className="title-info-wrapper">
-          <h3 className="title">{title}</h3>
-          <p className="in-stock">{`${inStock} in stock`}</p>
-          <Link
-            className="btn btn--fill btn-view"
-            to={`/shop/${category}/${id}`}
-          >
-            View
+          <Link to={`/shop/${category}/${id}`} className="title">
+            {title}
           </Link>
+          {inStock > 5 && <p className="in-stock">{`${inStock} available`}</p>}
+          {inStock <= 5 && (
+            <p className="in-stock low-stock">{`Only ${inStock} left!`}</p>
+          )}
         </div>
       </div>
       <div className="price-wrapper">
