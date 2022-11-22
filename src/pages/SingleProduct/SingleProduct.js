@@ -9,7 +9,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { loadSingleProduct } from "../../features/productsSlice";
 import { NewTag } from "../../components/Tags";
 import AddButton from "./AddButton";
-import QuantityBtns from "./QuantityBtns";
+import QuantityBtns from "../../components/QuantityBtns";
+import PageNotFound from "../PageNotFound";
+import { addWishlist, removeWishlist } from "../../features/wishlistSlice";
+import WishlistButton from "./WishlistButton";
 
 const Wrapper = styled.div`
   margin-top: 4rem;
@@ -83,6 +86,11 @@ const Wrapper = styled.div`
     background-color: #555;
     pointer-events: none;
   }
+
+  .button-container {
+    display: flex;
+    gap: 1.2rem;
+  }
 `;
 
 const SingleProduct = () => {
@@ -90,13 +98,19 @@ const SingleProduct = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [quantity, setQuantity] = useState(1);
-  const [justAdded, setJustAdded] = useState(false);
+  const [cartDisabled, setCartDisabled] = useState(false);
+  const [wishlistDisabled, setWishlistDisabled] = useState(false);
 
   useEffect(() => {
     dispatch(loadSingleProduct(id));
   }, []);
 
-  const { currentProduct } = useSelector((state) => state.products);
+  const { currentProduct, error } = useSelector((state) => state.products);
+  const { wishlistItems } = useSelector((state) => state.wishlist);
+
+  if (error) {
+    return <PageNotFound />;
+  }
 
   if (currentProduct.id) {
     const {
@@ -110,18 +124,6 @@ const SingleProduct = () => {
       details: { daysToMaturity, seedCount, isNew },
     } = currentProduct;
 
-    const handleIncrease = () => {
-      if (quantity < inStock) {
-        setQuantity(quantity + 1);
-      }
-    };
-
-    const handleDecrease = () => {
-      if (quantity > 1) {
-        setQuantity(quantity - 1);
-      }
-    };
-
     const handleAdd = () => {
       const item = {
         id,
@@ -133,8 +135,32 @@ const SingleProduct = () => {
         category,
       };
       dispatch(addItem(item));
-      setJustAdded(true);
-      setTimeout(() => setJustAdded(false), 2000);
+      setCartDisabled(true);
+      setTimeout(() => setCartDisabled(false), 2000);
+    };
+
+    const onWishlist = wishlistItems.find((item) => item.id === id);
+
+    const handleWishlist = () => {
+      setWishlistDisabled(true);
+      setTimeout(() => setWishlistDisabled(false), 2000);
+      if (onWishlist) {
+        dispatch(removeWishlist(id));
+      } else {
+        dispatch(addWishlist(id));
+      }
+    };
+
+    const handleIncrease = () => {
+      if (quantity < inStock) {
+        setQuantity(quantity + 1);
+      }
+    };
+
+    const handleDecrease = () => {
+      if (quantity > 1) {
+        setQuantity(quantity - 1);
+      }
     };
 
     return (
@@ -189,15 +215,22 @@ const SingleProduct = () => {
             {inStock !== 0 && (
               <QuantityBtns
                 quantity={quantity}
-                handleDecrease={handleDecrease}
                 handleIncrease={handleIncrease}
+                handleDecrease={handleDecrease}
               />
             )}
-            <AddButton
-              inStock={inStock}
-              justAdded={justAdded}
-              handleAdd={handleAdd}
-            />
+            <div className="button-container">
+              <AddButton
+                inStock={inStock}
+                disabled={cartDisabled}
+                handleAdd={handleAdd}
+              />
+              <WishlistButton
+                onWishlist={onWishlist}
+                disabled={wishlistDisabled}
+                handleWishlist={handleWishlist}
+              />
+            </div>
           </div>
         </div>
       </Wrapper>
