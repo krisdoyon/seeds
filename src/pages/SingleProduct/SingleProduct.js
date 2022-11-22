@@ -103,7 +103,7 @@ const SingleProduct = () => {
 
   useEffect(() => {
     dispatch(loadSingleProduct(id));
-  }, []);
+  }, [dispatch, id]);
 
   const { currentProduct, error } = useSelector((state) => state.products);
   const { wishlistItems } = useSelector((state) => state.wishlist);
