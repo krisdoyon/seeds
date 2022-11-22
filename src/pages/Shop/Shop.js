@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import ProductNav from "./ProductNav";
 import ProductCard from "./ProductCard";
 import Breadcrumb from "../../components/Breadcrumb";
@@ -6,9 +6,10 @@ import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { loadProducts } from "../../features/productsSlice";
+import PageNotFound from "../PageNotFound";
 
 const Wrapper = styled.div`
-  margin-top: 4rem;
+  margin-top: var(--container-margin-top);
 
   .heading {
     text-transform: capitalize;
@@ -37,17 +38,21 @@ const Wrapper = styled.div`
   }
 `;
 
-const Products = () => {
+const Shop = () => {
   let { category } = useParams();
-  // if (!category) category = "all";
   const dispatch = useDispatch();
   const { filters } = useSelector((state) => state.products);
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(loadProducts(category));
   }, [category, filters]);
 
-  const { products } = useSelector((state) => state.products);
+  const { products, error } = useSelector((state) => state.products);
+
+  if (error) {
+    return <PageNotFound />;
+  }
 
   return (
     <Wrapper className="container">
@@ -71,4 +76,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default Shop;
