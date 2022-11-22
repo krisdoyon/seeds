@@ -1,9 +1,10 @@
-import React from 'react'
+import React from "react";
+import styled from "styled-components";
+
+const Wrapper = styled.section``;
 
 const NewArrivals = () => {
-  return (
-    <div>NewArrivals</div>
-  )
-}
+  return <Wrapper>NEW</Wrapper>;
+};
 
-export default NewArrivals
+export default NewArrivals;

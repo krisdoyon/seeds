@@ -9,8 +9,9 @@ const Wrapper = styled.div`
   height: 65rem;
   position: relative;
   overflow: hidden;
-  border: 8px solid #777;
-  margin-top: 2rem;
+  border: 6px solid var(--color-primary-dark);
+  border-radius: var(--border-radius);
+  background-color: var(--color-primary-dark);
 
   .controls {
     position: absolute;
@@ -83,7 +84,7 @@ const Slider = () => {
   }, [index]);
 
   return (
-    <Wrapper className="container">
+    <Wrapper>
       {slides.map((slide, i) => {
         let slideClass = "next";
 
