@@ -15,6 +15,7 @@ const initialState = {
   allCategories,
   filters: initialFilters,
   currentProduct: {},
+  error: false,
 };
 
 const productsSlice = createSlice({
@@ -22,6 +23,10 @@ const productsSlice = createSlice({
   initialState,
   reducers: {
     loadProducts: (state, { payload: category }) => {
+      state.error = false;
+      if (category && !allCategories.find((cat) => cat === category)) {
+        state.error = true;
+      }
       if (!category) category = "all";
       let newProducts =
         category === "all"
@@ -37,6 +42,7 @@ const productsSlice = createSlice({
       state.products = [...newProducts].sort((a, b) =>
         a.title.localeCompare(b.title)
       );
+      console.log(state.error);
     },
     updateFilters: (state, { payload: { filter, value } }) => {
       state.filters[`${filter}`] = value;
@@ -45,7 +51,13 @@ const productsSlice = createSlice({
       state.filters = initialFilters;
     },
     loadSingleProduct: (state, { payload: id }) => {
-      state.currentProduct = allProducts.find((product) => product.id === id);
+      state.error = false;
+      const product = allProducts.find((product) => product.id === id);
+      if (!product) {
+        state.error = true;
+        return;
+      }
+      state.currentProduct = product;
     },
   },
 });
