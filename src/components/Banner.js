@@ -61,7 +61,7 @@ const Banner = () => {
 
   useEffect(() => {
     if (index > messages.length - 1) setIndex(0);
-  }, [index]);
+  }, [index, messages.length]);
 
   useEffect(() => {
     const timeout = setTimeout(() => setIndex(index + 1), 5000);

@@ -42,7 +42,7 @@ function App() {
   useEffect(() => {
     dispatch(updateWishlistAmount());
     localStorage.setItem("wishlist", JSON.stringify(wishlistItems));
-  }, [wishlistItems]);
+  }, [wishlistItems, dispatch]);
 
   return (
     <Routes>

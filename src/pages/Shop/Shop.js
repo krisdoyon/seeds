@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import ProductNav from "./ProductNav";
 import ProductCard from "./ProductCard";
 import Breadcrumb from "../../components/Breadcrumb";
@@ -42,11 +42,10 @@ const Shop = () => {
   let { category } = useParams();
   const dispatch = useDispatch();
   const { filters } = useSelector((state) => state.products);
-  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(loadProducts(category));
-  }, [category, filters]);
+  }, [category, filters, dispatch]);
 
   const { products, error } = useSelector((state) => state.products);
 
