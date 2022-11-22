@@ -1,0 +1,19 @@
+.wrapper {
+  max-width: 100rem !important;
+}
+
+.flex-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2rem;
+
+  & > * {
+    width: 30rem;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 2.5fr 1fr 0.75fr 1fr 3rem;
+}

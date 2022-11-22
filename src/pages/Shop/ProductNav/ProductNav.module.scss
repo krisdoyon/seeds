@@ -1,0 +1,46 @@
+.heading {
+  font-size: 2.2rem;
+  margin-bottom: 2rem;
+}
+
+.link {
+  text-decoration: none;
+  text-transform: capitalize;
+  color: #333;
+  font-size: 1.6rem;
+
+  &:hover {
+    font-weight: 600;
+    color: var(--color-primary-dark);
+  }
+}
+
+.active {
+  font-weight: 600;
+  color: var(--color-primary-dark);
+}
+
+.sticky {
+  position: sticky;
+  top: 11rem;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.filter-row {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin-bottom: 3rem;
+}
+
+.btn-clear {
+  align-self: flex-start;
+  font-size: 1.2rem;
+  padding: 0.6rem 1.2rem;
+}

@@ -1,0 +1,27 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.heading {
+  margin-top: 4rem;
+  font-size: 3.6rem;
+  margin-bottom: 4rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+  max-width: 100rem;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+}
+
+.btn {
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+}

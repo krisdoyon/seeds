@@ -1,23 +1,11 @@
-import React from "react";
-import styled from "styled-components";
+import styles from "./Returns.module.scss";
 import Breadcrumb from "../../components/Breadcrumb";
-
-const Wrapper = styled.div`
-  max-width: 90rem;
-
-  .return-policy {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    margin-top: 4rem;
-  }
-`;
 
 const Returns = () => {
   return (
-    <Wrapper className="container">
-      <Breadcrumb title={"Returns"} />
-      <div className="return-policy">
+    <section className={`container  ${styles.wrapper}`}>
+      <Breadcrumb title="returns" />
+      <div className={styles.policy}>
         <h2>Return & Refund Policy</h2>
         <p>
           We hope you are happy with your purchase. However, if you are not
@@ -38,11 +26,11 @@ const Returns = () => {
           place the item securely in its original packaging with your proof of
           purchase and mail your return to the following address:
         </p>
-        <p className="return-address">
-          <span>Company Name</span>
+        <p className={styles.address}>
+          <span>Harvest Seed Company</span>
           <span>ATTN: Returns</span>
-          <span>Compnay Address</span>
-          <span>City, State, Zip</span>
+          <span>3000 Harvest Way</span>
+          <span>Hartford, CT 06101</span>
         </p>
         <p>
           Please note, you will be responsible for all return shipping charges.
@@ -69,10 +57,10 @@ const Returns = () => {
           If you have any questions concerning our return policy, please contact
           us at:
         </p>
-        <span>Phone</span>
-        <span>Email</span>
+        <span>(860) 245-3385</span>
+        <span>contact@harvestseed.com</span>
       </div>
-    </Wrapper>
+    </section>
   );
 };
 

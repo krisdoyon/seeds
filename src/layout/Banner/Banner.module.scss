@@ -1,0 +1,30 @@
+.banner {
+  background-color: var(--color-primary-dark);
+  height: 4.4rem;
+  position: relative;
+}
+
+.message {
+  color: var(--color-white);
+  font-weight: 400;
+  font-size: 1.4rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: all 1s ease-in-out;
+  visibility: hidden;
+
+  &--bold {
+    color: var(--color-secondary);
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  &--active {
+    opacity: 1;
+    z-index: 2;
+    visibility: visible;
+  }
+}

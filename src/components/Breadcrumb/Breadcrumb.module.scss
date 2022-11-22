@@ -1,0 +1,18 @@
+.breadcrumb {
+  text-transform: capitalize;
+  font-size: 1.4rem;
+
+  a {
+    text-decoration: none;
+    color: inherit;
+    font-family: inherit;
+
+    &:hover {
+      font-weight: 600;
+    }
+  }
+}
+
+.title {
+  font-weight: 600;
+}

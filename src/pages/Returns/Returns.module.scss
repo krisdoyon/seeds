@@ -1,0 +1,16 @@
+.wrapper {
+  max-width: 90rem;
+}
+
+.address {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.policy {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 4rem;
+}

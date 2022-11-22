@@ -1,0 +1,50 @@
+.slide {
+  background-color: red;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: rgb(255, 148, 148);
+  opacity: 0;
+  transition: all 0.5s linear;
+  background-size: cover;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  border-radius: var(--border-radius);
+}
+
+.content {
+  background-color: rgba(255, 255, 255, 0.7);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+  width: 45rem;
+  padding: 3rem 2rem;
+  border-radius: var(--border-radius) 0 0 var(--border-radius);
+}
+
+.title {
+  font-size: 3.6rem;
+}
+
+.text {
+  font-size: 1.6rem;
+}
+
+.btn {
+  align-self: flex-start;
+}
+
+.next {
+  transform: translateX(100%);
+}
+
+.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.prev {
+  transform: translateX(-100%);
+}

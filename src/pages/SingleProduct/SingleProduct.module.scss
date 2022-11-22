@@ -1,0 +1,78 @@
+.wrapper {
+  margin-top: 4rem;
+}
+
+.btn-back {
+  margin-bottom: 3rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  column-gap: 6rem;
+  margin-top: 3rem;
+}
+
+.img-container {
+  height: 45rem;
+  position: relative;
+
+  img {
+    height: 100%;
+  }
+}
+
+.new-tag {
+  height: 7.5rem;
+  width: 7.5rem;
+  font-size: 1.6rem;
+  top: 1.2rem;
+  left: 1.2rem;
+}
+
+.title {
+  font-size: 4.4rem;
+  margin-bottom: 2rem;
+}
+
+.description {
+  font-size: 1.6rem;
+  margin-bottom: 3rem;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+}
+
+.prices {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.strike {
+  text-decoration: line-through;
+  color: #555;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin-bottom: 3rem;
+}
+
+.low-stock {
+  color: var(--color-red-dark);
+}
+
+.disabled {
+  background-color: #555;
+  pointer-events: none;
+}
+
+.button-container {
+  display: flex;
+  gap: 1.2rem;
+}

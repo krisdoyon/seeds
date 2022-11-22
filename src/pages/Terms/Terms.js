@@ -1,14 +1,11 @@
-import React from "react";
-import styled from "styled-components";
+import styles from "./Terms.module.scss";
 import Breadcrumb from "../../components/Breadcrumb";
-
-const Wrapper = styled.div``;
 
 const Terms = () => {
   return (
-    <Wrapper className="container">
-      <Breadcrumb title={"Terms"} />
-    </Wrapper>
+    <section className={`container ${styles.wrapper}`}>
+      <Breadcrumb title="Terms" />
+    </section>
   );
 };
 

@@ -1,28 +1,20 @@
-import React from "react";
-import styled from "styled-components";
-
+import styles from "./Home.module.scss";
 // COMPONENTS
 import Slider from "./Slider";
-import Features from "./Features";
-import NewArrivals from "./NewArrivals";
+import Features from "./Features/Features";
+import NewArrivals from "./NewArrivals/NewArrivals";
 import Popular from "./Popular";
-import SubscribeForm from "./SubscribeForm";
-
-const Wrapper = styled.main`
-  display: flex;
-  flex-direction: column;
-  gap: 10rem;
-`;
+import SubscribeForm from "./SubscribeForm/SubscribeForm";
 
 const Home = () => {
   return (
-    <Wrapper className="container">
+    <main className={`container ${styles.wrapper}`}>
       <Slider />
       <Features />
       <NewArrivals />
       <Popular />
       <SubscribeForm />
-    </Wrapper>
+    </main>
   );
 };
 

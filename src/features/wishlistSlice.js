@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import allProducts from "../data/seeds.json";
+import allProducts from "../assets/seeds.json";
 
 const initialState = {
   wishlistItems: JSON.parse(localStorage.getItem("wishlist")) || [],

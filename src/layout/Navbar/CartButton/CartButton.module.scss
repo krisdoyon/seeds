@@ -1,0 +1,30 @@
+.wrapper {
+  position: relative;
+}
+
+.btn {
+  position: relative;
+  height: 3.2rem;
+}
+
+.icon {
+  height: 3.2rem;
+  width: 3.2rem;
+}
+
+.amount {
+  height: 2rem;
+  width: 2rem;
+  padding: 1.2rem;
+  background-color: var(--color-primary-dark);
+  color: #fff;
+  position: absolute;
+  top: -3rem;
+  right: -1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1000rem;
+  font-weight: 600;
+  font-size: 1.1rem;
+}

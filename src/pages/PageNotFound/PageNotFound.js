@@ -1,36 +1,17 @@
-import React from "react";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
-
-const Wrapper = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  gap: 3rem;
-  margin-bottom: 3rem;
-
-  h2 {
-    font-size: 4rem;
-  }
-
-  p {
-    font-size: 2rem;
-  }
-`;
+import styles from "./PageNotFound.module.scss";
+import Button from "../../components/Button";
 
 const PageNotFound = () => {
   return (
-    <Wrapper className="container">
+    <div className={`container ${styles.wrapper}`}>
       <h2>Oops!</h2>
       <p>
         <strong>404:</strong> Page Not Found
       </p>
-
-      <Link to="/" className="btn btn--fill">
+      <Button to="/" fill>
         Go Home
-      </Link>
-    </Wrapper>
+      </Button>
+    </div>
   );
 };
 

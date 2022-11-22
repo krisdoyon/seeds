@@ -1,0 +1,38 @@
+.tag {
+  padding: 0.4rem 0.8rem;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--color-white);
+}
+
+.on-sale {
+  background-color: var(--color-primary-dark);
+  border-radius: var(--border-radius);
+}
+
+.low-stock {
+  background-color: var(--color-orange);
+  border-radius: var(--border-radius) 0 0 var(--border-radius);
+}
+
+.sold-out {
+  background-color: var(--color-red-dark);
+  border-radius: var(--border-radius) 0 0 var(--border-radius);
+}
+
+.new {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1000rem;
+  text-transform: uppercase;
+  height: 5rem;
+  width: 5rem;
+  font-size: 1.3rem;
+  position: absolute;
+  top: 0.6rem;
+  left: 0.6rem;
+  background-color: var(--color-secondary);
+  font-weight: 500;
+}

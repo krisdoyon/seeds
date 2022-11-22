@@ -1,0 +1,70 @@
+.grid {
+  padding: 5rem 0 5rem 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  position: relative;
+  justify-items: center;
+  border-top: 1px solid var(--color-grey-3);
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+}
+
+.logo {
+  height: 5.4rem;
+}
+
+.contact {
+  display: flex;
+  gap: 1.8rem;
+}
+
+.address {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin: 0 auto;
+}
+
+.social {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.social-icon {
+  color: var(--color-primary-dark);
+  height: 3.2rem;
+  width: 3.2rem;
+  transition: all 0.2s;
+
+  &:hover {
+    color: var(--color-primary-dark-hover);
+  }
+}
+
+.icon {
+  height: 2rem;
+  width: 2rem;
+  color: var(--color-primary-dark);
+}
+
+.link {
+  &:hover {
+    color: var(--color-primary-dark);
+    font-weight: 600;
+  }
+}
+
+.copyright {
+  background-color: var(--color-primary-dark);
+  color: var(--color-white);
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+}

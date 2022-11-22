@@ -1,14 +1,12 @@
 import React from "react";
-import styled from "styled-components";
+import styles from "./FAQ.module.scss";
 import Breadcrumb from "../../components/Breadcrumb";
-
-const Wrapper = styled.div``;
 
 const FAQ = () => {
   return (
-    <Wrapper className="container">
-      <Breadcrumb title={"FAQ"} />
-    </Wrapper>
+    <div className="container">
+      <Breadcrumb title="FAQ" />
+    </div>
   );
 };
 

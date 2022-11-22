@@ -1,97 +1,22 @@
-import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import Breadcrumb from "../../components/Breadcrumb";
-import styled from "styled-components";
-import { addItem } from "../../features/cartSlice";
-import { formatPrice } from "../../helpers/helpers";
-import { OnSale } from "../../components/Tags";
+import { useEffect, useState } from "react";
+import styles from "./SingleProduct.module.scss";
 import { useDispatch, useSelector } from "react-redux";
+// ROUTER
+import { useParams, useNavigate } from "react-router-dom";
+// STATE
 import { loadSingleProduct } from "../../features/productsSlice";
-import { NewTag } from "../../components/Tags";
-import AddButton from "./AddButton";
-import QuantityBtns from "../../components/QuantityBtns";
-import PageNotFound from "../PageNotFound";
 import { addWishlist, removeWishlist } from "../../features/wishlistSlice";
+// UTIL
+import { formatPrice } from "../../utils/formatPrice";
+// COMPONENTS
+import Breadcrumb from "../../components/Breadcrumb";
+import { addItem } from "../../features/cartSlice";
+import { OnSaleTag, NewTag } from "../../components/Tags";
 import WishlistButton from "./WishlistButton";
-
-const Wrapper = styled.div`
-  margin-top: 4rem;
-
-  .btn-back {
-    margin-bottom: 3rem;
-  }
-
-  .grid {
-    display: grid;
-    grid-template-columns: max-content 1fr;
-    column-gap: 6rem;
-    margin-top: 3rem;
-  }
-
-  .img-container {
-    height: 45rem;
-    position: relative;
-  }
-
-  img {
-    height: 100%;
-  }
-
-  .tag--new {
-    height: 7.5rem;
-    width: 7.5rem;
-    font-size: 1.6rem;
-    top: 1.2rem;
-    left: 1.2rem;
-  }
-
-  .title {
-    font-size: 4.4rem;
-    margin-bottom: 2rem;
-  }
-
-  .description {
-    font-size: 1.6rem;
-    margin-bottom: 3rem;
-  }
-
-  .info {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .prices-wrapper {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-  }
-
-  .strike {
-    text-decoration: line-through;
-    color: #555;
-  }
-
-  .details {
-    display: flex;
-    flex-direction: column;
-    gap: 1.2rem;
-    margin-bottom: 3rem;
-  }
-
-  .low-stock {
-    color: var(--color-red-dark);
-  }
-
-  .disabled {
-    background-color: #555;
-    pointer-events: none;
-  }
-
-  .button-container {
-    display: flex;
-    gap: 1.2rem;
-  }
-`;
+import AddButton from "./AddButton";
+import PageNotFound from "../PageNotFound";
+import QuantityBtns from "../../components/QuantityBtns";
+import Button from "../../components/Button";
 
 const SingleProduct = () => {
   const dispatch = useDispatch();
@@ -164,32 +89,33 @@ const SingleProduct = () => {
     };
 
     return (
-      <Wrapper className="container">
+      <section className={`container ${styles.wrapper}`}>
         <header>
-          <button
-            className="btn btn--fill btn-back"
+          <Button
+            fill
+            className={styles["btn-back"]}
             onClick={() => navigate(-1)}
           >
             Back
-          </button>
+          </Button>
           <Breadcrumb title={title} category={category} product />
         </header>
-        <div className="grid">
-          <div className="img-container">
-            <img src={`/img/${id}.webp`} alt="" />
-            {isNew && <NewTag />}
+        <div className={styles.grid}>
+          <div className={styles["img-container"]}>
+            <img src={`/img/${id}.webp`} alt={title} />
+            {isNew && <NewTag className={styles["new-tag"]} />}
           </div>
-          <div className="info">
-            <h2 className="title">{title}</h2>
-            <p className="description">{description}</p>
-            <div className="details">
-              <div className="prices-wrapper">
+          <div className={styles.info}>
+            <h2 className={styles.title}>{title}</h2>
+            <p className={styles.description}>{description}</p>
+            <div className={styles.details}>
+              <div className={styles.prices}>
                 <strong>Price:</strong>
-                <p className={`${salePrice ? "strike" : ""}`}>
+                <p className={`${salePrice ? styles.strike : ""}`}>
                   {formatPrice(price)}
                 </p>
                 {salePrice && <p>{formatPrice(salePrice)}</p>}
-                {salePrice && <OnSale />}
+                {salePrice && <OnSaleTag />}
               </div>
               <p>
                 <strong>Rating: </strong>
@@ -208,7 +134,9 @@ const SingleProduct = () => {
                 {inStock === 0 && "Sold Out"}
                 {inStock > 5 && `${inStock} in stock`}
                 {inStock <= 5 && inStock > 1 && (
-                  <span className="low-stock">{`Only ${inStock} left in stock!`}</span>
+                  <span
+                    className={styles["low-stock"]}
+                  >{`Only ${inStock} left in stock!`}</span>
                 )}
               </p>
             </div>
@@ -219,7 +147,7 @@ const SingleProduct = () => {
                 handleDecrease={handleDecrease}
               />
             )}
-            <div className="button-container">
+            <div className={styles["button-container"]}>
               <AddButton
                 inStock={inStock}
                 disabled={cartDisabled}
@@ -233,7 +161,7 @@ const SingleProduct = () => {
             </div>
           </div>
         </div>
-      </Wrapper>
+      </section>
     );
   }
 };

@@ -1,0 +1,22 @@
+.items {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  border-top: 1px solid var(--color-grey-3);
+  border-bottom: 1px solid var(--color-grey-3);
+  padding: 2rem;
+  margin-bottom: 2.4rem;
+}
+
+.items-header {
+  text-align: center;
+  padding: 2rem;
+  gap: 1rem;
+  font-weight: 600;
+}
+
+.buttons-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3.2rem;
+}

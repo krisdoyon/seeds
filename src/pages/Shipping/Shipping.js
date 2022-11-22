@@ -1,22 +1,11 @@
-import React from "react";
-import styled from "styled-components";
+import styles from "./Shipping.module.scss";
 import Breadcrumb from "../../components/Breadcrumb";
-
-const Wrapper = styled.div`
-  max-width: 90rem;
-  .shipping-policy {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    margin-top: 4rem;
-  }
-`;
 
 const Shipping = () => {
   return (
-    <Wrapper className="container">
-      <Breadcrumb title={"Shipping"} />
-      <div class="shipping-policy">
+    <section className={`container ${styles.wrapper}`}>
+      <Breadcrumb title="Shipping" />
+      <div class={styles.policy}>
         <h2>Shipping Policy</h2>
         <p>
           All orders are processed within 2–3 business days of receipt. Orders
@@ -74,7 +63,7 @@ const Shipping = () => {
           is complete. Allow up to 21 days for the investigation.
         </p>
       </div>
-    </Wrapper>
+    </section>
   );
 };
 

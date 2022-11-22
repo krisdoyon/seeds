@@ -1,12 +1,12 @@
-import React, { useEffect } from "react";
-// REACT ROUTER
+import { useEffect } from "react";
+// ROUTER
 import { Routes, Route } from "react-router-dom";
 // LAYOUT
-import Layout from "./pages/Layout";
-
+import Layout from "./layout";
 // MAIN PAGE COMPONENTS
 import Home from "./pages/Home";
 import About from "./pages/About";
+import Cart from "./pages/Cart";
 import SingleProduct from "./pages/SingleProduct";
 import Shop from "./pages/Shop";
 import PageNotFound from "./pages/PageNotFound";
@@ -14,10 +14,8 @@ import PageNotFound from "./pages/PageNotFound";
 import FAQ from "./pages/FAQ";
 import Shipping from "./pages/Shipping";
 import Terms from "./pages/Terms";
-
 // SASS
-import "./sass/main.scss";
-import Cart from "./pages/Cart";
+import "./assets/main.scss";
 
 import { calculateTotals } from "./features/cartSlice";
 import { useSelector, useDispatch } from "react-redux";

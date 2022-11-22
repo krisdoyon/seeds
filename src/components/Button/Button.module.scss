@@ -1,0 +1,26 @@
+.btn {
+  text-decoration: none;
+  border: none;
+  font-family: inherit;
+  font-size: 1.4rem;
+  color: inherit;
+  background-color: transparent;
+  text-transform: uppercase;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.btn:hover {
+  cursor: pointer;
+}
+
+.fill {
+  background-color: var(--color-primary-dark);
+  color: #fff;
+  padding: 1rem 2rem;
+  border-radius: var(--border-radius);
+
+  &:hover {
+    background-color: var(--color-primary-dark-hover);
+  }
+}
