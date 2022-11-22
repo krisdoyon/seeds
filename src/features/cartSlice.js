@@ -40,7 +40,7 @@ const cartSlice = createSlice({
       const cartItem = state.cartItems.find((item) => item.id === id);
       if (action === "increase" && cartItem.quantity < cartItem.inStock)
         ++cartItem.quantity;
-      if (action === "decrease") cartItem.quantity = --cartItem.quantity || 1;
+      if (action === "decrease" && cartItem.quantity > 1) --cartItem.quantity;
     },
     calculateTotals: (state) => {
       let subtotal = 0;
@@ -86,7 +86,7 @@ export const {
   toggleAmount,
   calculateTotals,
   addPromo,
-  removePromo
+  removePromo,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;
