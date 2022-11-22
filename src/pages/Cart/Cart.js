@@ -8,8 +8,7 @@ import CartPromo from "./CartPromo";
 import CartItems from "./CartItems";
 
 const Wrapper = styled.div`
-  margin-top: 6rem;
-  max-width: 100rem;
+  max-width: 100rem !important;
 
   .wrapper {
     display: flex;
