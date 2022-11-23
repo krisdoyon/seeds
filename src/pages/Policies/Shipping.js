@@ -1,7 +1,7 @@
-import styles from "./Shipping.module.scss";
+import styles from "./Policy.module.scss";
 import Breadcrumb from "../../components/Breadcrumb";
 
-const Shipping = () => {
+export const Shipping = () => {
   return (
     <section className={`container ${styles.wrapper}`}>
       <Breadcrumb title="Shipping" />
@@ -66,5 +66,3 @@ const Shipping = () => {
     </section>
   );
 };
-
-export default Shipping;

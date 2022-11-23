@@ -1,7 +1,7 @@
-import styles from "./Returns.module.scss";
+import styles from "./Policy.module.scss";
 import Breadcrumb from "../../components/Breadcrumb";
 
-const Returns = () => {
+export const Returns = () => {
   return (
     <section className={`container  ${styles.wrapper}`}>
       <Breadcrumb title="returns" />
@@ -63,5 +63,3 @@ const Returns = () => {
     </section>
   );
 };
-
-export default Returns;
