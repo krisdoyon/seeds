@@ -11,15 +11,15 @@ import SingleProduct from "./pages/SingleProduct";
 import Shop from "./pages/Shop";
 import PageNotFound from "./pages/PageNotFound";
 // FOOTER PAGE COMPONENTS
+import { Shipping, Terms, Returns } from "./pages/Policies";
 import FAQ from "./pages/FAQ";
-import Shipping from "./pages/Shipping";
-import Terms from "./pages/Terms";
+// MODAL
+import Modal from "./components/Modal/Modal";
 // SASS
 import "./assets/main.scss";
 
 import { calculateTotals } from "./features/cartSlice";
 import { useSelector, useDispatch } from "react-redux";
-import Returns from "./pages/Returns";
 import Wishlist from "./pages/Wishlist";
 
 import { updateWishlistAmount } from "./features/wishlistSlice";
@@ -28,6 +28,7 @@ function App() {
   const dispatch = useDispatch();
   const { cartItems, promo } = useSelector((state) => state.cart);
   const { wishlistItems } = useSelector((state) => state.wishlist);
+  const { isModalOpen } = useSelector((state) => state.modal);
 
   useEffect(() => {
     dispatch(calculateTotals());
@@ -43,25 +44,29 @@ function App() {
   }, [wishlistItems, dispatch]);
 
   return (
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<Home />} />
-        <Route path="about" element={<About />} />
-        <Route path="shop">
-          <Route index element={<Shop />} />
-          <Route path=":category" element={<Shop />} />
-        </Route>
-        <Route path="/shop/:category/:id" element={<SingleProduct />} />
-        <Route path="cart" element={<Cart />} />
-        <Route path="wishlist" element={<Wishlist />} />
-        <Route path="faq" element={<FAQ />} />
-        <Route path="terms" element={<Terms />} />
-        <Route path="shipping" element={<Shipping />} />
-        <Route path="return" element={<Returns />} />
+    <>
+      {isModalOpen && <Modal />}
 
-        <Route path="*" element={<PageNotFound />} />
-      </Route>
-    </Routes>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="about" element={<About />} />
+          <Route path="shop">
+            <Route index element={<Shop />} />
+            <Route path=":category" element={<Shop />} />
+          </Route>
+          <Route path="/shop/:category/:id" element={<SingleProduct />} />
+          <Route path="cart" element={<Cart />} />
+          <Route path="wishlist" element={<Wishlist />} />
+          <Route path="faq" element={<FAQ />} />
+          <Route path="terms" element={<Terms />} />
+          <Route path="shipping" element={<Shipping />} />
+          <Route path="return" element={<Returns />} />
+
+          <Route path="*" element={<PageNotFound />} />
+        </Route>
+      </Routes>
+    </>
   );
 }
 
