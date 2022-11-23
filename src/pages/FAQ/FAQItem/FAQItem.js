@@ -11,7 +11,7 @@ const FAQItem = ({ question, answer }) => {
       <Button fill className={styles.btn} onClick={() => setIsOpen(!isOpen)}>
         {isOpen ? <FaMinus /> : <FaPlus />}
       </Button>
-      {isOpen && <p className={styles.answer}>{answer}</p>}
+      {isOpen && <div className={styles.answer}>{answer}</div>}
     </article>
   );
 };

@@ -5,7 +5,10 @@ export const faqArr = [
       <p>
         This website was made by Kris Doyon. I am an aspiring software developer
         from Connecticut. You can learn more about me and see all of my projects
-        at <a href="https://krisdoyon.com">www.krisdoyon.com</a>
+        at{" "}
+        <a href="https://krisdoyon.com" target="_blank" rel="noreferrer">
+          www.krisdoyon.com
+        </a>
       </p>
     ),
   },
@@ -20,7 +23,10 @@ export const faqArr = [
       <p>
         All images were used with permission from the MI Gardener website. Check
         out their site at{" "}
-        <a href="https://migardener.com">www.migardener.com</a>!
+        <a href="https://migardener.com" target="_blank" rel="noreferrer">
+          www.migardener.com
+        </a>
+        !
       </p>
     ),
   },
