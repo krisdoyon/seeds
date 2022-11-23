@@ -7,7 +7,9 @@ const Button = ({ onClick, className, children, fill, to }) => {
       <Link
         to={to}
         onClick={onClick}
-        className={`${styles.btn} ${className} ${fill ? styles.fill : ""}`}
+        className={`${styles.btn} ${className ? className : ""} ${
+          fill ? styles.fill : ""
+        }`}
       >
         {children}
       </Link>
