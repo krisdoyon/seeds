@@ -8,6 +8,7 @@ const allCategories = [
 const initialFilters = {
   new: false,
   onSale: false,
+  search: "",
 };
 
 const initialState = {
@@ -38,11 +39,21 @@ const productsSlice = createSlice({
       if (state.filters.onSale) {
         newProducts = newProducts.filter((product) => product.salePrice);
       }
+      if (state.filters.search) {
+        newProducts = newProducts.filter(
+          (product) =>
+            product.title
+              .toLowerCase()
+              .includes(state.filters.search.toLowerCase()) ||
+            product.category
+              .toLowerCase()
+              .includes(state.filters.search.toLowerCase())
+        );
+      }
 
       state.products = [...newProducts].sort((a, b) =>
         a.title.localeCompare(b.title)
       );
-      console.log(state.error);
     },
     updateFilters: (state, { payload: { filter, value } }) => {
       state.filters[`${filter}`] = value;

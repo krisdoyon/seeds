@@ -1,6 +1,7 @@
 .heading {
   font-size: 2.2rem;
-  margin-bottom: 2rem;
+  font-weight: 700;
+  margin-bottom: -0.8rem;
 }
 
 .link {
@@ -23,8 +24,20 @@
 .sticky {
   position: sticky;
   top: 11rem;
-  max-height: 80vh;
+  max-height: calc(100vh - 12rem);
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+
+  &::-webkit-scrollbar {
+    width: 0.6rem;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--color-grey-3);
+    border-radius: 1000rem;
+  }
 }
 
 .filter-row {
@@ -36,11 +49,35 @@
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
-  margin-bottom: 3rem;
 }
 
 .btn-clear {
   align-self: flex-start;
   font-size: 1.2rem;
   padding: 0.6rem 1.2rem;
+}
+
+.search {
+  width: 90%;
+  padding: 0.4rem 0.8rem;
+  font-size: 1.6rem;
+
+  &::placeholder {
+    font-size: 1.4rem;
+    color: var(--color-grey-3);
+  }
+}
+
+.search-wrapper {
+  position: relative;
+}
+
+.magnify-icon {
+  position: absolute;
+  right: 3.6rem;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 2rem;
+  width: 2rem;
+  color: var(--color-grey-3);
 }
