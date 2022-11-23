@@ -46,3 +46,20 @@
   align-items: center;
   justify-content: center;
 }
+
+.icon {
+  height: 1.4rem;
+  width: 1.4rem;
+}
+
+.small {
+  width: 15rem;
+  height: 3.6rem;
+  .quantity {
+    font-size: 1.6rem;
+  }
+  .icon {
+    height: 1rem;
+    width: 1rem;
+  }
+}
