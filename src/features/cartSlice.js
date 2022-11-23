@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import allProducts from "../assets/seeds.json";
 
 const initialPromo = {
   code: null,
@@ -23,18 +24,19 @@ const cartSlice = createSlice({
     clearCart: (state) => {
       state.cartItems = [];
     },
-    addItem: (state, { payload }) => {
-      const cartItem = state.cartItems.find((item) => item.id === payload.id);
+    addItem: (state, { payload: { id, quantity } }) => {
+      const product = allProducts.find((item) => item.id === id);
+      const cartItem = state.cartItems.find((item) => item.id === id);
       if (!cartItem) {
-        state.cartItems.push(payload);
+        state.cartItems.push({ ...product, quantity });
       } else {
-        const newQuantity = cartItem.quantity + payload.quantity;
+        const newQuantity = cartItem.quantity + quantity;
         cartItem.quantity =
-          newQuantity > payload.inStock ? payload.inStock : newQuantity;
+          newQuantity > product.inStock ? product.inStock : newQuantity;
       }
     },
-    removeItem: (state, { payload }) => {
-      state.cartItems = state.cartItems.filter((item) => item.id !== payload);
+    removeItem: (state, { payload: id }) => {
+      state.cartItems = state.cartItems.filter((item) => item.id !== id);
     },
     toggleAmount: (state, { payload: { action, id } }) => {
       const cartItem = state.cartItems.find((item) => item.id === id);
@@ -47,7 +49,7 @@ const cartSlice = createSlice({
       let amount = 0;
       state.cartItems.forEach((item) => {
         amount += item.quantity;
-        subtotal += item.quantity * item.price;
+        subtotal += item.quantity * (item.salePrice || item.price);
       });
       state.subtotal = subtotal;
 
