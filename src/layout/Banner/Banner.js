@@ -23,8 +23,8 @@ const Banner = () => {
       </Link>
     </span>,
     <span>
-      Get 5% off your order with promo code{" "}
-      <strong className={styles["message--bold"]}>save5</strong>
+      Get 10% off your order with promo code{" "}
+      <strong className={styles["message--bold"]}>save10</strong>
     </span>,
   ];
 
