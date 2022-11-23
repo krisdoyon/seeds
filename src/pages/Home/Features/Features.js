@@ -9,14 +9,14 @@ const Features = () => {
         <FaAward className={styles.icon} />
         <h3 className={styles.title}>Satisfaction Guarantee</h3>
         <p className={styles.text}>
-          Or your money back. We guarantee germination for all seeds!
+          If you are not 100% satisfied, return any products within 30 days for a full refund or exchange.
         </p>
       </article>
       <article className={styles.feature}>
         <MdLocalShipping className={styles.icon} />
         <h3 className={styles.title}>Free Shipping</h3>
         <p className={styles.text}>
-          On all orders over $50. Same day shipping on all orders!
+          On all orders over $50. Orders placed before 2pm ship the same day!
         </p>
       </article>
       <article className={styles.feature}>
