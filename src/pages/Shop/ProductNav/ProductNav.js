@@ -64,38 +64,44 @@ const ProductNav = () => {
         <h2 className={styles.heading}>Filter</h2>
         <div className={styles.list}>
           <div className={styles["filter-row"]}>
-            <input
-              id="new"
-              name="new"
-              type="checkbox"
-              checked={filters.new}
-              onChange={(e) =>
-                dispatch(
-                  updateFilters({
-                    filter: e.target.name,
-                    value: e.target.checked,
-                  })
-                )
-              }
-            />
-            <label htmlFor="new">New</label>
+            <label htmlFor="new" className={styles.container}>
+              New
+              <input
+                id="new"
+                name="new"
+                type="checkbox"
+                checked={filters.new}
+                onChange={(e) =>
+                  dispatch(
+                    updateFilters({
+                      filter: e.target.name,
+                      value: e.target.checked,
+                    })
+                  )
+                }
+              />
+              <span className={styles.checkmark}></span>
+            </label>
           </div>
           <div className={styles["filter-row"]}>
-            <input
-              id="onSale"
-              name="onSale"
-              type="checkbox"
-              checked={filters.onSale}
-              onChange={(e) =>
-                dispatch(
-                  updateFilters({
-                    filter: e.target.name,
-                    value: e.target.checked,
-                  })
-                )
-              }
-            />
-            <label htmlFor="onSale">On sale</label>
+            <label htmlFor="onSale" className={styles.container}>
+              On sale
+              <input
+                id="onSale"
+                name="onSale"
+                type="checkbox"
+                checked={filters.onSale}
+                onChange={(e) =>
+                  dispatch(
+                    updateFilters({
+                      filter: e.target.name,
+                      value: e.target.checked,
+                    })
+                  )
+                }
+              />
+              <span className={styles.checkmark}></span>
+            </label>
           </div>
           <Button
             fill
