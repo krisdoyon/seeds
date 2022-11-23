@@ -1,5 +1,4 @@
 import React from "react";
-import styles from "./FAQ.module.scss";
 import Breadcrumb from "../../components/Breadcrumb";
 
 const FAQ = () => {
