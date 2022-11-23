@@ -18,7 +18,7 @@ const CartHeader = () => {
   );
   return (
     <header className={styles.header}>
-      <h2 className={styles.heading}>YOUR CART</h2>
+      <h2 className={styles.heading}>Your Cart</h2>
       {amount !== 0 && shipping === 0 && freeShipping}
       {amount !== 0 && shipping !== 0 && noFreeShipping}
     </header>
