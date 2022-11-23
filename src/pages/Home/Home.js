@@ -11,8 +11,8 @@ const Home = () => {
     <main className={`container ${styles.wrapper}`}>
       <Slider />
       <Features />
-      <NewArrivals />
       <Popular />
+      <NewArrivals />
       <SubscribeForm />
     </main>
   );

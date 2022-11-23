@@ -1,0 +1,40 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+
+  form {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    max-width: 60rem;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    height: 4.4rem;
+    width: 100%;
+    align-self: center;
+
+    button {
+      border-radius: 0;
+    }
+
+    input {
+      border-radius: var(--border-radius) 0 0 var(--border-radius);
+      padding: 0 1rem;
+    }
+  }
+}
+
+.text {
+  margin-top: 1rem;
+  font-size: 2rem;
+  margin-bottom: 5rem;
+}
+
+.submitted {
+  border: 1px solid var(--color-primary-dark);
+  border-radius: var(--border-radius);
+  grid-column: 1/-1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #eefdee;
+}

@@ -1,0 +1,28 @@
+.wrapper {
+  margin-top: -2rem;
+}
+
+.heading {
+  color: var(--color-grey-4);
+  font-weight: 500;
+  margin-bottom: 3rem;
+}
+
+.items-wrapper {
+  overflow-x: scroll;
+  &::-webkit-scrollbar {
+    height: 0.6rem;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--color-grey-3);
+    border-radius: 1000rem;
+  }
+}
+
+.items {
+  display: flex;
+  gap: 2rem;
+  padding: 0 1rem 2rem 1rem;
+  width: max-content;
+}
