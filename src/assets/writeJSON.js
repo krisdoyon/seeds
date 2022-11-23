@@ -32,6 +32,8 @@ function writeJSON() {
         avg: +product.avgReview,
         num: +product.numReviews,
       },
+      imgURL: `/img/products/${product.id}.webp`,
+      linkURL: `/shop/${product.category}/${product.id}`,
     };
   });
 

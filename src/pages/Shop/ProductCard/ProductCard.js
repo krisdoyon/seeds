@@ -7,7 +7,8 @@ import {
   SoldOutTag,
   NewTag,
 } from "../../../components/Tags/Tags";
-import { HiOutlineMagnifyingGlass } from "react-icons/hi2";
+import { FaSearch } from "react-icons/fa";
+import Stars from "../../../components/Stars";
 
 const ProductCard = ({
   id,
@@ -18,18 +19,20 @@ const ProductCard = ({
   inStock,
   reviews: { num, avg },
   details: { isNew },
+  imgURL,
+  linkURL,
 }) => {
   return (
     <article className={styles.card}>
-      <Link to={`/shop/${category}/${id}`}>
+      <Link to={linkURL}>
         <div className={styles["img-container"]}>
-          <img src={`/img/${id}.webp`} alt="" />
+          <img src={imgURL} alt="" />
           {isNew && <NewTag />}
           <div className={styles.tags}>
             {inStock === 0 && <SoldOutTag />}
             {inStock <= 5 && inStock >= 1 && <LowStockTag />}
           </div>
-          <HiOutlineMagnifyingGlass className={styles["magnify-icon"]} />
+          <FaSearch className={styles["magnify-icon"]} />
         </div>
         <div className={styles.info}>
           <h2 className={styles.title}>{title}</h2>
@@ -40,9 +43,7 @@ const ProductCard = ({
             {salePrice && <p>{formatPrice(salePrice)}</p>}
             {salePrice && <OnSaleTag />}
           </div>
-          <p>
-            {avg} stars ({num} reviews)
-          </p>
+          <Stars num={num} avg={avg} />
         </div>
       </Link>
     </article>

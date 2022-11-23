@@ -17,6 +17,7 @@ import AddButton from "./AddButton";
 import PageNotFound from "../PageNotFound";
 import QuantityBtns from "../../components/QuantityBtns";
 import Button from "../../components/Button";
+import Stars from "../../components/Stars";
 
 const SingleProduct = () => {
   const dispatch = useDispatch();
@@ -47,19 +48,11 @@ const SingleProduct = () => {
       inStock,
       reviews: { avg, num },
       details: { daysToMaturity, seedCount, isNew },
+      imgURL,
     } = currentProduct;
 
     const handleAdd = () => {
-      const item = {
-        id,
-        title,
-        quantity,
-        price: salePrice || price,
-        salePrice,
-        inStock,
-        category,
-      };
-      dispatch(addItem(item));
+      dispatch(addItem({ id, quantity }));
       setCartDisabled(true);
       setTimeout(() => setCartDisabled(false), 2000);
     };
@@ -102,14 +95,14 @@ const SingleProduct = () => {
         </header>
         <div className={styles.grid}>
           <div className={styles["img-container"]}>
-            <img src={`/img/${id}.webp`} alt={title} />
+            <img src={imgURL} alt={title} />
             {isNew && <NewTag className={styles["new-tag"]} />}
           </div>
           <div className={styles.info}>
             <h2 className={styles.title}>{title}</h2>
             <p className={styles.description}>{description}</p>
             <div className={styles.details}>
-              <div className={styles.prices}>
+              <div className={styles.row}>
                 <strong>Price:</strong>
                 <p className={`${salePrice ? styles.strike : ""}`}>
                   {formatPrice(price)}
@@ -117,19 +110,19 @@ const SingleProduct = () => {
                 {salePrice && <p>{formatPrice(salePrice)}</p>}
                 {salePrice && <OnSaleTag />}
               </div>
-              <p>
+              <div className={styles.row}>
                 <strong>Rating: </strong>
-                {avg} ({num} reviews)
-              </p>
-              <p>
+                <Stars num={num} avg={avg} />
+              </div>
+              <div className={styles.row}>
                 <strong>Days to Maturity: </strong>
                 {daysToMaturity}
-              </p>
-              <p>
+              </div>
+              <div className={styles.row}>
                 <strong>Seed Count: </strong>
                 {seedCount}
-              </p>
-              <p>
+              </div>
+              <div className={styles.row}>
                 <strong>Availability: </strong>
                 {inStock === 0 && "Sold Out"}
                 {inStock > 5 && `${inStock} in stock`}
@@ -138,7 +131,7 @@ const SingleProduct = () => {
                     className={styles["low-stock"]}
                   >{`Only ${inStock} left in stock!`}</span>
                 )}
-              </p>
+              </div>
             </div>
             {inStock !== 0 && (
               <QuantityBtns

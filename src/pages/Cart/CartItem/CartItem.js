@@ -1,12 +1,13 @@
 import styles from "./CartItem.module.scss";
 import sharedStyles from "../Cart.module.scss";
 import { useDispatch } from "react-redux";
-import { removeItem, toggleAmount } from "../../../features/cartSlice";
+import { toggleAmount } from "../../../features/cartSlice";
 import { FaChevronUp, FaChevronDown } from "react-icons/fa";
 import { formatPrice } from "../../../utils/formatPrice";
 import { Link } from "react-router-dom";
 import { OnSaleTag } from "../../../components/Tags/Tags";
 import Button from "../../../components/Button";
+import { openModal } from "../../../features/modalSlice";
 
 const CartItem = ({
   id,
@@ -16,14 +17,16 @@ const CartItem = ({
   price,
   inStock,
   category,
+  imgURL,
+  linkURL,
 }) => {
   const dispatch = useDispatch();
   return (
     <article className={`${styles.item} ${sharedStyles.grid}`}>
       <div className={styles["title-wrapper"]}>
-        <img className={styles.img} src={`/img/${id}.webp`} alt={title} />
+        <img className={styles.img} src={imgURL} alt={title} />
         <div className={styles["title-info-wrapper"]}>
-          <Link to={`/shop/${category}/${id}`} className={styles.title}>
+          <Link to={linkURL} className={styles.title}>
             {title}
           </Link>
           {inStock > 5 && (
@@ -37,7 +40,9 @@ const CartItem = ({
         </div>
       </div>
       <div className={styles["price-wrapper"]}>
-        <p className={styles.price}>{`${formatPrice(price)} each`}</p>
+        <p className={styles.price}>{`${formatPrice(
+          salePrice || price
+        )} each`}</p>
         {salePrice && <OnSaleTag />}
       </div>
       <div className={styles["toggle-wrapper"]}>
@@ -56,11 +61,13 @@ const CartItem = ({
         </Button>
       </div>
 
-      <p className={styles.subtotal}>{formatPrice(price * quantity)}</p>
+      <p className={styles.subtotal}>
+        {formatPrice((salePrice || price) * quantity)}
+      </p>
 
       <Button
         className={styles["btn-remove"]}
-        onClick={() => dispatch(removeItem(id))}
+        onClick={() => dispatch(openModal({ type: "item", id, title }))}
         fill
       >
         X

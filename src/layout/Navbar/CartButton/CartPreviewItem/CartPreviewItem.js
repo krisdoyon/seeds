@@ -1,12 +1,14 @@
 import styles from "./CartPreviewItem.module.scss";
 import buttons from "../../../../components/Button/Button.module.scss";
+import { Link } from "react-router-dom";
+// STATE
 import { useDispatch } from "react-redux";
-
+import { openModal } from "../../../../features/modalSlice";
+// COMPONENTS
+import QuantityBtns from "../../../../components/QuantityBtns";
 import { OnSaleTag } from "../../../../components/Tags";
 import { formatPrice } from "../../../../utils/formatPrice";
-import { removeItem, toggleAmount } from "../../../../features/cartSlice";
-
-import QuantityBtns from "../../../../components/QuantityBtns";
+import { toggleAmount } from "../../../../features/cartSlice";
 
 const CartPreviewItem = ({
   id,
@@ -16,6 +18,8 @@ const CartPreviewItem = ({
   price,
   salePrice,
   inStock,
+  imgURL,
+  linkURL,
 }) => {
   const dispatch = useDispatch();
 
@@ -29,10 +33,12 @@ const CartPreviewItem = ({
 
   return (
     <article className={styles.item}>
-      <img className={styles.img} src={`/img/${id}.webp`} alt={title} />
+      <img className={styles.img} src={imgURL} alt={title} />
       <header className={styles.header}>
-        <h3 className={styles.title}>{title}</h3>
-        {salePrice && <OnSaleTag />}
+        <Link to={linkURL} className={styles.title}>
+          {title}
+        </Link>
+        {salePrice && <OnSaleTag className={styles.tag} />}
       </header>
 
       <div className={styles.content}>
@@ -40,7 +46,8 @@ const CartPreviewItem = ({
           <p>{formatPrice(salePrice || price)} / ea.</p>
           <button
             className={`${buttons.btn} ${styles["btn-remove"]}`}
-            onClick={() => dispatch(removeItem(id))}
+            // onClick={() => dispatch(removeItem(id))}
+            onClick={() => dispatch(openModal({ type: "item", title, id }))}
           >
             Remove
           </button>
@@ -51,6 +58,7 @@ const CartPreviewItem = ({
           inStock={inStock}
           handleIncrease={handleIncrease}
           handleDecrease={handleDecrease}
+          small
         />
       </div>
     </article>
