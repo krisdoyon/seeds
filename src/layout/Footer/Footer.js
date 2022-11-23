@@ -67,7 +67,8 @@ const Footer = () => {
       </div>
       <div className={styles.copyright}>
         <div className={styles["copyright-text"]}>
-          &copy; 2022 Seed Company Inc
+              dispatch(clearFilters());
+          &copy; 2022 Harvest Seed Co.
         </div>
       </div>
     </footer>
