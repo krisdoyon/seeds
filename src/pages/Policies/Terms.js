@@ -6,6 +6,7 @@ export const Terms = () => {
     <section className={`container ${styles.wrapper}`}>
       <Breadcrumb title="Terms" />
       <div className={styles.policy}>
+        <h2>Terms and Conditions</h2>
         <h3>Introduction</h3>
         <p>
           These Terms and Conditions written on this webpage shall manage your
