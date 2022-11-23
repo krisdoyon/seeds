@@ -62,6 +62,25 @@ const Modal = () => {
               </Button>
             </div>
           )}
+          {type === "promo" && (
+            <>
+              <p className={styles.heading}>--- PROMOTION ---</p>
+              <p className={styles.percent}>10% OFF!</p>
+              <div className={styles.content}>
+                <p>Use code</p>
+                <p className={styles.promo}>SAVE10</p>
+                <p>at checkout.</p>
+              </div>
+              <Button
+                to="/shop"
+                className={styles.btn}
+                onClick={() => dispatch(closeModal())}
+                fill
+              >
+                SHOP NOW
+              </Button>
+            </>
+          )}
         </div>
       </div>
     </>,

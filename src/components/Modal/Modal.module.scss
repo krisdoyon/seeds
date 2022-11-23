@@ -58,3 +58,35 @@
   align-items: center;
   gap: 0.4rem;
 }
+
+.percent {
+  color: var(--color-primary-dark);
+  font-size: 6rem;
+  font-weight: 500;
+  padding: 0 3rem;
+}
+
+.promo {
+  color: var(--color-primary-dark);
+  font-size: 4rem;
+  font-weight: 700;
+}
+
+.heading {
+  font-size: 2.4rem;
+  font-weight: 400;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  font-size: 2.2rem;
+}
+
+.btn {
+  font-size: 2rem;
+}

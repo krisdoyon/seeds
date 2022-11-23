@@ -3,6 +3,7 @@ import { Outlet } from "react-router-dom";
 import Banner from "./Banner";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import PromoButton from "./PromoButton";
 
 const Layout = () => {
   return (
@@ -10,6 +11,7 @@ const Layout = () => {
       <Banner />
       <Navbar />
       <Outlet />
+      <PromoButton />
       <Footer />
     </>
   );

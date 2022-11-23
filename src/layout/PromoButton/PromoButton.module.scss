@@ -1,0 +1,16 @@
+.btn {
+  position: fixed;
+  left: 2rem;
+  bottom: 2rem;
+  height: 4rem;
+  width: 4rem;
+  padding: 3.2rem;
+  border-radius: 1000rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.2rem;
+  border: 3px solid var(--color-grey-2);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+}

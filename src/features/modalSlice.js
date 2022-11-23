@@ -1,23 +1,31 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const initialState = {
+  isConfirmModalOpen: false,
+  isPromoModalOpen: false,
+  title: "",
+  id: "",
+  type: "",
+};
+
 const modalSlice = createSlice({
   name: "modal",
-  initialState: {
-    isModalOpen: false,
-    title: "",
-    id: "",
-    type: "",
-  },
+  initialState,
   reducers: {
     openModal: (state, { payload: { type, title, id } }) => {
       state.type = type;
-      state.title = title;
-      state.id = id;
-      state.isModalOpen = true;
+      if (type === "cart" || type === "wishlist" || type === "clear") {
+        state.isConfirmModalOpen = true;
+      }
+      if (type === "cart" || type === "wishlist") {
+        state.title = title;
+        state.id = id;
+      }
+      if (type === "promo") {
+        state.isPromoModalOpen = true;
+      }
     },
-    closeModal: (state) => {
-      state.isModalOpen = false;
-    },
+    closeModal: () => initialState,
   },
 });
 
