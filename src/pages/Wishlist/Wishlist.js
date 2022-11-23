@@ -19,8 +19,8 @@ const Wishlist = () => {
           <div className={styles.grid}>
             {wishlistItems.map((item) => {
               return (
-                <article key={item.id} className={styles.item}>
-                  <ProductCard {...item} />
+                // <article key={item.id} className={styles.item}>
+                <ProductCard key={item.id} {...item}>
                   <Button
                     fill
                     className={styles.btn}
@@ -28,7 +28,7 @@ const Wishlist = () => {
                   >
                     Remove
                   </Button>
-                </article>
+                </ProductCard>
               );
             })}
           </div>
