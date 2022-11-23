@@ -13,10 +13,12 @@ const initialFilters = {
 
 const initialState = {
   products: [...allProducts],
+  newProducts: allProducts.filter((product) => product.details.isNew),
   allCategories,
   filters: initialFilters,
   currentProduct: {},
   error: false,
+  sort: "title-descending",
 };
 
 const productsSlice = createSlice({
@@ -50,13 +52,31 @@ const productsSlice = createSlice({
               .includes(state.filters.search.toLowerCase())
         );
       }
-
-      state.products = [...newProducts].sort((a, b) =>
-        a.title.localeCompare(b.title)
-      );
+      if (state.sort === "title-descending")
+        state.products = [...newProducts].sort((a, b) =>
+          a.title.localeCompare(b.title)
+        );
+      if (state.sort === "title-ascending") {
+        state.products = [...newProducts].sort((a, b) =>
+          b.title.localeCompare(a.title)
+        );
+      }
+      if (state.sort === "price-ascending") {
+        state.products = [...newProducts].sort(
+          (a, b) => (a.salePrice || a.price) - (b.salePrice || b.price)
+        );
+      }
+      if (state.sort === "price-descending") {
+        state.products = [...newProducts].sort(
+          (a, b) => (b.salePrice || b.price) - (a.salePrice || a.price)
+        );
+      }
     },
     updateFilters: (state, { payload: { filter, value } }) => {
       state.filters[`${filter}`] = value;
+    },
+    updateSort: (state, { payload: sort }) => {
+      state.sort = sort;
     },
     clearFilters: (state) => {
       state.filters = initialFilters;
@@ -73,7 +93,12 @@ const productsSlice = createSlice({
   },
 });
 
-export const { loadProducts, loadSingleProduct, updateFilters, clearFilters } =
-  productsSlice.actions;
+export const {
+  loadProducts,
+  loadSingleProduct,
+  updateFilters,
+  clearFilters,
+  updateSort,
+} = productsSlice.actions;
 
 export default productsSlice.reducer;
