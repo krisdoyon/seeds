@@ -1,0 +1,14 @@
+.stars {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.icon {
+  height: 1.6rem;
+  width: 1.6rem;
+  color: #ffd000;
+}
+
+.icon-empty {
+  color: #000;
+}
