@@ -23,7 +23,7 @@
   height: 1.4rem;
   border-radius: 1000rem;
   background-color: #f7f7f7;
-  border: none;
+  border: 1px solid var(--color-grey-4);
 }
 
 .btn-prev,
@@ -41,6 +41,5 @@
 }
 
 .active {
-  border: 2px solid #f7f7f7;
-  background-color: #999;
+  background-color: #bbb;
 }
