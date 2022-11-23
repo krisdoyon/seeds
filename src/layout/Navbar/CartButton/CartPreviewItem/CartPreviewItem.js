@@ -46,8 +46,7 @@ const CartPreviewItem = ({
           <p>{formatPrice(salePrice || price)} / ea.</p>
           <button
             className={`${buttons.btn} ${styles["btn-remove"]}`}
-            // onClick={() => dispatch(removeItem(id))}
-            onClick={() => dispatch(openModal({ type: "item", title, id }))}
+            onClick={() => dispatch(openModal({ type: "cart", title, id }))}
           >
             Remove
           </button>

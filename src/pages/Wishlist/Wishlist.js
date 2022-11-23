@@ -2,7 +2,7 @@ import styles from "./Wishlist.module.scss";
 import Breadcrumb from "../../components/Breadcrumb";
 import ProductCard from "../../pages/Shop/ProductCard";
 import { useDispatch, useSelector } from "react-redux";
-import { removeWishlist } from "../../features/wishlistSlice";
+import { openModal } from "../../features/modalSlice";
 import Button from "../../components/Button";
 
 const Wishlist = () => {
@@ -18,13 +18,15 @@ const Wishlist = () => {
         {wishlistItems.length !== 0 && (
           <div className={styles.grid}>
             {wishlistItems.map((item) => {
+              const { id, title } = item;
               return (
-                // <article key={item.id} className={styles.item}>
-                <ProductCard key={item.id} {...item}>
+                <ProductCard key={id} {...item}>
                   <Button
                     fill
                     className={styles.btn}
-                    onClick={() => dispatch(removeWishlist(item.id))}
+                    onClick={() =>
+                      dispatch(openModal({ type: "wishlist", id, title }))
+                    }
                   >
                     Remove
                   </Button>

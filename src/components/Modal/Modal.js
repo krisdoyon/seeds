@@ -5,6 +5,7 @@ import ReactDOM from "react-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { closeModal } from "../../features/modalSlice";
 import { clearCart, removeItem } from "../../features/cartSlice";
+import { removeWishlist } from "../../features/wishlistSlice";
 
 const Modal = () => {
   const dispatch = useDispatch();
@@ -14,15 +15,21 @@ const Modal = () => {
     if (type === "clear") {
       dispatch(clearCart());
     }
-    if (type === "item") {
+    if (type === "cart") {
       dispatch(removeItem(id));
+    }
+    if (type === "wishlist") {
+      dispatch(removeWishlist(id));
     }
     dispatch(closeModal());
   };
 
   return ReactDOM.createPortal(
     <>
-      <div className={styles.overlay}></div>
+      <div
+        className={styles.overlay}
+        onClick={() => dispatch(closeModal())}
+      ></div>
       <div className={styles.modal}>
         <Button
           className={styles["btn-close"]}
@@ -32,27 +39,29 @@ const Modal = () => {
         </Button>
         <div className={styles["modal-content"]}>
           {type === "clear" && <p>Are you sure you want to clear your cart?</p>}
-          {type === "item" && (
+          {(type === "cart" || type === "wishlist") && (
             <>
               <div className={styles.text}>
                 <p>Are you sure you want to remove</p>
                 <strong>{title}</strong>
-                <p>from your cart?</p>
+                <p>from your {type}?</p>
               </div>
             </>
           )}
-          <div className={styles["modal-btn-container"]}>
-            <Button
-              fill
-              className={styles["btn-cancel"]}
-              onClick={() => dispatch(closeModal())}
-            >
-              Cancel
-            </Button>
-            <Button fill onClick={() => handleConfirm()}>
-              Confirm
-            </Button>
-          </div>
+          {(type === "clear" || type === "cart" || type === "wishlist") && (
+            <div className={styles["modal-btn-container"]}>
+              <Button
+                fill
+                className={styles["btn-cancel"]}
+                onClick={() => dispatch(closeModal())}
+              >
+                Cancel
+              </Button>
+              <Button fill onClick={() => handleConfirm()}>
+                Confirm
+              </Button>
+            </div>
+          )}
         </div>
       </div>
     </>,

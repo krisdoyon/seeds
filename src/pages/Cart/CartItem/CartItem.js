@@ -67,7 +67,7 @@ const CartItem = ({
 
       <Button
         className={styles["btn-remove"]}
-        onClick={() => dispatch(openModal({ type: "item", id, title }))}
+        onClick={() => dispatch(openModal({ type: "cart", id, title }))}
         fill
       >
         X
