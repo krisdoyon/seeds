@@ -5,7 +5,7 @@ export const Shipping = () => {
   return (
     <section className={`container ${styles.wrapper}`}>
       <Breadcrumb title="Shipping" />
-      <div class={styles.policy}>
+      <div className={styles.policy}>
         <h2>Shipping Policy</h2>
         <p>
           All orders are processed within 2–3 business days of receipt. Orders
