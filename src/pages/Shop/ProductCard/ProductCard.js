@@ -21,6 +21,7 @@ const ProductCard = ({
   details: { isNew },
   imgURL,
   linkURL,
+  children,
 }) => {
   return (
     <article className={styles.card}>
@@ -46,6 +47,7 @@ const ProductCard = ({
           <Stars num={num} avg={avg} />
         </div>
       </Link>
+      {children}
     </article>
   );
 };
