@@ -28,7 +28,9 @@ function App() {
   const dispatch = useDispatch();
   const { cartItems, promo } = useSelector((state) => state.cart);
   const { wishlistItems } = useSelector((state) => state.wishlist);
-  const { isModalOpen } = useSelector((state) => state.modal);
+  const { isConfirmModalOpen, isPromoModalOpen } = useSelector(
+    (state) => state.modal
+  );
 
   useEffect(() => {
     dispatch(calculateTotals());
@@ -45,7 +47,7 @@ function App() {
 
   return (
     <>
-      {isModalOpen && <Modal />}
+      {(isConfirmModalOpen || isPromoModalOpen) && <Modal />}
 
       <Routes>
         <Route path="/" element={<Layout />}>
