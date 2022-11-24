@@ -1,3 +1,5 @@
+@use "../../assets/media" as *;
+
 .wrapper {
   max-width: 100rem !important;
 }
@@ -11,9 +13,16 @@
   & > * {
     width: 30rem;
   }
+  @include respond(800) {
+    align-items: center;
+  }
 }
 
 .grid {
   display: grid;
   grid-template-columns: 2.5fr 1fr 0.75fr 1fr 3rem;
+
+  @include respond(600) {
+    grid-template-columns: 1.5fr 1fr 0.75fr 0.75fr 3rem;
+  }
 }

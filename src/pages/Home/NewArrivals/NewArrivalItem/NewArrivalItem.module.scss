@@ -1,5 +1,6 @@
+@use "../../../../assets/media" as *;
+
 .item {
-  // background-color: var(--color-grey-2);
   width: auto;
   display: flex;
   flex-direction: column;
@@ -8,6 +9,10 @@
   box-shadow: 0 0.6rem 1rem rgba(0, 0, 0, 0.15);
   width: 25rem;
   position: relative;
+
+  @include respond(600) {
+    width: 20rem;
+  }
 
   &:hover {
     img {
@@ -41,5 +46,5 @@
   width: min-content;
   text-align: center;
   text-transform: uppercase;
-  z-index:2;
+  z-index: 2;
 }

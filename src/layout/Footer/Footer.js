@@ -7,6 +7,7 @@ import {
   FaInstagramSquare,
   FaYoutubeSquare,
   FaPinterestSquare,
+  FaHome,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
@@ -37,9 +38,12 @@ const Footer = () => {
           </div>
         </div>
         <div className={styles.column}>
-          <div className={styles.address}>
-            <p>3000 Harvest Way</p>
-            <p>Hartford, CT 06101</p>
+          <div className={styles.contact}>
+            <FaHome className={styles.icon} />
+            <div className={styles.address}>
+              <p>3000 Harvest Way</p>
+              <p>Hartford, CT 06101</p>
+            </div>
           </div>
           <div className={styles.contact}>
             <FaPhoneAlt className={styles.icon} />
@@ -50,7 +54,7 @@ const Footer = () => {
             <p>contact@harvestseed.com</p>
           </div>
         </div>
-        <div className={styles.column}>
+        <div className={`${styles.column}`}>
           <Link className={styles.link} to="/faq">
             FAQ
           </Link>
@@ -67,7 +71,6 @@ const Footer = () => {
       </div>
       <div className={styles.copyright}>
         <div className={styles["copyright-text"]}>
-              dispatch(clearFilters());
           &copy; 2022 Harvest Seed Co.
         </div>
       </div>

@@ -1,3 +1,9 @@
+@use "../../../assets/media" as *;
+
 .btn {
   width: 23rem;
+
+  @include respond(800) {
+    width: 100%;
+  }
 }

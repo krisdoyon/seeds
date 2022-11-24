@@ -15,7 +15,7 @@ const CartItems = () => {
         <header className={`${styles["items-header"]} ${sharedStyles.grid}`}>
           <p>Item</p>
           <p>Price</p>
-          <p>Quantity</p>
+          <p>Qty</p>
           <p>Subtotal</p>
           <p></p>
         </header>

@@ -1,3 +1,5 @@
+@use "../../../assets/media" as *;
+
 .wrapper {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -5,6 +7,11 @@
   max-width: 120rem;
   margin: 0 auto;
   gap: 6rem;
+
+  @include respond(800) {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
 }
 
 .feature {
@@ -15,6 +22,10 @@
   align-items: center;
   column-gap: 1rem;
   row-gap: 1.8rem;
+
+  @include respond(600) {
+    max-width: 90%;
+  }
 }
 
 .icon {

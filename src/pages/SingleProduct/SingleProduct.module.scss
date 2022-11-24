@@ -1,3 +1,5 @@
+@use "../../assets/media" as *;
+
 .wrapper {
   margin-top: 4rem;
 }
@@ -11,14 +13,26 @@
   grid-template-columns: max-content 1fr;
   column-gap: 6rem;
   margin-top: 3rem;
+
+  @include respond(800) {
+    grid-template-columns: 1fr;
+    row-gap: 3rem;
+    justify-items: center;
+  }
 }
 
 .img-container {
   height: 45rem;
   position: relative;
 
+  @include respond(600) {
+    height: auto;
+    width: 90vw;
+  }
+
   img {
     height: 100%;
+    width: 100%;
   }
 }
 
@@ -33,6 +47,10 @@
 .title {
   font-size: 4.4rem;
   margin-bottom: 2rem;
+
+  @include respond(600) {
+    align-self: center;
+  }
 }
 
 .description {
@@ -61,6 +79,11 @@
   flex-direction: column;
   gap: 1.2rem;
   margin-bottom: 3rem;
+
+  @include respond(800) {
+    width: max-content;
+    align-self: center;
+  }
 }
 
 .low-stock {
@@ -72,7 +95,25 @@
   pointer-events: none;
 }
 
+.qty-btns {
+  @include respond(800) {
+    align-self: center;
+    width: 65%;
+    max-width: 40rem;
+  }
+}
+
 .button-container {
   display: flex;
   gap: 1.2rem;
+
+  @include respond(1000) {
+    flex-direction: column;
+  }
+
+  @include respond(800) {
+    width: 65%;
+    align-self: center;
+    max-width: 40rem;
+  }
 }

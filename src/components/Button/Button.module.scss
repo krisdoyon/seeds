@@ -1,3 +1,5 @@
+@use "../../assets/media" as *;
+
 .btn {
   text-decoration: none;
   border: none;
@@ -20,7 +22,9 @@
   padding: 1rem 2rem;
   border-radius: var(--border-radius);
 
-  &:hover {
-    background-color: var(--color-primary-dark-hover);
+  @media (hover: hover) {
+    &:hover {
+      background-color: var(--color-primary-dark-hover);
+    }
   }
 }

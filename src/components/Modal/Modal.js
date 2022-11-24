@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { closeModal } from "../../features/modalSlice";
 import { clearCart, removeItem } from "../../features/cartSlice";
 import { removeWishlist } from "../../features/wishlistSlice";
+import Overlay from "../Overlay";
 
 const Modal = () => {
   const dispatch = useDispatch();
@@ -26,10 +27,7 @@ const Modal = () => {
 
   return ReactDOM.createPortal(
     <>
-      <div
-        className={styles.overlay}
-        onClick={() => dispatch(closeModal())}
-      ></div>
+      <Overlay onClick={() => dispatch(closeModal())} />
       <div className={styles.modal}>
         <Button
           className={styles["btn-close"]}

@@ -8,9 +8,15 @@ const Navbar = () => {
   return (
     <header className={styles.header}>
       <nav className={styles.nav}>
-        <Link to="/">
-          <img src="/img/logo.png" alt="logo" className={styles.logo} />
-        </Link>
+        <div className={styles["header-row"]}>
+          <Link to="/" className={styles["logo-link"]}>
+            <img src="/img/logo.png" alt="logo" className={styles.logo} />
+          </Link>
+          <div className={styles["btn-container"]}>
+            <WishlistButton />
+            <CartButton />
+          </div>
+        </div>
         <ul className={styles.list}>
           {navLinks.map((link, i) => {
             return (
@@ -29,10 +35,6 @@ const Navbar = () => {
             );
           })}
         </ul>
-        <div className={styles["btn-container"]}>
-          <WishlistButton />
-          <CartButton />
-        </div>
       </nav>
     </header>
   );

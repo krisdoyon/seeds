@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { updateFilters } from "../../features/productsSlice";
+import { clearFilters, updateFilters } from "../../features/productsSlice";
 import styles from "./Banner.module.scss";
 
 const Banner = () => {
@@ -15,9 +15,10 @@ const Banner = () => {
       <Link
         className={styles["message--bold"]}
         to="/shop"
-        onClick={() =>
-          dispatch(updateFilters({ filter: "onSale", value: true }))
-        }
+        onClick={() => {
+          dispatch(clearFilters());
+          dispatch(updateFilters({ filter: "onSale", value: true }));
+        }}
       >
         shop now
       </Link>

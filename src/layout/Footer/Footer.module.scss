@@ -1,3 +1,5 @@
+@use "../../assets/media" as *;
+
 .grid {
   padding: 5rem 0 5rem 0;
   display: grid;
@@ -7,6 +9,11 @@
   border-top: 1px solid var(--color-grey-3);
   max-width: var(--container-max-width);
   margin: 0 auto;
+
+  @include respond(800) {
+    grid-template-columns: 1fr;
+    row-gap: 3rem;
+  }
 }
 
 .logo {
@@ -16,12 +23,18 @@
 .contact {
   display: flex;
   gap: 1.8rem;
+  align-items: center;
 }
 
 .address {
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
+
+  @include respond(800) {
+    text-align: center;
+    margin-bottom: 0.4rem;
+  }
 }
 
 .column {
@@ -29,6 +42,10 @@
   flex-direction: column;
   gap: 1.2rem;
   margin: 0 auto;
+
+  @include respond(800) {
+    // text-align: center;
+  }
 }
 
 .social {
@@ -58,6 +75,10 @@
   &:hover {
     color: var(--color-primary-dark);
     font-weight: 600;
+  }
+
+  @include respond(800) {
+    text-align: center;
   }
 }
 

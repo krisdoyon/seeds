@@ -1,3 +1,5 @@
+@use "../../assets/media" as *;
+
 .wrapper {
   margin-top: var(--container-margin-top);
 }
@@ -7,6 +9,13 @@
   display: grid;
   grid-template-columns: 1fr max-content;
   column-gap: 6rem;
+
+  @include respond(1000) {
+    grid-template-columns: 1fr;
+    align-items: center;
+    justify-items: center;
+    row-gap: 4rem;
+  }
 }
 
 .content {
@@ -18,6 +27,10 @@
 .heading {
   font-size: 3.6rem;
   margin-bottom: 1rem;
+
+  @include respond(600) {
+    text-align: center;
+  }
 }
 
 .text {
@@ -29,4 +42,11 @@
   width: 50rem;
   height: 60rem;
   object-fit: cover;
+
+  @include respond(1000) {
+    grid-template-columns: 1fr;
+    width: 40rem;
+    height: 50rem;
+    max-width: 100%;
+  }
 }

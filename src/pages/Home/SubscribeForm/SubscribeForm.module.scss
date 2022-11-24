@@ -1,3 +1,5 @@
+@use "../../../assets/media" as *;
+
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -27,6 +29,10 @@
   margin-top: 1rem;
   font-size: 2rem;
   margin-bottom: 5rem;
+
+  @include respond(600) {
+    text-align: center;
+  }
 }
 
 .submitted {

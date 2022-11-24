@@ -1,7 +1,17 @@
+@use "../../../assets/media" as *;
+
 .grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
+
+  @include respond(800) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond(600) {
+    // grid-template-columns: 1fr;
+  }
 }
 
 .heading-secondary {

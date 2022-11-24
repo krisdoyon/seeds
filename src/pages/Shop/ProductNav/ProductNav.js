@@ -5,13 +5,19 @@ import { clearFilters, updateFilters } from "../../../features/productsSlice";
 import Button from "../../../components/Button";
 import { FaSearch } from "react-icons/fa";
 
-const ProductNav = () => {
+const ProductNav = ({ isNavOpen, setIsNavOpen }) => {
   const { allCategories, filters } = useSelector((state) => state.products);
   const dispatch = useDispatch();
   const { search } = useSelector((state) => state.products.filters);
 
   return (
-    <nav>
+    <nav className={`${styles.wrapper} ${isNavOpen ? styles["nav-open"] : ""}`}>
+      <Button
+        className={styles["btn-close"]}
+        onClick={() => setIsNavOpen(false)}
+      >
+        &times;
+      </Button>
       <div className={styles.sticky}>
         <label htmlFor="search" className={styles.heading}>
           Search

@@ -1,3 +1,5 @@
+@use "../../../assets/media" as *;
+
 .slider {
   height: 65rem;
   position: relative;
@@ -5,6 +7,10 @@
   border: 6px solid var(--color-primary-dark);
   border-radius: var(--border-radius);
   background-color: var(--color-primary-dark);
+
+  @include respond(600) {
+    height: 55rem;
+  }
 }
 
 .controls {

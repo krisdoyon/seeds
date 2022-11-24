@@ -1,3 +1,5 @@
+@use "../../assets/media" as *;
+
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -8,6 +10,10 @@
     color: var(--color-primary-dark);
     margin-bottom: 0.4rem;
     font-size: 2rem;
+
+    @include respond(600) {
+      text-align: center;
+    }
   }
 
   h2 {
@@ -15,5 +21,9 @@
     font-weight: 500;
     margin-bottom: 3rem;
     font-size: 3.6rem;
+
+    @include respond(600) {
+      text-align: center;
+    }
   }
 }

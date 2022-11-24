@@ -135,6 +135,7 @@ const SingleProduct = () => {
             </div>
             {inStock !== 0 && (
               <QuantityBtns
+                className={styles["qty-btns"]}
                 quantity={quantity}
                 handleIncrease={handleIncrease}
                 handleDecrease={handleDecrease}

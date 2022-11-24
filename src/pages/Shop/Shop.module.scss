@@ -1,3 +1,5 @@
+@use "../../assets/media" as *;
+
 .wrapper {
   margin-top: var(--container-margin-top);
 }
@@ -6,9 +8,15 @@
   grid-column: 1/-1;
   margin-bottom: 1.8rem;
   gap: 1.4rem;
-  display: grid;
-  grid-template-columns: 1fr max-content;
+  display: flex;
   align-items: center;
+
+  @include respond(800) {
+    flex-direction: column;
+    gap: 3rem;
+    // display: grid;
+    // grid-template-columns: max-content 1fr;
+  }
 
   select {
     background-color: var(--color-white);
@@ -16,9 +24,31 @@
   }
 }
 
-.header-text {
-  display: flex;
-  flex-direction: column;
+.nav-btn {
+  display: none;
+
+  @include respond(800) {
+    display: block;
+  }
+}
+
+.header-info {
+  margin-right: auto;
+
+  @include respond(800) {
+    margin-right: 0;
+    text-align: center;
+  }
+}
+
+.header-row {
+  @include respond(800) {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    width: 75%;
+    max-width: 40rem;
+    gap: 1.2rem;
+  }
 }
 
 .heading {
@@ -32,6 +62,10 @@
   grid-template-columns: 28rem 1fr;
   gap: 1rem;
   margin-top: 4rem;
+
+  @include respond(800) {
+    grid-template-columns: 1fr;
+  }
 }
 
 .products {
@@ -40,6 +74,16 @@
   grid-auto-rows: max-content;
   column-gap: 1rem;
   row-gap: 1.8rem;
+
+  @include respond(800) {
+    // grid-template-columns: repeat(2, 1fr);
+    column-gap: 2rem;
+    row-gap: 2.4rem;
+  }
+
+  @include respond(600) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 .btn-load {

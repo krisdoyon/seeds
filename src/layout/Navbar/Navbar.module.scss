@@ -1,8 +1,10 @@
+@use "../../assets/media" as *;
+
 .header {
   position: sticky;
-  top: 0;
+  top: -2px;
   z-index: 10;
-  padding: 3rem 0;
+  padding: 3rem;
   background-color: #f7f7f7;
   box-shadow: 0 1.2rem 2.4rem rgba(0, 0, 0, 0.075);
 }
@@ -14,6 +16,23 @@
   max-width: var(--container-max-width);
   margin: 0 auto;
   position: relative;
+
+  @include respond(800) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2.4rem;
+    // position: sticky;
+    // top: 0;
+  }
+}
+
+.header-row {
+  @include respond(800) {
+    display: flex;
+    gap: 3rem;
+  }
 }
 
 .logo {
@@ -22,6 +41,12 @@
   left: 0;
   top: 50%;
   transform: translateY(-50%);
+
+  @include respond(800) {
+    position: static;
+    transform: none;
+    justify-self: end;
+  }
 }
 
 .list {
@@ -29,6 +54,18 @@
   list-style: none;
   gap: 3rem;
   justify-content: center;
+
+  @include respond(800) {
+    grid-column: 1/-1;
+  }
+}
+
+.logo-link {
+  @include respond(800) {
+    display: flex;
+    // align-items: center;
+    justify-content: flex-end;
+  }
 }
 
 .link {
@@ -57,4 +94,11 @@
   top: 50%;
   right: 0;
   transform: translateY(-50%);
+
+  @include respond(800) {
+    position: static;
+    // justify-content: center;
+    gap: 2rem;
+    transform: none;
+  }
 }
