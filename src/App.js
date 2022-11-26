@@ -23,6 +23,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Wishlist from "./pages/Wishlist";
 
 import { updateWishlistAmount } from "./features/wishlistSlice";
+import Checkout from "./pages/Checkout/Checkout";
 
 function App() {
   const dispatch = useDispatch();
@@ -48,7 +49,6 @@ function App() {
   return (
     <>
       {(isConfirmModalOpen || isPromoModalOpen) && <Modal />}
-
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
@@ -59,12 +59,12 @@ function App() {
           </Route>
           <Route path="/shop/:category/:id" element={<SingleProduct />} />
           <Route path="cart" element={<Cart />} />
+          <Route path="checkout" element={<Checkout />} />
           <Route path="wishlist" element={<Wishlist />} />
           <Route path="faq" element={<FAQ />} />
           <Route path="terms" element={<Terms />} />
           <Route path="shipping" element={<Shipping />} />
           <Route path="return" element={<Returns />} />
-
           <Route path="*" element={<PageNotFound />} />
         </Route>
       </Routes>
