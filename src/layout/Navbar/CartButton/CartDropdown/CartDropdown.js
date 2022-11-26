@@ -32,7 +32,7 @@ const CartDropdown = ({ setShowDropdown }) => {
               <strong>Subtotal:</strong>
               <span>{formatPrice(subtotal)}</span>
             </div>
-            <Button to="/cart" fill>
+            <Button onClick={() => setShowDropdown(false)} to="/cart" fill>
               view cart
             </Button>
           </footer>
