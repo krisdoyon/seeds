@@ -10,6 +10,7 @@
   text-transform: uppercase;
   font-weight: 500;
   transition: all 0.2s;
+  text-align: center;
 }
 
 .btn:hover {
@@ -27,4 +28,9 @@
       background-color: var(--color-primary-dark-hover);
     }
   }
+}
+
+.disabled {
+  background-color: #555;
+  pointer-events: none;
 }
