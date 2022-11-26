@@ -1,6 +1,5 @@
 import Button from "../../../components/Button";
 import styles from "./WishlistButton.module.scss";
-import sharedStyles from "../SingleProduct.module.scss";
 
 const WishlistButton = ({ disabled, handleWishlist, onWishlist }) => {
   let buttonText;
@@ -17,7 +16,8 @@ const WishlistButton = ({ disabled, handleWishlist, onWishlist }) => {
   return (
     <Button
       fill
-      className={`${styles.btn} ${disabled ? sharedStyles.disabled : ""}`}
+      disabled={disabled}
+      className={styles.btn}
       onClick={handleWishlist}
     >
       {buttonText}

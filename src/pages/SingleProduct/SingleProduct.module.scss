@@ -90,11 +90,6 @@
   color: var(--color-red-dark);
 }
 
-.disabled {
-  background-color: #555;
-  pointer-events: none;
-}
-
 .qty-btns {
   @include respond(800) {
     align-self: center;
