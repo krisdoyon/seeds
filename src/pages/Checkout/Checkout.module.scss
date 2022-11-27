@@ -1,5 +1,9 @@
+.wrapper {
+  margin-top: 6rem;
+}
+
 .btn-back {
-  margin-bottom: 4rem;
+  margin-top: 4rem;
   display: inline-block;
 }
 
@@ -11,5 +15,32 @@
 }
 
 .heading {
-  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+.flex-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.spinner {
+  height: 12rem;
+  width: 12rem;
+  color: var(--color-primary-dark);
+  animation: rotate 2s infinite linear;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.modal {
+  padding: 5rem;
+  font-size: 2.4rem;
 }

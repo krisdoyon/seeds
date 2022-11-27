@@ -1,0 +1,29 @@
+.item {
+  display: flex;
+  gap: 1.2rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--color-grey-3);
+
+  &:last-of-type {
+    border-bottom: none;
+  }
+
+  img {
+    height: 8rem;
+    width: 8rem;
+    object-fit: cover;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  font-size: 1.4rem;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 1.6rem;
+  margin-bottom: 0.4rem;
+}

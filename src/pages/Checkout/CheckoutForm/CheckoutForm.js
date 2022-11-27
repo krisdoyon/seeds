@@ -11,9 +11,10 @@ import {
   validateForm,
 } from "../../../features/checkoutSlice";
 import { stateOptions, monthOptions } from "./CheckoutSelectOptions";
+import { updateProducts } from "../../../features/productsSlice";
 
-const CheckoutForm = () => {
-  const { cartItems, subtotal, promo, shipping, tax, total } = useSelector(
+const CheckoutForm = ({ setIsSubmitted, setIsLoading }) => {
+  const { cartItems, subtotal, promo, shippingCost, tax, total } = useSelector(
     (state) => state.cart
   );
   const { shippingSame, isFormValid } = useSelector((state) => state.checkout);
@@ -22,14 +23,6 @@ const CheckoutForm = () => {
   const placeOrder = (e) => {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(e.target));
-    console.log(data);
-
-    // const products = cartItems.map(item => {
-    //   return {
-
-    //   }
-    // })
-
     const billing = {
       first: data.billFirst,
       last: data.billLast,
@@ -39,7 +32,6 @@ const CheckoutForm = () => {
       state: data.billState,
       zip: data.billZip,
     };
-
     const shipping = shippingSame
       ? billing
       : {
@@ -51,10 +43,9 @@ const CheckoutForm = () => {
           state: data.shipState,
           zip: data.shipZip,
         };
-
     const payment = {
       subtotal,
-      shipping,
+      shippingCost,
       tax,
       total,
       ...(promo.code !== null && { promo }),
@@ -66,8 +57,23 @@ const CheckoutForm = () => {
         expYear: data.payExpYear,
       },
     };
-    dispatch(addOrder({ products: cartItems, payment, billing, shipping }));
-    // dispatch(clearCart());
+    setIsLoading(true);
+
+    setTimeout(() => {
+      dispatch(
+        addOrder({
+          products: cartItems,
+          payment,
+          billing,
+          shipping,
+          shippingSame,
+        })
+      );
+      dispatch(updateProducts(cartItems));
+      dispatch(clearCart());
+      setIsSubmitted(true);
+      setIsLoading(false);
+    }, 3000);
   };
 
   return (
@@ -255,7 +261,7 @@ const CheckoutForm = () => {
         </div>
       </div>
 
-      <Button fill disabled={!isFormValid}>
+      <Button fill disabled={!isFormValid} className={styles.submit}>
         Submit Order
       </Button>
     </form>
