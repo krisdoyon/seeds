@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { formatPrice } from "../../../utils/formatPrice";
 
 const CartHeader = () => {
-  const { subtotal, shipping, amount } = useSelector((state) => state.cart);
+  const { subtotal, shippingCost, amount } = useSelector((state) => state.cart);
 
   const noFreeShipping = (
     <p className={styles["shipping-message"]}>
@@ -19,8 +19,8 @@ const CartHeader = () => {
   return (
     <header className={styles.header}>
       <h2 className={styles.heading}>Your Cart</h2>
-      {amount !== 0 && shipping === 0 && freeShipping}
-      {amount !== 0 && shipping !== 0 && noFreeShipping}
+      {amount !== 0 && shippingCost === 0 && freeShipping}
+      {amount !== 0 && shippingCost !== 0 && noFreeShipping}
     </header>
   );
 };

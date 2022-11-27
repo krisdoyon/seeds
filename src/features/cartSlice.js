@@ -59,9 +59,9 @@ const cartSlice = createSlice({
         state.promo.amount = state.subtotal * state.promo.percent;
       }
       state.tax = (state.subtotal - state.promo.amount) * 0.0635;
-      state.shipping = state.subtotal < 5000 ? 499 : 0;
+      state.shippingCost = state.subtotal < 5000 ? 499 : 0;
       state.total =
-        state.subtotal + state.shipping + state.tax - state.promo.amount;
+        state.subtotal + state.shippingCost + state.tax - state.promo.amount;
       state.amount = amount;
       if (state.amount === 0) state.promo = initialPromo;
     },

@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { formatPrice } from "../../../utils/formatPrice";
 
 const CartSummary = () => {
-  const { subtotal, tax, shipping, total, amount, promo } = useSelector(
+  const { subtotal, tax, shippingCost, total, amount, promo } = useSelector(
     (state) => state.cart
   );
 
@@ -28,7 +28,7 @@ const CartSummary = () => {
         <p className={styles.value}>{formatPrice(tax)}</p>
         <p>Shipping:</p>
         <p className={styles.value}>
-          {shipping === 0 ? "FREE!" : formatPrice(shipping)}
+          {shippingCost === 0 ? "FREE!" : formatPrice(shippingCost)}
         </p>
         <p>
           <strong>Total:</strong>
