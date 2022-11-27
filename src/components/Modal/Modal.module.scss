@@ -12,6 +12,8 @@
   align-items: center;
   justify-content: center;
   max-width: 90vw;
+  padding: 6rem 3rem 3rem 3rem;
+  font-size: 2rem;
 }
 
 .btn-close {
@@ -23,8 +25,6 @@
 }
 
 .modal-content {
-  padding: 6rem 3rem 3rem 3rem;
-  font-size: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
