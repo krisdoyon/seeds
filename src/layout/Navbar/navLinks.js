@@ -11,4 +11,8 @@ export const navLinks = [
     text: "Shop",
     to: "/shop",
   },
+  {
+    text: "Orders",
+    to: "/orders",
+  },
 ];
