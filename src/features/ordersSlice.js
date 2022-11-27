@@ -3,6 +3,11 @@ import { generateOrderNumber } from "../utils/generateOrderNumber";
 
 const initialState = {
   orders: JSON.parse(localStorage.getItem("orders")) || [],
+  // currentOrder: "",
+  get currentOrder() {
+    return this.orders[0];
+  },
+  error: false,
 };
 
 const ordersSlice = createSlice({
@@ -11,29 +16,40 @@ const ordersSlice = createSlice({
   reducers: {
     addOrder: (
       state,
-      { payload: { products, payment, shipping, billing } }
+      { payload: { products, payment, shipping, billing, shippingSame } }
     ) => {
-      let orderNumber = generateOrderNumber();
-      let isNumberUnique = !state.orders.some(
-        (order) => order.orderNumber === orderNumber
-      );
-      while (!isNumberUnique) {
+      let orderNumber;
+      do {
         orderNumber = generateOrderNumber();
-      }
+        // eslint-disable-next-line no-loop-func
+      } while (state.orders.some((order) => order.orderNumber === orderNumber));
       const order = {
         orderNumber,
-        products,
         date: new Date().getTime(),
-        payment,
+        products,
         billing,
         shipping,
+        payment,
+        shippingSame,
       };
       console.log(order);
       state.orders.push(order);
+      state.currentOrder = order;
+    },
+    loadSingleOrder: (state, { payload: orderNumber }) => {
+      state.error = false;
+      const order = state.orders.find(
+        (order) => order.orderNumber === orderNumber
+      );
+      if (!order) {
+        state.error = true;
+        return;
+      }
+      state.currentOrder = order;
     },
   },
 });
 
-export const { addOrder } = ordersSlice.actions;
+export const { addOrder, loadSingleOrder } = ordersSlice.actions;
 
 export default ordersSlice.reducer;
