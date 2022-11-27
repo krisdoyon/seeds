@@ -1,0 +1,27 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  strong {
+    font-weight: 600;
+  }
+}
+
+.section-heading {
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.items {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--color-grey-3);
+  border-radius: var(--border-radius);
+  padding: 0 1rem;
+}

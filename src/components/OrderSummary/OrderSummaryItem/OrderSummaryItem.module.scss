@@ -1,0 +1,37 @@
+.wrapper {
+  display: flex;
+  border-bottom: 1px solid var(--color-grey-3);
+  gap: 1.2rem;
+  padding: 1rem 0;
+
+  &:last-of-type {
+    border-bottom: none;
+  }
+
+  img {
+    height: 8rem;
+    width: 8rem;
+    object-fit: cover;
+  }
+}
+
+.title {
+  font-weight: 600;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.prices {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.strike {
+  text-decoration: line-through;
+  color: #555;
+}
