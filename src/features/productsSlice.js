@@ -12,7 +12,7 @@ const initialFilters = {
 };
 
 const initialState = {
-  products: [...allProducts],
+  products: JSON.parse(localStorage.getItem("products")) || [...allProducts],
   newProducts: allProducts.filter((product) => product.details.isNew),
   allCategories,
   filters: initialFilters,
@@ -83,12 +83,19 @@ const productsSlice = createSlice({
     },
     loadSingleProduct: (state, { payload: id }) => {
       state.error = false;
-      const product = allProducts.find((product) => product.id === id);
+      const product = state.products.find((product) => product.id === id);
       if (!product) {
         state.error = true;
         return;
       }
       state.currentProduct = product;
+    },
+    updateProducts: (state, { payload: products }) => {
+      products.forEach((product) => {
+        const toUpdate = state.products.find((item) => item.id === product.id);
+        toUpdate.inStock = toUpdate.inStock - product.quantity;
+      });
+      localStorage.setItem("products", JSON.stringify(state.products));
     },
   },
 });
@@ -99,6 +106,7 @@ export const {
   updateFilters,
   clearFilters,
   updateSort,
+  updateProducts,
 } = productsSlice.actions;
 
 export default productsSlice.reducer;
