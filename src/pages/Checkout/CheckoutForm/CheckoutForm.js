@@ -7,6 +7,7 @@ import { addOrder } from "../../../features/ordersSlice";
 import { clearCart } from "../../../features/cartSlice";
 import Checkbox from "../../../components/Checkbox";
 import {
+  resetForm,
   updateShippingSame,
   validateForm,
 } from "../../../features/checkoutSlice";
@@ -58,7 +59,6 @@ const CheckoutForm = ({ setIsSubmitted, setIsLoading }) => {
       },
     };
     setIsLoading(true);
-
     setTimeout(() => {
       dispatch(
         addOrder({
@@ -71,6 +71,7 @@ const CheckoutForm = ({ setIsSubmitted, setIsLoading }) => {
       );
       dispatch(updateProducts(cartItems));
       dispatch(clearCart());
+      dispatch(resetForm());
       setIsSubmitted(true);
       setIsLoading(false);
     }, 3000);
