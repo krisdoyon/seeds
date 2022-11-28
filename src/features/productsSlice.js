@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-import allProducts from "../assets/seeds.json";
+import data from "../assets/seeds.json";
 
 const allCategories = [
-  ...new Set(allProducts.map((product) => product.category)),
+  ...new Set(data.map((product) => product.category)),
 ].sort((a, b) => a.localeCompare(b));
 
 const initialFilters = {
@@ -12,8 +12,13 @@ const initialFilters = {
 };
 
 const initialState = {
-  products: JSON.parse(localStorage.getItem("products")) || [...allProducts],
-  newProducts: allProducts.filter((product) => product.details.isNew),
+  allProducts: JSON.parse(localStorage.getItem("products")) || [...data],
+  get currentProducts() {
+    return this.allProducts;
+  },
+  get newProducts() {
+    return this.allProducts.filter((product) => product.details.isNew);
+  },
   allCategories,
   filters: initialFilters,
   currentProduct: {},
@@ -33,8 +38,10 @@ const productsSlice = createSlice({
       if (!category) category = "all";
       let newProducts =
         category === "all"
-          ? initialState.products
-          : allProducts.filter((product) => product.category === category);
+          ? state.allProducts
+          : state.allProducts.filter(
+              (product) => product.category === category
+            );
       if (state.filters.new) {
         newProducts = newProducts.filter((product) => product.details.isNew);
       }
@@ -53,21 +60,21 @@ const productsSlice = createSlice({
         );
       }
       if (state.sort === "title-descending")
-        state.products = [...newProducts].sort((a, b) =>
+        state.currentProducts = [...newProducts].sort((a, b) =>
           a.title.localeCompare(b.title)
         );
       if (state.sort === "title-ascending") {
-        state.products = [...newProducts].sort((a, b) =>
+        state.currentProducts = [...newProducts].sort((a, b) =>
           b.title.localeCompare(a.title)
         );
       }
       if (state.sort === "price-ascending") {
-        state.products = [...newProducts].sort(
+        state.currentProducts = [...newProducts].sort(
           (a, b) => (a.salePrice || a.price) - (b.salePrice || b.price)
         );
       }
       if (state.sort === "price-descending") {
-        state.products = [...newProducts].sort(
+        state.currentProducts = [...newProducts].sort(
           (a, b) => (b.salePrice || b.price) - (a.salePrice || a.price)
         );
       }
@@ -83,7 +90,7 @@ const productsSlice = createSlice({
     },
     loadSingleProduct: (state, { payload: id }) => {
       state.error = false;
-      const product = state.products.find((product) => product.id === id);
+      const product = state.allProducts.find((product) => product.id === id);
       if (!product) {
         state.error = true;
         return;
@@ -92,10 +99,11 @@ const productsSlice = createSlice({
     },
     updateProducts: (state, { payload: products }) => {
       products.forEach((product) => {
-        const toUpdate = state.products.find((item) => item.id === product.id);
+        const toUpdate = state.allProducts.find(
+          (item) => item.id === product.id
+        );
         toUpdate.inStock = toUpdate.inStock - product.quantity;
       });
-      localStorage.setItem("products", JSON.stringify(state.products));
     },
   },
 });
