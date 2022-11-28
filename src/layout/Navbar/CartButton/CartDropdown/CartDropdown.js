@@ -15,8 +15,8 @@ const CartDropdown = ({ setShowDropdown }) => {
     >
       {cartItems.length === 0 && (
         <div className={styles.empty}>
-          <p>Your cart is empty.</p>
-          <Button to="/shop" fill>
+          <p>No items in your cart.</p>
+          <Button to="/shop" fill onClick={() => setShowDropdown(false)}>
             Continue Shopping
           </Button>
         </div>
