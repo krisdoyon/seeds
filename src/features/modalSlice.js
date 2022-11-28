@@ -6,23 +6,26 @@ const initialState = {
   title: "",
   id: "",
   type: "",
+  action: "",
 };
 
 const modalSlice = createSlice({
   name: "modal",
   initialState,
   reducers: {
-    openModal: (state, { payload: { type, title, id } }) => {
+    openModal: (state, { payload: { type, action, page, title, id } }) => {
       state.type = type;
-      if (type === "cart" || type === "wishlist" || type === "clear") {
+      state.action = action || "";
+      state.page = page || "";
+      if (type === "confirm") {
         state.isConfirmModalOpen = true;
-      }
-      if (type === "cart" || type === "wishlist") {
-        state.title = title;
-        state.id = id;
       }
       if (type === "promo") {
         state.isPromoModalOpen = true;
+      }
+      if (action === "remove") {
+        state.title = title;
+        state.id = id;
       }
     },
     closeModal: () => initialState,

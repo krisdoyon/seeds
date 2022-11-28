@@ -5,28 +5,42 @@ import ReactDOM from "react-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { closeModal } from "../../features/modalSlice";
 import { clearCart, removeItem } from "../../features/cartSlice";
-import { removeWishlist } from "../../features/wishlistSlice";
+import { clearWishlist, removeWishlist } from "../../features/wishlistSlice";
+import { clearOrders, loadTestOrders } from "../../features/ordersSlice";
 
 const Modal = ({ children, className }) => {
   const dispatch = useDispatch();
-  const { type, title, id } = useSelector((state) => state.modal);
+  const { type, action, page, title, id } = useSelector((state) => state.modal);
+
+  // type: confirm, promo
+  // action: remove, clear
+  // page: cart, wishlist, orders
 
   const handleConfirm = () => {
-    if (type === "clear") {
+    if (action === "clear" && page === "cart") {
       dispatch(clearCart());
     }
-    if (type === "cart") {
+    if (action === "clear" && page === "wishlist") {
+      dispatch(clearWishlist());
+    }
+    if (action === "clear" && page === "orders") {
+      dispatch(clearOrders());
+    }
+    if (action === "remove" && page === "cart") {
       dispatch(removeItem(id));
     }
-    if (type === "wishlist") {
+    if (action === "remove" && page === "wishlist") {
       dispatch(removeWishlist(id));
+    }
+    if (action === "load") {
+      dispatch(loadTestOrders());
     }
     dispatch(closeModal());
   };
 
   return ReactDOM.createPortal(
     <div className={`${styles.modal} ${className}`}>
-      {["cart", "promo", "wishlist"].find((element) => element === type) && (
+      {type !== undefined && (
         <Button
           className={styles["btn-close"]}
           onClick={() => dispatch(closeModal())}
@@ -35,17 +49,25 @@ const Modal = ({ children, className }) => {
         </Button>
       )}
       <div className={styles["modal-content"]}>
-        {type === "clear" && <p>Are you sure you want to clear your cart?</p>}
-        {(type === "cart" || type === "wishlist") && (
+        {action === "clear" && (
+          <p>Are you sure you want to clear your {page}?</p>
+        )}
+        {action === "load" && (
+          <p>
+            Are you sure you want to load test orders? <br />
+            This action will overwrite all current orders.
+          </p>
+        )}
+        {action === "remove" && (
           <>
             <div className={styles.text}>
               <p>Are you sure you want to remove</p>
               <strong>{title}</strong>
-              <p>from your {type}?</p>
+              <p>from your {page}?</p>
             </div>
           </>
         )}
-        {(type === "clear" || type === "cart" || type === "wishlist") && (
+        {(action === "remove" || action === "clear" || action === "load") && (
           <div className={styles["modal-btn-container"]}>
             <Button
               fill
