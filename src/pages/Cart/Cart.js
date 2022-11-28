@@ -9,7 +9,8 @@ import CartItems from "./CartItems/";
 import Button from "../../components/Button";
 
 const Cart = () => {
-  const { amount } = useSelector((state) => state.cart);
+  const cart = useSelector((state) => state.cart);
+  const { amount } = cart;
 
   return (
     <div className={`container ${styles.wrapper}`}>
@@ -21,7 +22,7 @@ const Cart = () => {
           <CartItems />
           <div className={styles["flex-wrapper"]}>
             <CartPromo />
-            <CartSummary />
+            <CartSummary {...cart} />
             <Button to="/checkout" fill>
               checkout
             </Button>
