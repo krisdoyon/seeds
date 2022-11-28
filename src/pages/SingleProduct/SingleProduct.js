@@ -26,13 +26,14 @@ const SingleProduct = () => {
   const [quantity, setQuantity] = useState(1);
   const [cartDisabled, setCartDisabled] = useState(false);
   const [wishlistDisabled, setWishlistDisabled] = useState(false);
+  const { wishlistItems } = useSelector((state) => state.wishlist);
+  const onWishlist = wishlistItems.some((item) => item.id === id);
 
   useEffect(() => {
     dispatch(loadSingleProduct(id));
   }, [dispatch, id]);
 
   const { currentProduct, error } = useSelector((state) => state.products);
-  const { wishlistItems } = useSelector((state) => state.wishlist);
 
   if (error) {
     return <PageNotFound />;
@@ -56,8 +57,6 @@ const SingleProduct = () => {
       setCartDisabled(true);
       setTimeout(() => setCartDisabled(false), 2000);
     };
-
-    const onWishlist = wishlistItems.find((item) => item.id === id);
 
     const handleWishlist = () => {
       setWishlistDisabled(true);
@@ -126,7 +125,7 @@ const SingleProduct = () => {
                 <strong>Availability: </strong>
                 {inStock === 0 && "Sold Out"}
                 {inStock > 5 && `${inStock} in stock`}
-                {inStock <= 5 && inStock > 1 && (
+                {inStock <= 5 && inStock >= 1 && (
                   <span
                     className={styles["low-stock"]}
                   >{`Only ${inStock} left in stock!`}</span>
