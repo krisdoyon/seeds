@@ -105,7 +105,7 @@
   },
   {
     "id": "CAR3",
-    "title": "Purple",
+    "title": "Purple Carrot",
     "category": "carrots",
     "price": 499,
     "salePrice": "",
@@ -118,7 +118,7 @@
   },
   {
     "id": "CAR4",
-    "title": "Yellow",
+    "title": "Yellow Carrot",
     "category": "carrots",
     "price": 499,
     "salePrice": 399,
