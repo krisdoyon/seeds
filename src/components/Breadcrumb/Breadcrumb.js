@@ -1,7 +1,7 @@
 import styles from "./Breadcrumb.module.scss";
 import { Link } from "react-router-dom";
 
-const Breadcrumb = ({ title, category, product, cart }) => {
+const Breadcrumb = ({ title, category, product, orders }) => {
   return (
     <div className={styles.breadcrumb}>
       <Link to="/">Home</Link>
@@ -18,9 +18,9 @@ const Breadcrumb = ({ title, category, product, cart }) => {
           <span> / </span>
         </>
       )}
-      {cart && (
+      {orders && (
         <>
-          <Link to={`/cart`}>cart</Link>
+          <Link to={`/orders`}>orders</Link>
           <span> / </span>
         </>
       )}
