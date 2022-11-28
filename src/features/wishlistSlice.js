@@ -1,9 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import allProducts from "../assets/seeds.json";
+import data from "../assets/seeds.json";
 
 const initialState = {
   wishlistItems: JSON.parse(localStorage.getItem("wishlist")) || [],
   wishlistAmount: 0,
+  allProducts: JSON.parse(localStorage.getItem("products")) || [...data],
 };
 
 const wishlistSlice = createSlice({
@@ -12,7 +13,7 @@ const wishlistSlice = createSlice({
   reducers: {
     addWishlist: (state, { payload: id }) => {
       state.wishlistItems.push(
-        allProducts.find((product) => product.id === id)
+        state.allProducts.find((product) => product.id === id)
       );
     },
     removeWishlist: (state, { payload: id }) => {
@@ -26,6 +27,13 @@ const wishlistSlice = createSlice({
     updateWishlistAmount: (state) => {
       state.wishlistAmount = state.wishlistItems.length;
     },
+    updateWishlistItems: (state) => {
+      const newProducts = JSON.parse(localStorage.getItem("products"));
+      const newWishlistItems = state.wishlistItems.map((item) => {
+        return newProducts.find((product) => product.id === item.id);
+      });
+      state.wishlistItems = newWishlistItems;
+    },
   },
 });
 
@@ -34,6 +42,7 @@ export const {
   removeWishlist,
   clearWishlist,
   updateWishlistAmount,
+  updateWishlistItems,
 } = wishlistSlice.actions;
 
 export default wishlistSlice.reducer;
