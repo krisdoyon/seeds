@@ -1,12 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { generateOrderNumber } from "../utils/generateOrderNumber";
+import testOrders from "../assets/testOrders.json";
 
 const initialState = {
   orders: JSON.parse(localStorage.getItem("orders")) || [],
-  // currentOrder: "",
-  get currentOrder() {
-    return this.orders[0];
-  },
+  currentOrder: "",
   error: false,
 };
 
@@ -26,14 +24,19 @@ const ordersSlice = createSlice({
       const order = {
         orderNumber,
         date: new Date().getTime(),
+        displayDate: new Intl.DateTimeFormat("en-US", {
+          month: "long",
+          day: "2-digit",
+          year: "numeric",
+        }).format(new Date().getTime()),
+        amount: products.length,
         products,
         billing,
         shipping,
         payment,
         shippingSame,
       };
-      console.log(order);
-      state.orders.push(order);
+      state.orders.unshift(order);
       state.currentOrder = order;
     },
     loadSingleOrder: (state, { payload: orderNumber }) => {
@@ -47,9 +50,16 @@ const ordersSlice = createSlice({
       }
       state.currentOrder = order;
     },
+    clearOrders: (state) => {
+      state.orders = [];
+    },
+    loadTestOrders: (state) => {
+      state.orders = testOrders;
+    },
   },
 });
 
-export const { addOrder, loadSingleOrder } = ordersSlice.actions;
+export const { addOrder, loadSingleOrder, clearOrders, loadTestOrders } =
+  ordersSlice.actions;
 
 export default ordersSlice.reducer;

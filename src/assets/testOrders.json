@@ -1,0 +1,118 @@
+[
+  {
+    "orderNumber": "645716",
+    "date": 1669584355758,
+    "displayDate": "November 27, 2022",
+    "amount": 5,
+    "products": [
+      {
+        "id": "FLOW1",
+        "title": "Orange Poppy",
+        "category": "flowers",
+        "price": 399,
+        "salePrice": 299,
+        "description": "These delicate flowers are a beautiful orange color. They will flower in the cooler temperatures, weeks before other annuals to bring you a spark of joy. Great for attracting beneficial pollinators like bumble bees and honeybees. Poppies will put on a show for around 10 days before they head into dormancy for the next season. Deer and rabbit resistant!",
+        "inStock": 25,
+        "details": { "isNew": false, "seedCount": 500, "daysToMaturity": 120 },
+        "reviews": { "avg": 5, "num": 40 },
+        "imgURL": "/img/products/FLOW1.webp",
+        "linkURL": "/shop/flowers/FLOW1",
+        "quantity": 1
+      },
+      {
+        "id": "LET3",
+        "title": "Romaine",
+        "category": "lettuce",
+        "price": 299,
+        "salePrice": "",
+        "description": "Named for an island off the coast of South Carolina, this variety was introduced in 1952. Crisp and sweet, this beloved heirloom has been a favorite for generations (especially on the Eastern Seaboard where it originates). Tall, uniform leaves create the perfect shape for lettuce wraps or boats for dips and dressings.",
+        "inStock": 65,
+        "details": { "isNew": false, "seedCount": 1000, "daysToMaturity": 45 },
+        "reviews": { "avg": 4.5, "num": 80 },
+        "imgURL": "/img/products/LET3.webp",
+        "linkURL": "/shop/lettuce/LET3",
+        "quantity": 1
+      },
+      {
+        "id": "LET1",
+        "title": "Red Sails",
+        "category": "lettuce",
+        "price": 399,
+        "salePrice": 299,
+        "description": "This tender, mahogany purple leaf lettuce is a fun variety to toss-up in your crunchier green mix! The flavor is bold and fresh! It always tastes great in a light fruity vinaigrette or a creamy dressing.",
+        "inStock": 98,
+        "details": { "isNew": true, "seedCount": 750, "daysToMaturity": 50 },
+        "reviews": { "avg": 5, "num": 65 },
+        "imgURL": "/img/products/LET1.webp",
+        "linkURL": "/shop/lettuce/LET1",
+        "quantity": 2
+      },
+      {
+        "id": "TOM5",
+        "title": "Costoluto Genovese",
+        "category": "tomatoes",
+        "price": 599,
+        "salePrice": "",
+        "description": "This Italian slicing tomato bares high, disease resistant yields. The fruits are red and ribbed – a unique shape compared to the traditional round tomato. Use this sweet and juicy variety as a right-off-the-vine snack, or slice up to toss onto a salad! Early maturing.",
+        "inStock": 14,
+        "details": { "isNew": true, "seedCount": 25, "daysToMaturity": 75 },
+        "reviews": { "avg": 4, "num": 27 },
+        "imgURL": "/img/products/TOM5.webp",
+        "linkURL": "/shop/tomatoes/TOM5",
+        "quantity": 1
+      },
+      {
+        "id": "TOM3",
+        "title": "Super Sweet 100",
+        "category": "tomatoes",
+        "price": 299,
+        "salePrice": "",
+        "description": "These cherry tomatoes are bursting with flavor. Produces 100s of cherry sized fruits in long clusters right up to frost. Grows great on stakes or a trellis. Higher vitamin C content than any other tomato!",
+        "inStock": 16,
+        "details": { "isNew": false, "seedCount": 50, "daysToMaturity": 65 },
+        "reviews": { "avg": 4.5, "num": 89 },
+        "imgURL": "/img/products/TOM3.webp",
+        "linkURL": "/shop/tomatoes/TOM3",
+        "quantity": 1
+      }
+    ],
+    "billing": {
+      "first": "Kris",
+      "last": "Doyon",
+      "address1": "11 Hampden Rd.",
+      "address2": "",
+      "city": "Stafford Springs",
+      "state": "CT",
+      "zip": "06076"
+    },
+    "shipping": {
+      "first": "Kris",
+      "last": "Doyon",
+      "address1": "11 Hampden Rd.",
+      "address2": "",
+      "city": "Stafford Springs",
+      "state": "CT",
+      "zip": "06076"
+    },
+    "payment": {
+      "subtotal": 2094,
+      "shippingCost": 499,
+      "tax": 119.6721,
+      "total": 2503.2720999999997,
+      "promo": {
+        "code": "SAVE10",
+        "percent": 0.1,
+        "minimum": 0,
+        "amount": 209.4
+      },
+      "card": {
+        "name": "Kris Doyon",
+        "number": "4496 1600 0032 4588",
+        "code": "159",
+        "expMonth": "01",
+        "expYear": "2023"
+      }
+    },
+    "shippingSame": true
+  }
+]
