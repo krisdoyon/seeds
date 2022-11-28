@@ -1,7 +1,6 @@
 import styles from "./CheckoutForm.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { updateForm, validateForm } from "../../../features/checkoutSlice";
-import { stateOptions } from "./CheckoutSelectOptions";
 
 const CheckoutSelect = ({ id, category, options, label }) => {
   const dispatch = useDispatch();
