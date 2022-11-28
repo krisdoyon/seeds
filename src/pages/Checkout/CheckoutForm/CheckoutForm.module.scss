@@ -1,3 +1,5 @@
+@use "../../../assets/media" as *;
+
 .form {
   display: flex;
   flex-direction: column;
@@ -94,4 +96,11 @@
   align-self: center;
   padding: 1.6rem 5rem;
   font-size: 1.6rem;
+}
+
+.checkbox {
+  margin-bottom: 1.2rem;
+  @include respond(800) {
+    font-size: 1.6rem;
+  }
 }

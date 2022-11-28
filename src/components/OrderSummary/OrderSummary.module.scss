@@ -1,7 +1,13 @@
+@use "../../assets/media" as *;
+
 .wrapper {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   column-gap: 4rem;
+
+  @include respond(600) {
+    grid-template-columns: 1fr;
+  }
 }
 
 .column {
@@ -10,6 +16,10 @@
   gap: 4rem;
   justify-self: center;
   align-items: center;
+
+  @include respond(600) {
+    margin-bottom: 4rem;
+  }
 }
 
 .section-heading {

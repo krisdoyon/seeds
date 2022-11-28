@@ -1,3 +1,5 @@
+@use "../../assets/media" as *;
+
 .header {
   margin-bottom: 3rem;
   margin-top: 3rem;
@@ -26,6 +28,11 @@
     grid-template-columns: 1fr 1fr 1fr 15rem;
     font-weight: 600;
     padding: 2rem;
+    align-items: center;
+
+    @include respond(600) {
+      grid-template-columns: 1fr 1.5fr 1fr 8rem;
+    }
   }
 }
 

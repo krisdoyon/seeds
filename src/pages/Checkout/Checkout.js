@@ -18,7 +18,7 @@ const Checkout = () => {
   const navigate = useNavigate();
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const { currentOrder } = useSelector((state) => state.orders);
 
@@ -54,7 +54,7 @@ const Checkout = () => {
                 setIsLoading={setIsLoading}
               />
             </div>
-            <div className={styles["flex-wrapper"]}>
+            <div className={styles["summary-wrapper"]}>
               <CartSummary {...cart} />
               <CartPromo />
               <CheckoutItems />
