@@ -154,6 +154,7 @@ const CheckoutForm = ({ setIsSubmitted, setIsLoading }) => {
       <div className={styles["form-section"]}>
         <h3 className={styles.heading}>Shipping Address</h3>
         <Checkbox
+          className={styles.checkbox}
           label="Same as billing address"
           checked={shippingSame}
           onChange={() => {

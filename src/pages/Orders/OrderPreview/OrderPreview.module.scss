@@ -1,3 +1,5 @@
+@use "../../../assets/media" as *;
+
 .wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 15rem;
@@ -5,4 +7,8 @@
   align-items: center;
   text-align: center;
   padding: 2rem;
+
+  @include respond(600) {
+    grid-template-columns: 1fr 1.5fr 1fr 8rem;
+  }
 }

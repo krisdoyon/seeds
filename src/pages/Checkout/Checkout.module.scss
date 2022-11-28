@@ -1,3 +1,5 @@
+@use "../../assets/media" as *;
+
 .wrapper {
   margin-top: 6rem;
 
@@ -24,16 +26,24 @@
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 3rem;
+
+  @include respond(600) {
+    grid-template-columns: 1fr;
+  }
 }
 
 .heading {
   margin-bottom: 3rem;
 }
 
-.flex-wrapper {
+.summary-wrapper {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+
+  @include respond(600) {
+    grid-row: 1;
+  }
 }
 
 .spinner {

@@ -4,7 +4,10 @@ import testOrders from "../assets/testOrders.json";
 
 const initialState = {
   orders: JSON.parse(localStorage.getItem("orders")) || [],
-  currentOrder: "",
+  // currentOrder: "",
+  get currentOrder() {
+    return this.orders[0];
+  },
   error: false,
 };
 

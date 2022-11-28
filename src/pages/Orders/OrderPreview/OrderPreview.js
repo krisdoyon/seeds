@@ -9,7 +9,7 @@ const OrderPreview = ({ orderNumber, displayDate, payment: { total } }) => {
       <p>{displayDate}</p>
       <p>{formatPrice(total)}</p>
       <Button fill to={`/orders/${orderNumber}`}>
-        View Order
+        View
       </Button>
     </article>
   );
