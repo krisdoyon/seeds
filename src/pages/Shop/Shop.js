@@ -30,7 +30,7 @@ const Shop = () => {
     setNumProducts(PRODUCTS_TO_LOAD);
   }, [category]);
 
-  const { products, error } = useSelector((state) => state.products);
+  const { currentProducts, error } = useSelector((state) => state.products);
 
   if (error) {
     return <PageNotFound />;
@@ -46,8 +46,8 @@ const Shop = () => {
           <header className={styles.header}>
             <div className={styles["header-info"]}>
               <h2 className={styles.heading}>{category || "all"}</h2>
-              <span>{`${products.length} matching ${
-                products.length === 1 ? "product" : "products"
+              <span>{`${currentProducts.length} matching ${
+                currentProducts.length === 1 ? "product" : "products"
               }`}</span>
             </div>
             <div className={styles["header-row"]}>
@@ -58,7 +58,10 @@ const Shop = () => {
               >
                 <FaBars />
               </Button>
-              <select onChange={(e) => dispatch(updateSort(e.target.value))}>
+              <select
+                value={sort}
+                onChange={(e) => dispatch(updateSort(e.target.value))}
+              >
                 <option value="title-descending">Title (A-Z)</option>
                 <option value="title-ascending">Title (Z-A)</option>
                 <option value="price-ascending">Price (Low to High)</option>
@@ -66,10 +69,10 @@ const Shop = () => {
               </select>
             </div>
           </header>
-          {products.slice(0, numProducts).map((product) => (
+          {currentProducts.slice(0, numProducts).map((product) => (
             <ProductCard key={product.id} {...product} />
           ))}
-          {numProducts < products.length && (
+          {numProducts < currentProducts.length && (
             <Button
               fill
               className={styles["btn-load"]}
