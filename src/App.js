@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 // ROUTER
 import { Routes, Route } from "react-router-dom";
+// STATE
+import { useSelector, useDispatch } from "react-redux";
 // LAYOUT
 import Layout from "./layout";
 // MAIN PAGE COMPONENTS
@@ -12,21 +14,22 @@ import Shop from "./pages/Shop";
 import Orders from "./pages/Orders";
 import SingleOrder from "./pages/SingleOrder/SingleOrder";
 import PageNotFound from "./pages/PageNotFound";
+import Checkout from "./pages/Checkout/Checkout";
+import Wishlist from "./pages/Wishlist";
 // FOOTER PAGE COMPONENTS
 import { Shipping, Terms, Returns } from "./pages/Policies";
 import FAQ from "./pages/FAQ";
 // MODAL
 import Modal from "./components/Modal/Modal";
+import Overlay from "./components/Overlay";
 // SASS
 import "./assets/main.scss";
-
+// ACTIONS
 import { calculateTotals } from "./features/cartSlice";
-import { useSelector, useDispatch } from "react-redux";
-import Wishlist from "./pages/Wishlist";
-
-import { updateWishlistAmount } from "./features/wishlistSlice";
-import Checkout from "./pages/Checkout/Checkout";
-import Overlay from "./components/Overlay";
+import {
+  updateWishlistAmount,
+  updateWishlistItems,
+} from "./features/wishlistSlice";
 import { closeModal } from "./features/modalSlice";
 
 function App() {
@@ -37,7 +40,7 @@ function App() {
   const { isConfirmModalOpen, isPromoModalOpen } = useSelector(
     (state) => state.modal
   );
-  const { products } = useSelector((state) => state.products);
+  const { allProducts } = useSelector((state) => state.products);
 
   useEffect(() => {
     dispatch(calculateTotals());
@@ -50,12 +53,15 @@ function App() {
   useEffect(() => {
     dispatch(updateWishlistAmount());
     localStorage.setItem("wishlist", JSON.stringify(wishlistItems));
-  }, [wishlistItems, dispatch]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [wishlistItems]);
 
   useEffect(() => {
     localStorage.setItem("orders", JSON.stringify(orders));
-    // localStorage.setItem("products", JSON.stringify(products));
-  }, [orders, products]);
+    localStorage.setItem("products", JSON.stringify(allProducts));
+    dispatch(updateWishlistItems());
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [orders, allProducts]);
 
   return (
     <>
