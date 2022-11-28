@@ -16,15 +16,17 @@ import Modal from "../../components/Modal";
 
 const Checkout = () => {
   const navigate = useNavigate();
-  const { cartItems } = useSelector((state) => state.cart);
+  const cart = useSelector((state) => state.cart);
+  const { cartItems } = cart;
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const { currentOrder } = useSelector((state) => state.orders);
 
-  // useEffect(() => {
-  //   if (isSubmitted === false && cartItems.length === 0) {
-  //     navigate("/cart");
-  //   }
-  // }, [cartItems]);
+  useEffect(() => {
+    if (cartItems.length === 0 && !isLoading && !isSubmitted) {
+      navigate("/cart");
+    }
+  }, [cartItems, isSubmitted, isLoading, navigate]);
 
   useEffect(() => {
     if (!isLoading) {
@@ -40,7 +42,7 @@ const Checkout = () => {
     <section className={`container ${styles.wrapper}`}>
       {!isSubmitted && (
         <>
-          <Breadcrumb title="checkout" cart />
+          <Breadcrumb title="checkout" />
           <Button to="/cart" className={styles["btn-back"]} fill>
             back to cart
           </Button>
@@ -53,7 +55,7 @@ const Checkout = () => {
               />
             </div>
             <div className={styles["flex-wrapper"]}>
-              <CartSummary />
+              <CartSummary {...cart} />
               <CartPromo />
               <CheckoutItems />
             </div>
@@ -71,7 +73,12 @@ const Checkout = () => {
       )}
       {isSubmitted && (
         <>
-          <h2 className={styles.heading}>Thanks for your order!</h2>
+          <header>
+            <h2>Thanks for your order!</h2>
+            <p
+              className={styles["order-number"]}
+            >{`Order #${currentOrder?.orderNumber}`}</p>
+          </header>
           <OrderSummary />
         </>
       )}
