@@ -9,7 +9,7 @@
 .heading {
   margin-top: 4rem;
   font-size: 3.6rem;
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
 }
 
 .grid {
@@ -17,9 +17,14 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 3rem;
   max-width: 100rem;
+  margin-top: 3rem;
 
   @include respond(800) {
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
   }
+}
+
+.empty {
+  font-size: 2rem;
 }

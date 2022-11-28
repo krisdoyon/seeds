@@ -28,7 +28,14 @@ const CartItems = () => {
           <Button to="/shop" fill>
             continue shopping
           </Button>
-          <Button fill onClick={() => dispatch(openModal({ type: "clear" }))}>
+          <Button
+            fill
+            onClick={() =>
+              dispatch(
+                openModal({ type: "confirm", action: "clear", page: "cart" })
+              )
+            }
+          >
             clear cart
           </Button>
         </div>

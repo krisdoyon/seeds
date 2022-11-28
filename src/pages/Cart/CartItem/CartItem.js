@@ -67,7 +67,17 @@ const CartItem = ({
 
       <Button
         className={styles["btn-remove"]}
-        onClick={() => dispatch(openModal({ type: "cart", id, title }))}
+        onClick={() =>
+          dispatch(
+            openModal({
+              type: "confirm",
+              action: "remove",
+              page: "cart",
+              id,
+              title,
+            })
+          )
+        }
         fill
       >
         X

@@ -14,26 +14,52 @@ const Wishlist = () => {
       <Breadcrumb title="wishlist" />
       <div className={styles.wrapper}>
         <h2 className={styles.heading}>Wishlist</h2>
-        {wishlistItems.length === 0 && <p>Your wishlist is empty.</p>}
+        {wishlistItems.length === 0 && (
+          <p className={styles.empty}>Your wishlist is empty.</p>
+        )}
         {wishlistItems.length !== 0 && (
-          <div className={styles.grid}>
-            {wishlistItems.map((item) => {
-              const { id, title } = item;
-              return (
-                <ProductCard key={id} {...item}>
-                  <Button
-                    fill
-                    className={styles.btn}
-                    onClick={() =>
-                      dispatch(openModal({ type: "wishlist", id, title }))
-                    }
-                  >
-                    Remove
-                  </Button>
-                </ProductCard>
-              );
-            })}
-          </div>
+          <>
+            <Button
+              fill
+              onClick={() =>
+                dispatch(
+                  openModal({
+                    type: "confirm",
+                    action: "clear",
+                    page: "wishlist",
+                  })
+                )
+              }
+            >
+              Clear wishlist
+            </Button>
+            <div className={styles.grid}>
+              {wishlistItems.map((item) => {
+                const { id, title } = item;
+                return (
+                  <ProductCard key={id} {...item}>
+                    <Button
+                      fill
+                      className={styles.btn}
+                      onClick={() =>
+                        dispatch(
+                          openModal({
+                            type: "confirm",
+                            action: "remove",
+                            page: "wishlist",
+                            id,
+                            title,
+                          })
+                        )
+                      }
+                    >
+                      Remove
+                    </Button>
+                  </ProductCard>
+                );
+              })}
+            </div>
+          </>
         )}
       </div>
     </section>
