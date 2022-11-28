@@ -1,21 +1,28 @@
 .wrapper {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  column-gap: 4rem;
+}
 
-  strong {
-    font-weight: 600;
-  }
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  justify-self: center;
+  align-items: center;
 }
 
 .section-heading {
   font-weight: 600;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.6rem;
 }
 
 .info {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 2.4rem;
+  justify-self: start;
+  width: max-content;
 }
 
 .items {
@@ -24,4 +31,9 @@
   border: 1px solid var(--color-grey-3);
   border-radius: var(--border-radius);
   padding: 0 1rem;
+  height: max-content;
+}
+
+.summary {
+  width: 35rem;
 }
