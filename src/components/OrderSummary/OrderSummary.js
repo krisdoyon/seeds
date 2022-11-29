@@ -24,6 +24,7 @@ const OrderSummary = () => {
           <div>
             <h3 className={styles["section-heading"]}>Payment method:</h3>
             <p>{`Card ending in ${payment.card.number.slice(-4)}`}</p>
+            <p>{`Expires ${payment.card.expMonth}/${payment.card.expYear}`}</p>
           </div>
           <div>
             <h3 className={styles["section-heading"]}>Billed to:</h3>
