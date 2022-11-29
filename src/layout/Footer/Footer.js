@@ -20,19 +20,44 @@ const Footer = () => {
             <img src="/img/logo.png" alt="logo" className={styles.logo} />
           </div>
           <div className={styles.social}>
-            <a href="https://facebook.com" target="_blank" rel="noreferrer">
+            <a
+              href="https://facebook.com"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Facebook"
+            >
               <FaFacebookSquare className={styles["social-icon"]} />
             </a>
-            <a href="https://twitter.com" target="_blank" rel="noreferrer">
+            <a
+              href="https://twitter.com"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Twitter"
+            >
               <FaTwitterSquare className={styles["social-icon"]} />
             </a>
-            <a href="https://instagram.com" target="_blank" rel="noreferrer">
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Instagram"
+            >
               <FaInstagramSquare className={styles["social-icon"]} />
             </a>
-            <a href="https://youtube.com" target="_blank" rel="noreferrer">
+            <a
+              href="https://youtube.com"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="YouTube"
+            >
               <FaYoutubeSquare className={styles["social-icon"]} />
             </a>
-            <a href="https://pinterest.com" target="_blank" rel="noreferrer">
+            <a
+              href="https://pinterest.com"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Pinterest"
+            >
               <FaPinterestSquare className={styles["social-icon"]} />
             </a>
           </div>
