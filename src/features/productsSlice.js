@@ -105,6 +105,9 @@ const productsSlice = createSlice({
         toUpdate.inStock = toUpdate.inStock - product.quantity;
       });
     },
+    resetProducts: (state) => {
+      state.allProducts = [...data];
+    },
   },
 });
 
@@ -115,6 +118,7 @@ export const {
   clearFilters,
   updateSort,
   updateProducts,
+  resetProducts,
 } = productsSlice.actions;
 
 export default productsSlice.reducer;

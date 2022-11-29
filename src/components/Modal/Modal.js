@@ -7,14 +7,12 @@ import { closeModal } from "../../features/modalSlice";
 import { clearCart, removeItem } from "../../features/cartSlice";
 import { clearWishlist, removeWishlist } from "../../features/wishlistSlice";
 import { clearOrders, loadTestOrders } from "../../features/ordersSlice";
+import { resetProducts, updateProducts } from "../../features/productsSlice";
+import testOrders from "../../assets/testOrders.json";
 
 const Modal = ({ children, className }) => {
   const dispatch = useDispatch();
   const { type, action, page, title, id } = useSelector((state) => state.modal);
-
-  // type: confirm, promo
-  // action: remove, clear
-  // page: cart, wishlist, orders
 
   const handleConfirm = () => {
     if (action === "clear" && page === "cart") {
@@ -25,6 +23,7 @@ const Modal = ({ children, className }) => {
     }
     if (action === "clear" && page === "orders") {
       dispatch(clearOrders());
+      dispatch(resetProducts());
     }
     if (action === "remove" && page === "cart") {
       dispatch(removeItem(id));
@@ -33,7 +32,8 @@ const Modal = ({ children, className }) => {
       dispatch(removeWishlist(id));
     }
     if (action === "load") {
-      dispatch(loadTestOrders());
+      dispatch(loadTestOrders(testOrders));
+      testOrders.forEach((order) => dispatch(updateProducts(order.products)));
     }
     dispatch(closeModal());
   };
