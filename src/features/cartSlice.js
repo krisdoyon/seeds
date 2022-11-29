@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import allProducts from "../assets/seeds.json";
 
 const initialPromo = {
   code: null,
@@ -25,7 +24,8 @@ const cartSlice = createSlice({
       state.cartItems = [];
     },
     addItem: (state, { payload: { id, quantity } }) => {
-      const product = allProducts.find((item) => item.id === id);
+      const products = JSON.parse(localStorage.getItem("products"));
+      const product = products.find((item) => item.id === id);
       const cartItem = state.cartItems.find((item) => item.id === id);
       if (!cartItem) {
         state.cartItems.push({ ...product, quantity });
