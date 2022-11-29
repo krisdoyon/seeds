@@ -49,6 +49,7 @@ const CartItem = ({
         <Button
           className={styles["btn-toggle"]}
           onClick={() => dispatch(toggleAmount({ action: "increase", id }))}
+          aria-label={`increase quantity for ${title}`}
         >
           <FaChevronUp className={styles["toggle-icon"]} />
         </Button>
@@ -56,6 +57,7 @@ const CartItem = ({
         <Button
           className={styles["btn-toggle"]}
           onClick={() => dispatch(toggleAmount({ action: "decrease", id }))}
+          aria-label={`decrease quantity for ${title}`}
         >
           <FaChevronDown className={styles["toggle-icon"]} />
         </Button>

@@ -43,6 +43,7 @@ const Slider = () => {
         <Button
           className={styles["btn-prev"]}
           onClick={() => setIndex(index - 1)}
+          aria-label="slider previous button"
         >
           <FaChevronLeft className={styles.icon} />
         </Button>
@@ -54,12 +55,14 @@ const Slider = () => {
                 index === i ? styles.active : ""
               }`}
               onClick={() => setIndex(i)}
+              aria-label={`slider circle button #${i}`}
             ></Button>
           );
         })}
         <Button
           className={styles["btn-next"]}
           onClick={() => setIndex(index + 1)}
+          aria-label="slider next button"
         >
           <FaChevronRight className={styles.icon} />
         </Button>

@@ -50,6 +50,7 @@ const CartPromo = () => {
             {promo.code === null && (
               <>
                 <input
+                  aria-label="promo input"
                   type="text"
                   value={promoInput}
                   onChange={(e) => setPromoInput(e.target.value.toUpperCase())}
