@@ -39,6 +39,7 @@ const Modal = ({ children, className }) => {
     }
     if (action === "load") {
       dispatch(clearCart());
+      dispatch(resetProducts());
       dispatch(loadTestOrders(testOrders));
       testOrders.forEach((order) => dispatch(updateProducts(order.products)));
       dispatch(updateWishlist());
