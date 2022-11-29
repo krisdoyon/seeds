@@ -4,6 +4,7 @@ import data from "../assets/seeds.json";
 const initialFilters = {
   new: false,
   onSale: false,
+  inStock: false,
   search: "",
 };
 
@@ -51,6 +52,9 @@ const productsSlice = createSlice({
       }
       if (state.filters.onSale) {
         newProducts = newProducts.filter((product) => product.salePrice);
+      }
+      if (state.filters.inStock) {
+        newProducts = newProducts.filter((product) => product.inStock !== 0);
       }
       if (state.filters.search) {
         newProducts = newProducts.filter(

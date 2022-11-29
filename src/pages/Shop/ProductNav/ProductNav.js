@@ -11,6 +11,21 @@ const ProductNav = ({ isNavOpen, setIsNavOpen }) => {
   const dispatch = useDispatch();
   const { search } = useSelector((state) => state.products.filters);
 
+  const setFilter = (e) => {
+    let value;
+    if (e.target.id === "search") {
+      value = e.target.value;
+    } else {
+      value = e.target.checked;
+    }
+    dispatch(
+      updateFilters({
+        filter: e.target.id,
+        value,
+      })
+    );
+  };
+
   return (
     <nav className={`${styles.wrapper} ${isNavOpen ? styles["nav-open"] : ""}`}>
       <Button
@@ -31,11 +46,7 @@ const ProductNav = ({ isNavOpen, setIsNavOpen }) => {
             id="search"
             placeholder="Enter search term..."
             value={search}
-            onChange={(e) =>
-              dispatch(
-                updateFilters({ filter: "search", value: e.target.value })
-              )
-            }
+            onChange={setFilter}
           />
           <FaSearch className={styles["magnify-icon"]} />
         </div>
@@ -74,27 +85,19 @@ const ProductNav = ({ isNavOpen, setIsNavOpen }) => {
             label="New"
             id="new"
             checked={filters.new}
-            onChange={(e) =>
-              dispatch(
-                updateFilters({
-                  filter: e.target.name,
-                  value: e.target.checked,
-                })
-              )
-            }
+            onChange={setFilter}
           />
           <Checkbox
             label="On sale"
             id="onSale"
             checked={filters.onSale}
-            onChange={(e) =>
-              dispatch(
-                updateFilters({
-                  filter: e.target.name,
-                  value: e.target.checked,
-                })
-              )
-            }
+            onChange={setFilter}
+          />
+          <Checkbox
+            label="In stock"
+            id="inStock"
+            checked={filters.inStock}
+            onChange={setFilter}
           />
         </div>
         <Button
