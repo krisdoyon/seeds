@@ -4,8 +4,11 @@ import { useDispatch, useSelector } from "react-redux";
 // ROUTER
 import { useParams, useNavigate } from "react-router-dom";
 // STATE
-import { loadSingleProduct } from "../../features/productsSlice";
-import { addWishlist, removeWishlist } from "../../features/wishlistSlice";
+import {
+  loadSingleProduct,
+  addWishlist,
+  removeWishlist,
+} from "../../features/productsSlice";
 // UTIL
 import { formatPrice } from "../../utils/formatPrice";
 // COMPONENTS
@@ -21,12 +24,14 @@ import Stars from "../../components/Stars";
 
 const SingleProduct = () => {
   const dispatch = useDispatch();
-  const { id } = useParams();
   const navigate = useNavigate();
+  const { id } = useParams();
   const [quantity, setQuantity] = useState(1);
   const [cartDisabled, setCartDisabled] = useState(false);
   const [wishlistDisabled, setWishlistDisabled] = useState(false);
-  const { wishlistItems } = useSelector((state) => state.wishlist);
+  const { items: wishlistItems } = useSelector(
+    (state) => state.products.wishlist
+  );
   const onWishlist = wishlistItems.some((item) => item.id === id);
 
   useEffect(() => {

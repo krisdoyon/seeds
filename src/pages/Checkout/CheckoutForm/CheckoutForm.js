@@ -12,7 +12,10 @@ import {
   validateForm,
 } from "../../../features/checkoutSlice";
 import { stateOptions, monthOptions } from "./CheckoutSelectOptions";
-import { updateProducts } from "../../../features/productsSlice";
+import {
+  updateProducts,
+  updateWishlist,
+} from "../../../features/productsSlice";
 
 const CheckoutForm = ({ setIsSubmitted, setIsLoading }) => {
   const { cartItems, subtotal, promo, shippingCost, tax, total } = useSelector(
@@ -70,6 +73,7 @@ const CheckoutForm = ({ setIsSubmitted, setIsLoading }) => {
         })
       );
       dispatch(updateProducts(cartItems));
+      dispatch(updateWishlist());
       dispatch(clearCart());
       dispatch(resetForm());
       setIsSubmitted(true);

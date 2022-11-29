@@ -6,18 +6,18 @@ import { openModal } from "../../features/modalSlice";
 import Button from "../../components/Button";
 
 const Wishlist = () => {
-  const { wishlistItems } = useSelector((state) => state.wishlist);
   const dispatch = useDispatch();
+  const { items } = useSelector((state) => state.products.wishlist);
 
   return (
     <section className="container">
       <Breadcrumb title="wishlist" />
       <div className={styles.wrapper}>
         <h2 className={styles.heading}>Wishlist</h2>
-        {wishlistItems.length === 0 && (
+        {items.length === 0 && (
           <p className={styles.empty}>Your wishlist is empty.</p>
         )}
-        {wishlistItems.length !== 0 && (
+        {items.length !== 0 && (
           <>
             <Button
               fill
@@ -34,7 +34,7 @@ const Wishlist = () => {
               Clear wishlist
             </Button>
             <div className={styles.grid}>
-              {wishlistItems.map((item) => {
+              {items.map((item) => {
                 const { id, title } = item;
                 return (
                   <ProductCard key={id} {...item}>

@@ -4,12 +4,12 @@ import { useSelector } from "react-redux";
 import { FaRegHeart } from "react-icons/fa";
 
 const WishlistButton = () => {
-  const { wishlistAmount } = useSelector((state) => state.wishlist);
+  const { amount } = useSelector((state) => state.products.wishlist);
 
   return (
     <Link to="/wishlist" className={styles.wrapper}>
       <FaRegHeart className={styles.icon} />
-      <div className={styles.amount}>{wishlistAmount}</div>
+      <div className={styles.amount}>{amount}</div>
     </Link>
   );
 };

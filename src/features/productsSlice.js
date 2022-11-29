@@ -1,10 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import data from "../assets/seeds.json";
 
-const allCategories = [
-  ...new Set(data.map((product) => product.category)),
-].sort((a, b) => a.localeCompare(b));
-
 const initialFilters = {
   new: false,
   onSale: false,
@@ -19,11 +15,19 @@ const initialState = {
   get newProducts() {
     return this.allProducts.filter((product) => product.details.isNew);
   },
-  allCategories,
+  allCategories: [...new Set(data.map((product) => product.category))].sort(
+    (a, b) => a.localeCompare(b)
+  ),
   filters: initialFilters,
   currentProduct: {},
   error: false,
   sort: "title-descending",
+  wishlist: {
+    items: JSON.parse(localStorage.getItem("wishlist")) || [],
+    get amount() {
+      return this.items.length;
+    },
+  },
 };
 
 const productsSlice = createSlice({
@@ -32,7 +36,7 @@ const productsSlice = createSlice({
   reducers: {
     loadProducts: (state, { payload: category }) => {
       state.error = false;
-      if (category && !allCategories.find((cat) => cat === category)) {
+      if (category && !state.allCategories.find((cat) => cat === category)) {
         state.error = true;
       }
       if (!category) category = "all";
@@ -108,6 +112,32 @@ const productsSlice = createSlice({
     resetProducts: (state) => {
       state.allProducts = [...data];
     },
+
+    // WISHLIST
+    addWishlist: (state, { payload: id }) => {
+      state.wishlist.items.push(
+        state.allProducts.find((product) => product.id === id)
+      );
+      state.wishlist.amount = state.wishlist.items.length;
+    },
+    removeWishlist: (state, { payload: id }) => {
+      state.wishlist.items = state.wishlist.items.filter(
+        (product) => product.id !== id
+      );
+      state.wishlist.amount = state.wishlist.items.length;
+    },
+    clearWishlist: (state) => {
+      state.wishlist.items = [];
+      state.wishlist.amount = 0;
+    },
+    updateWishlist: (state) => {
+      const newWishlistItems = state.wishlist.items.map((item) => {
+        return {
+          ...state.allProducts.find((product) => product.id === item.id),
+        };
+      });
+      state.wishlist.items = newWishlistItems;
+    },
   },
 });
 
@@ -119,6 +149,10 @@ export const {
   updateSort,
   updateProducts,
   resetProducts,
+  addWishlist,
+  removeWishlist,
+  clearWishlist,
+  updateWishlist,
 } = productsSlice.actions;
 
 export default productsSlice.reducer;

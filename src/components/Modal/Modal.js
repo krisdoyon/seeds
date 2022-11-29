@@ -5,9 +5,14 @@ import ReactDOM from "react-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { closeModal } from "../../features/modalSlice";
 import { clearCart, removeItem } from "../../features/cartSlice";
-import { clearWishlist, removeWishlist } from "../../features/wishlistSlice";
 import { clearOrders, loadTestOrders } from "../../features/ordersSlice";
-import { resetProducts, updateProducts } from "../../features/productsSlice";
+import {
+  resetProducts,
+  updateProducts,
+  updateWishlist,
+  clearWishlist,
+  removeWishlist,
+} from "../../features/productsSlice";
 import testOrders from "../../assets/testOrders.json";
 
 const Modal = ({ children, className }) => {
@@ -24,6 +29,7 @@ const Modal = ({ children, className }) => {
     if (action === "clear" && page === "orders") {
       dispatch(clearOrders());
       dispatch(resetProducts());
+      dispatch(updateWishlist());
     }
     if (action === "remove" && page === "cart") {
       dispatch(removeItem(id));
@@ -32,8 +38,10 @@ const Modal = ({ children, className }) => {
       dispatch(removeWishlist(id));
     }
     if (action === "load") {
+      dispatch(clearCart());
       dispatch(loadTestOrders(testOrders));
       testOrders.forEach((order) => dispatch(updateProducts(order.products)));
+      dispatch(updateWishlist());
     }
     dispatch(closeModal());
   };

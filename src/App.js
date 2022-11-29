@@ -26,16 +26,14 @@ import Overlay from "./components/Overlay";
 import "./assets/main.scss";
 // ACTIONS
 import { calculateTotals } from "./features/cartSlice";
-import {
-  updateWishlistAmount,
-  updateWishlistItems,
-} from "./features/wishlistSlice";
 import { closeModal } from "./features/modalSlice";
 
 function App() {
   const dispatch = useDispatch();
   const { cartItems, promo } = useSelector((state) => state.cart);
-  const { wishlistItems } = useSelector((state) => state.wishlist);
+  const { items: wishlistItems } = useSelector(
+    (state) => state.products.wishlist
+  );
   const { orders } = useSelector((state) => state.orders);
   const { isConfirmModalOpen, isPromoModalOpen } = useSelector(
     (state) => state.modal
@@ -44,23 +42,20 @@ function App() {
 
   useEffect(() => {
     dispatch(calculateTotals());
-  }, [dispatch, cartItems, promo]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [cartItems, promo]);
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cartItems));
   }, [cartItems]);
 
   useEffect(() => {
-    dispatch(updateWishlistAmount());
     localStorage.setItem("wishlist", JSON.stringify(wishlistItems));
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [wishlistItems]);
 
   useEffect(() => {
     localStorage.setItem("orders", JSON.stringify(orders));
     localStorage.setItem("products", JSON.stringify(allProducts));
-    dispatch(updateWishlistItems());
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orders, allProducts]);
 
   return (
