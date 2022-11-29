@@ -36,61 +36,59 @@ const initialState = {
   isFormValid: false,
 };
 
-// TEMP STATE FOR DEVELOPMENT
-
-// const tempState = {
-//   contact: {
-//     email: {
-//       value: "email@gmail.com",
-//       touched: true,
-//       hasError: false,
-//       error: "",
-//     },
-//     phone: { value: "2073479192", touched: true, hasError: false, error: "" },
-//   },
-//   billing: {
-//     billFirst: { value: "Kris", touched: true, hasError: false, error: "" },
-//     billLast: { value: "Doyon", touched: true, hasError: false, error: "" },
-//     billAddress1: {
-//       value: "11 Hampden Rd.",
-//       touched: true,
-//       hasError: false,
-//       error: "",
-//     },
-//     billAddress2: { value: "", touched: true, hasError: false, error: "" },
-//     billCity: {
-//       value: "Stafford Springs",
-//       touched: true,
-//       hasError: false,
-//       error: "",
-//     },
-//     billState: { value: "CT", touched: true, hasError: false, error: "" },
-//     billZip: { value: "06076", touched: true, hasError: false, error: "" },
-//   },
-//   shipping: {
-//     shipFirst: { value: "", touched: true, hasError: false, error: "" },
-//     shipLast: { value: "", touched: true, hasError: false, error: "" },
-//     shipAddress1: { value: "", touched: true, hasError: false, error: "" },
-//     shipAddress2: { value: "", touched: true, hasError: false, error: "" },
-//     shipCity: { value: "", touched: true, hasError: false, error: "" },
-//     shipState: { value: "", touched: true, hasError: false, error: "" },
-//     shipZip: { value: "", touched: true, hasError: false, error: "" },
-//   },
-//   payment: {
-//     payName: { value: "Kris Doyon", touched: true, hasError: false, error: "" },
-//     payCardNum: {
-//       value: "4496 1600 0032 4588",
-//       touched: true,
-//       hasError: false,
-//       error: "",
-//     },
-//     payExpMonth: { value: "01", touched: true, hasError: false, error: "" },
-//     payExpYear: { value: "2023", touched: true, hasError: false, error: "" },
-//     payCardCode: { value: "159", touched: true, hasError: false, error: "" },
-//   },
-//   shippingSame: true,
-//   isFormValid: true,
-// };
+const testInfo = {
+  contact: {
+    email: {
+      value: "johnsmith@gmail.com",
+      touched: true,
+      hasError: false,
+      error: "",
+    },
+    phone: { value: "8609492323", touched: true, hasError: false, error: "" },
+  },
+  billing: {
+    billFirst: { value: "John", touched: true, hasError: false, error: "" },
+    billLast: { value: "Smith", touched: true, hasError: false, error: "" },
+    billAddress1: {
+      value: "25 Redwood St.",
+      touched: true,
+      hasError: false,
+      error: "",
+    },
+    billAddress2: { value: "", touched: true, hasError: false, error: "" },
+    billCity: {
+      value: "Portland",
+      touched: true,
+      hasError: false,
+      error: "",
+    },
+    billState: { value: "ME", touched: true, hasError: false, error: "" },
+    billZip: { value: "04101", touched: true, hasError: false, error: "" },
+  },
+  shipping: {
+    shipFirst: { value: "", touched: true, hasError: false, error: "" },
+    shipLast: { value: "", touched: true, hasError: false, error: "" },
+    shipAddress1: { value: "", touched: true, hasError: false, error: "" },
+    shipAddress2: { value: "", touched: true, hasError: false, error: "" },
+    shipCity: { value: "", touched: true, hasError: false, error: "" },
+    shipState: { value: "", touched: true, hasError: false, error: "" },
+    shipZip: { value: "", touched: true, hasError: false, error: "" },
+  },
+  payment: {
+    payName: { value: "John Smith", touched: true, hasError: false, error: "" },
+    payCardNum: {
+      value: "4496 1600 0032 4588",
+      touched: true,
+      hasError: false,
+      error: "",
+    },
+    payExpMonth: { value: "01", touched: true, hasError: false, error: "" },
+    payExpYear: { value: "2023", touched: true, hasError: false, error: "" },
+    payCardCode: { value: "159", touched: true, hasError: false, error: "" },
+  },
+  shippingSame: true,
+  isFormValid: true,
+};
 
 const checkoutSlice = createSlice({
   name: "checkout",
@@ -128,10 +126,16 @@ const checkoutSlice = createSlice({
       state.shippingSame = newShippingSame;
     },
     resetForm: () => initialState,
+    loadTestInfo: () => testInfo,
   },
 });
 
-export const { updateForm, updateShippingSame, validateForm, resetForm } =
-  checkoutSlice.actions;
+export const {
+  updateForm,
+  updateShippingSame,
+  validateForm,
+  resetForm,
+  loadTestInfo,
+} = checkoutSlice.actions;
 
 export default checkoutSlice.reducer;

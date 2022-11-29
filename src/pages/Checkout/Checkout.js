@@ -8,14 +8,16 @@ import CartPromo from "../Cart/CartPromo";
 import CheckoutForm from "./CheckoutForm/CheckoutForm";
 import CheckoutItems from "./CheckoutItems/CheckoutItems";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import OrderSummary from "../../components/OrderSummary";
 import { ImSpinner3 } from "react-icons/im";
 import Overlay from "../../components/Overlay";
 import Modal from "../../components/Modal";
+import { loadTestInfo } from "../../features/checkoutSlice";
 
 const Checkout = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -43,9 +45,18 @@ const Checkout = () => {
       {!isSubmitted && (
         <>
           <Breadcrumb title="checkout" />
-          <Button to="/cart" className={styles["btn-back"]} fill>
-            back to cart
-          </Button>
+          <div className={styles["btn-container"]}>
+            <Button fill to="/cart" className={styles["btn-back"]}>
+              back to cart
+            </Button>
+            <Button
+              fill
+              className={styles["btn-back"]}
+              onClick={() => dispatch(loadTestInfo())}
+            >
+              Load Test Info
+            </Button>
+          </div>
           <div className={styles.content}>
             <div>
               <h2 className={styles.heading}>Checkout</h2>
