@@ -28,6 +28,7 @@ const Modal = ({ children, className }) => {
     }
     if (action === "clear" && page === "orders") {
       dispatch(clearOrders());
+      dispatch(clearCart());
       dispatch(resetProducts());
       dispatch(updateWishlist());
     }
