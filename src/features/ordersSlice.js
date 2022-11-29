@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { generateOrderNumber } from "../utils/generateOrderNumber";
-import testOrders from "../assets/testOrders.json";
 
 const initialState = {
   orders: JSON.parse(localStorage.getItem("orders")) || [],
@@ -53,8 +52,8 @@ const ordersSlice = createSlice({
     clearOrders: (state) => {
       state.orders = [];
     },
-    loadTestOrders: (state) => {
-      state.orders = testOrders;
+    loadTestOrders: (state, { payload }) => {
+      state.orders = payload;
     },
   },
 });
