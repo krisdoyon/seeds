@@ -79,7 +79,16 @@ const ProductNav = ({ isNavOpen, setIsNavOpen }) => {
             );
           })}
         </div>
-        <h2 className={styles.heading}>Filter</h2>
+        <div className={styles["heading-wrapper"]}>
+          <h2 className={styles.heading}>Filter</h2>
+          <Button
+            fill
+            className={styles["btn-clear"]}
+            onClick={() => dispatch(clearFilters())}
+          >
+            Clear Filters
+          </Button>
+        </div>
         <div className={styles.list}>
           <Checkbox
             label="New"
@@ -100,13 +109,6 @@ const ProductNav = ({ isNavOpen, setIsNavOpen }) => {
             onChange={setFilter}
           />
         </div>
-        <Button
-          fill
-          className={styles["btn-clear"]}
-          onClick={() => dispatch(clearFilters())}
-        >
-          Clear Filters
-        </Button>
       </div>
     </nav>
   );
