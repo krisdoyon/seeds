@@ -19,7 +19,7 @@ const Slider = () => {
   }, [index]);
 
   useEffect(() => {
-    const timer = setTimeout(() => setIndex(index + 1), 7000);
+    const timer = setTimeout(() => setIndex(index + 1), 5500);
 
     return () => clearTimeout(timer);
   }, [index]);
