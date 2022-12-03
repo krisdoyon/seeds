@@ -10,7 +10,7 @@ const Orders = () => {
   const dispatch = useDispatch();
 
   return (
-    <section className="container">
+    <section>
       <Breadcrumb title="orders" />
       <header className={styles.header}>
         <h2>Your Orders</h2>

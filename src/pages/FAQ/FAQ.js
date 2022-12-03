@@ -5,7 +5,7 @@ import FAQItem from "./FAQItem/FAQItem";
 
 const FAQ = () => {
   return (
-    <div className="container">
+    <section>
       <Breadcrumb title="FAQ" />
       <div className={styles.content}>
         <h2>Frequently Asked Questions</h2>
@@ -15,7 +15,7 @@ const FAQ = () => {
           })}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

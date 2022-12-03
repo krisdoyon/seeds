@@ -3,7 +3,7 @@ import Breadcrumb from "../../components/Breadcrumb";
 
 export const Returns = () => {
   return (
-    <section className={`container  ${styles.wrapper}`}>
+    <section className={styles.wrapper}>
       <Breadcrumb title="returns" />
       <div className={styles.policy}>
         <h2>Return & Refund Policy</h2>

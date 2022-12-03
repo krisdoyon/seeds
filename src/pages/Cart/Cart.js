@@ -13,14 +13,14 @@ const Cart = () => {
   const { amount } = cart;
 
   return (
-    <div className={`container ${styles.wrapper}`}>
+    <section>
       <Breadcrumb title="Cart" />
       <CartHeader />
       {amount === 0 && <CartEmpty />}
       {amount > 0 && (
         <>
           <CartItems />
-          <div className={styles["flex-wrapper"]}>
+          <div className={styles["summary-wrapper"]}>
             <CartPromo />
             <CartSummary {...cart} />
             <Button to="/checkout" fill>
@@ -29,7 +29,7 @@ const Cart = () => {
           </div>
         </>
       )}
-    </div>
+    </section>
   );
 };
 

@@ -10,7 +10,7 @@ const Wishlist = () => {
   const { items } = useSelector((state) => state.products.wishlist);
 
   return (
-    <section className="container">
+    <section>
       <Breadcrumb title="wishlist" />
       <div className={styles.wrapper}>
         <h2 className={styles.heading}>Wishlist</h2>

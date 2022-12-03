@@ -37,7 +37,7 @@ const Shop = () => {
   }
 
   return (
-    <section className={`container ${styles.wrapper}`}>
+    <section className={styles.wrapper}>
       <Breadcrumb title={category || "shop"} category={category} />
       <div className={styles.content}>
         <ProductNav isNavOpen={isNavOpen} setIsNavOpen={setIsNavOpen} />

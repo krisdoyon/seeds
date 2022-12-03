@@ -3,7 +3,7 @@ import Button from "../../components/Button";
 
 const PageNotFound = () => {
   return (
-    <div className={`container ${styles.wrapper}`}>
+    <section className={styles.wrapper}>
       <h2>Oops!</h2>
       <p>
         <strong>404:</strong> Page Not Found
@@ -11,7 +11,7 @@ const PageNotFound = () => {
       <Button to="/" fill>
         Go Home
       </Button>
-    </div>
+    </section>
   );
 };
 

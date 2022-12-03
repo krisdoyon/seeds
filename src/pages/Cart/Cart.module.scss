@@ -1,10 +1,6 @@
 @use "../../assets/media" as *;
 
-.wrapper {
-  max-width: 100rem !important;
-}
-
-.flex-wrapper {
+.summary-wrapper {
   display: flex;
   flex-direction: column;
   align-items: flex-end;

@@ -3,7 +3,7 @@ import Breadcrumb from "../../components/Breadcrumb";
 
 const About = () => {
   return (
-    <div className={`container ${styles.wrapper}`}>
+    <div className={styles.wrapper}>
       <Breadcrumb title="about" />
       <div className={styles.grid}>
         <div className={styles.content}>

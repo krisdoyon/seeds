@@ -28,7 +28,7 @@ const SingleOrder = () => {
 
   if (orderNumber) {
     return (
-      <section className={`container ${styles.wrapper}`}>
+      <section className={styles.wrapper}>
         <Button
           fill
           className={styles["btn-back"]}

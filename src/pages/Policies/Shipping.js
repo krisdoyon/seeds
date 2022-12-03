@@ -3,7 +3,7 @@ import Breadcrumb from "../../components/Breadcrumb";
 
 export const Shipping = () => {
   return (
-    <section className={`container ${styles.wrapper}`}>
+    <section className={styles.wrapper}>
       <Breadcrumb title="Shipping" />
       <div className={styles.policy}>
         <h2>Shipping Policy</h2>

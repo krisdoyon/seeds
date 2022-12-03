@@ -8,13 +8,13 @@ import SubscribeForm from "./SubscribeForm/SubscribeForm";
 
 const Home = () => {
   return (
-    <main className={`container ${styles.wrapper}`}>
+    <section className={styles.wrapper}>
       <Slider />
       <Features />
       <Popular />
       <NewArrivals />
       <SubscribeForm />
-    </main>
+    </section>
   );
 };
 

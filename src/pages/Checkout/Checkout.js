@@ -41,7 +41,7 @@ const Checkout = () => {
   }, [isLoading]);
 
   return (
-    <section className={`container ${styles.wrapper}`}>
+    <section className={styles.wrapper}>
       {!isSubmitted && (
         <>
           <Breadcrumb title="checkout" />

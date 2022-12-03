@@ -86,7 +86,7 @@ const SingleProduct = () => {
     };
 
     return (
-      <section className={`container ${styles.wrapper}`}>
+      <section className={styles.wrapper}>
         <header>
           <Button
             fill

@@ -3,7 +3,7 @@ import Breadcrumb from "../../components/Breadcrumb";
 
 export const Terms = () => {
   return (
-    <section className={`container ${styles.wrapper}`}>
+    <section className={styles.wrapper}>
       <Breadcrumb title="Terms" />
       <div className={styles.policy}>
         <h2>Terms and Conditions</h2>
