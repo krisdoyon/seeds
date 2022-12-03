@@ -1,0 +1,28 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  max-width: 50rem;
+  padding: 2rem;
+  column-gap: 2rem;
+  row-gap: 2rem;
+  border: 1px solid var(--color-grey-3);
+  border-radius: var(--border-radius);
+  width: 100%;
+  align-self: center;
+  margin: auto 0;
+
+  input {
+    padding: 1rem 1.4rem;
+  }
+
+  label {
+    font-size: 2rem;
+  }
+
+  button {
+    align-self: center;
+    font-size: 1.6rem;
+    font-weight: 400;
+    padding: 1.2rem 4rem;
+  }
+}
