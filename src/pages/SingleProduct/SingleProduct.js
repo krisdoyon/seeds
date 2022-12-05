@@ -9,6 +9,7 @@ import {
   addWishlist,
   removeWishlist,
 } from "../../features/productsSlice";
+import { addCartItem } from "../../features/cartSlice";
 // UTIL
 import { formatPrice } from "../../utils/formatPrice";
 // COMPONENTS
@@ -34,18 +35,21 @@ const SingleProduct = () => {
   );
   const onWishlist = wishlistItems.some((item) => item.id === id);
 
+  const { currentProduct, notFound, isLoading } = useSelector(
+    (state) => state.products
+  );
   useEffect(() => {
+    if (isLoading) return;
     dispatch(loadSingleProduct(id));
-  }, [dispatch, id]);
+  }, [dispatch, id, isLoading]);
 
-  const { currentProduct, error } = useSelector((state) => state.products);
-
-  if (error) {
+  if (notFound) {
     return <PageNotFound />;
   }
 
   if (currentProduct.id) {
     const {
+      databaseId,
       title,
       category,
       description,
@@ -58,7 +62,7 @@ const SingleProduct = () => {
     } = currentProduct;
 
     const handleAdd = () => {
-      dispatch(addItem({ id, quantity }));
+      dispatch(addCartItem({ databaseId, quantity }));
       setCartDisabled(true);
       setTimeout(() => setCartDisabled(false), 2000);
     };
