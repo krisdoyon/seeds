@@ -3,7 +3,7 @@ import Breadcrumb from "../../components/Breadcrumb";
 
 const About = () => {
   return (
-    <div className={styles.wrapper}>
+    <section>
       <Breadcrumb title="about" />
       <div className={styles.grid}>
         <div className={styles.content}>
@@ -30,7 +30,7 @@ const About = () => {
           className={styles.img}
         />
       </div>
-    </div>
+    </section>
   );
 };
 
