@@ -1,9 +1,9 @@
 import styles from "./CartItem.module.scss";
 import sharedStyles from "../Cart.module.scss";
 import { useDispatch } from "react-redux";
-import { toggleAmount } from "../../../features/cartSlice";
 import { FaChevronUp, FaChevronDown } from "react-icons/fa";
 import { formatPrice } from "../../../utils/formatPrice";
+import { useToggle } from "../../../hooks/useToggle";
 import { Link } from "react-router-dom";
 import { OnSaleTag } from "../../../components/Tags/Tags";
 import Button from "../../../components/Button";
@@ -19,8 +19,11 @@ const CartItem = ({
   category,
   imgURL,
   linkURL,
+  databaseId,
 }) => {
   const dispatch = useDispatch();
+  const handleToggle = useToggle(databaseId, id);
+
   return (
     <article className={`${styles.item} ${sharedStyles.grid}`}>
       <div className={styles["title-wrapper"]}>
@@ -48,7 +51,7 @@ const CartItem = ({
       <div className={styles["toggle-wrapper"]}>
         <Button
           className={styles["btn-toggle"]}
-          onClick={() => dispatch(toggleAmount({ action: "increase", id }))}
+          onClick={() => handleToggle("increase")}
           aria-label={`increase quantity for ${title}`}
         >
           <FaChevronUp className={styles["toggle-icon"]} />
@@ -56,7 +59,7 @@ const CartItem = ({
         <p className={styles.quantity}>{quantity}</p>
         <Button
           className={styles["btn-toggle"]}
-          onClick={() => dispatch(toggleAmount({ action: "decrease", id }))}
+          onClick={() => handleToggle("decrease")}
           aria-label={`decrease quantity for ${title}`}
         >
           <FaChevronDown className={styles["toggle-icon"]} />
@@ -75,7 +78,7 @@ const CartItem = ({
               type: "confirm",
               action: "remove",
               page: "cart",
-              id,
+              id: databaseId,
               title,
             })
           )
