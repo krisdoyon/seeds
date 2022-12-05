@@ -123,6 +123,8 @@ body {
   margin: 4rem auto 8rem auto;
   min-height: 60vh;
   padding: 0 2.4rem;
+  display: flex;
+  flex-direction: column;
 }
 
 // MIXINS
