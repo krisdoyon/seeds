@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import { navLinks } from "./navLinks";
 import CartButton from "./CartButton";
 import WishlistButton from "./WishlistButton/WishlistButton";
+import AccountButton from "./AccountButton/AccountButton";
 
 const Navbar = () => {
   return (
@@ -13,6 +14,7 @@ const Navbar = () => {
             <img src="/img/logo.png" alt="logo" className={styles.logo} />
           </Link>
           <div className={styles["btn-container"]}>
+            <AccountButton />
             <WishlistButton />
             <CartButton />
           </div>

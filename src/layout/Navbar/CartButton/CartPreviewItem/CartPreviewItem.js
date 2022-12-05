@@ -4,11 +4,11 @@ import { Link } from "react-router-dom";
 // STATE
 import { useDispatch } from "react-redux";
 import { openModal } from "../../../../features/modalSlice";
+import { useToggle } from "../../../../hooks/useToggle";
 // COMPONENTS
 import QuantityBtns from "../../../../components/QuantityBtns";
 import { OnSaleTag } from "../../../../components/Tags";
 import { formatPrice } from "../../../../utils/formatPrice";
-import { toggleAmount } from "../../../../features/cartSlice";
 
 const CartPreviewItem = ({
   id,
@@ -20,16 +20,10 @@ const CartPreviewItem = ({
   inStock,
   imgURL,
   linkURL,
+  databaseId,
 }) => {
   const dispatch = useDispatch();
-
-  const handleIncrease = () => {
-    dispatch(toggleAmount({ action: "increase", id }));
-  };
-
-  const handleDecrease = () => {
-    dispatch(toggleAmount({ action: "decrease", id }));
-  };
+  const handleToggle = useToggle(databaseId, id);
 
   return (
     <article className={styles.item}>
@@ -53,7 +47,7 @@ const CartPreviewItem = ({
                   action: "remove",
                   page: "cart",
                   title,
-                  id,
+                  id: databaseId,
                 })
               )
             }
@@ -65,8 +59,8 @@ const CartPreviewItem = ({
           className={styles["qty-btns"]}
           quantity={quantity}
           inStock={inStock}
-          handleIncrease={handleIncrease}
-          handleDecrease={handleDecrease}
+          handleIncrease={() => handleToggle("increase")}
+          handleDecrease={() => handleToggle("decrease")}
           small
         />
       </div>

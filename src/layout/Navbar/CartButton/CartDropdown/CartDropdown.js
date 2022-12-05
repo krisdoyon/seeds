@@ -3,16 +3,13 @@ import CartPreviewItem from "../CartPreviewItem";
 import Button from "../../../../components/Button";
 import { useSelector } from "react-redux";
 import { formatPrice } from "../../../../utils/formatPrice";
+import DropdownMenu from "../../../../components/DropdownMenu";
 
 const CartDropdown = ({ setShowDropdown }) => {
   const { cartItems, subtotal } = useSelector((state) => state.cart);
 
   return (
-    <div
-      className={styles.dropdown}
-      onMouseOver={() => setShowDropdown(true)}
-      onMouseOut={() => setShowDropdown(false)}
-    >
+    <DropdownMenu className={styles.dropdown} setShowDropdown={setShowDropdown}>
       {cartItems.length === 0 && (
         <div className={styles.empty}>
           <p>No items in your cart.</p>
@@ -38,7 +35,7 @@ const CartDropdown = ({ setShowDropdown }) => {
           </footer>
         </>
       )}
-    </div>
+    </DropdownMenu>
   );
 };
 
