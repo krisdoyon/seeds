@@ -1,93 +1,112 @@
-import { useEffect } from "react";
+import { useEffect, lazy, Suspense } from "react";
 // ROUTER
 import { Routes, Route } from "react-router-dom";
+import ProtectedRoute from "./pages/ProtectedRoute";
 // STATE
 import { useSelector, useDispatch } from "react-redux";
 // LAYOUT
 import Layout from "./layout";
-// MAIN PAGE COMPONENTS
-import Home from "./pages/Home";
-import About from "./pages/About";
-import Cart from "./pages/Cart";
-import SingleProduct from "./pages/SingleProduct";
-import Shop from "./pages/Shop";
-import Orders from "./pages/Orders";
-import SingleOrder from "./pages/SingleOrder/SingleOrder";
-import PageNotFound from "./pages/PageNotFound";
-import Checkout from "./pages/Checkout/Checkout";
-import Wishlist from "./pages/Wishlist";
-// FOOTER PAGE COMPONENTS
-import { Shipping, Terms, Returns } from "./pages/Policies";
-import FAQ from "./pages/FAQ";
-// MODAL
-import Modal from "./components/Modal/Modal";
-import Overlay from "./components/Overlay";
 // SASS
 import "./assets/main.scss";
 // ACTIONS
-import { calculateTotals } from "./features/cartSlice";
+import { calculateTotals, fetchCartItems } from "./features/cartSlice";
 import { closeModal } from "./features/modalSlice";
+import { fetchProducts } from "./features/productsSlice";
+import Login from "./pages/Login/Login";
+import { getTokenData } from "./features/authSlice";
+import Spinner from "./components/Spinner/Spinner";
+// MAIN PAGE COMPONENTS
+const Home = lazy(() => import("./pages/Home"));
+const About = lazy(() => import("./pages/About"));
+const Cart = lazy(() => import("./pages/Cart"));
+const SingleProduct = lazy(() => import("./pages/SingleProduct"));
+const Shop = lazy(() => import("./pages/Shop"));
+const Orders = lazy(() => import("./pages/Orders"));
+const SingleOrder = lazy(() => import("./pages/SingleOrder"));
+const PageNotFound = lazy(() => import("./pages/PageNotFound"));
+const Checkout = lazy(() => import("./pages/Checkout/Checkout"));
+const Wishlist = lazy(() => import("./pages/Wishlist"));
+const Account = lazy(() => import("./pages/Account"));
+
+// FOOTER PAGE COMPONENTS
+const Shipping = lazy(() => import("./pages/Policies/Shipping"));
+const Returns = lazy(() => import("./pages/Policies/Returns"));
+const Terms = lazy(() => import("./pages/Policies/Terms"));
+const FAQ = lazy(() => import("./pages/FAQ"));
+// MODAL
+const Modal = lazy(() => import("./components/Modal/Modal"));
+const Overlay = lazy(() => import("./components/Overlay"));
+
+const showSpinner = () => <Spinner />;
 
 function App() {
   const dispatch = useDispatch();
-  const { cartItems, promo } = useSelector((state) => state.cart);
+  const { cartId, cartItems, promo } = useSelector((state) => state.cart);
   const { items: wishlistItems } = useSelector(
     (state) => state.products.wishlist
   );
-  const { orders } = useSelector((state) => state.orders);
   const { isConfirmModalOpen, isPromoModalOpen } = useSelector(
     (state) => state.modal
   );
-  const { allProducts } = useSelector((state) => state.products);
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+    if (cartId) dispatch(fetchCartItems(cartId));
+  }, [cartId, dispatch]);
 
   useEffect(() => {
     dispatch(calculateTotals());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [cartItems, promo]);
-
-  useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cartItems));
-  }, [cartItems]);
+  }, [cartItems, promo, dispatch]);
 
   useEffect(() => {
     localStorage.setItem("wishlist", JSON.stringify(wishlistItems));
   }, [wishlistItems]);
 
   useEffect(() => {
-    localStorage.setItem("orders", JSON.stringify(orders));
-    localStorage.setItem("products", JSON.stringify(allProducts));
-  }, [orders, allProducts]);
+    console.log("INITIAL RENDER");
+    dispatch(getTokenData());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
-    <>
-      {(isConfirmModalOpen || isPromoModalOpen) && (
-        <>
-          <Overlay onClick={() => dispatch(closeModal())} />
-          <Modal />
-        </>
-      )}
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="about" element={<About />} />
-          <Route path="shop">
+    <Layout>
+      <Suspense fallback={showSpinner()}>
+        {(isConfirmModalOpen || isPromoModalOpen) && (
+          <>
+            <Overlay onClick={() => dispatch(closeModal())} />
+            <Modal />
+          </>
+        )}
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/shop">
             <Route index element={<Shop />} />
             <Route path=":category" element={<Shop />} />
           </Route>
           <Route path="/shop/:category/:id" element={<SingleProduct />} />
-          <Route path="cart" element={<Cart />} />
-          <Route path="checkout" element={<Checkout />} />
-          <Route path="orders" element={<Orders />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/orders" element={<Orders />} />
           <Route path="/orders/:id" element={<SingleOrder />} />
-          <Route path="wishlist" element={<Wishlist />} />
-          <Route path="faq" element={<FAQ />} />
-          <Route path="terms" element={<Terms />} />
-          <Route path="shipping" element={<Shipping />} />
-          <Route path="return" element={<Returns />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/wishlist" element={<Wishlist />} />
+          <Route
+            path="/account"
+            element={
+              <ProtectedRoute>
+                <Account />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="/faq" element={<FAQ />} />
+          <Route path="/terms" element={<Terms />} />
+          <Route path="/shipping" element={<Shipping />} />
+          <Route path="/return" element={<Returns />} />
           <Route path="*" element={<PageNotFound />} />
-        </Route>
-      </Routes>
-    </>
+        </Routes>
+      </Suspense>
+    </Layout>
   );
 }
 
