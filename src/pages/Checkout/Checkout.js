@@ -15,20 +15,22 @@ import Overlay from "../../components/Overlay";
 import Modal from "../../components/Modal";
 import { loadTestInfo } from "../../features/checkoutSlice";
 
+import Spinner from "../../components/Spinner/Spinner";
+
 const Checkout = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
-  const { cartItems } = cart;
+  const { cartItems, isLoading: isFetching } = cart;
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const { currentOrder } = useSelector((state) => state.orders);
 
   useEffect(() => {
-    if (cartItems.length === 0 && !isLoading && !isSubmitted) {
+    if (cartItems.length === 0 && !isLoading && !isSubmitted && !isFetching) {
       navigate("/cart");
     }
-  }, [cartItems, isSubmitted, isLoading, navigate]);
+  }, [cartItems, isSubmitted, isLoading, navigate, isFetching]);
 
   useEffect(() => {
     if (!isLoading) {
@@ -39,6 +41,10 @@ const Checkout = () => {
       });
     }
   }, [isLoading]);
+
+  if (isFetching) {
+    return <Spinner />;
+  }
 
   return (
     <section className={styles.wrapper}>
@@ -77,7 +83,7 @@ const Checkout = () => {
         <>
           <Overlay className={styles.overlay} />
           <Modal className={styles.modal}>
-            <ImSpinner3 className={styles.spinner} />
+            <ImSpinner3 className={styles["order-spinner"]} />
             <p>Processing Order...</p>
           </Modal>
         </>

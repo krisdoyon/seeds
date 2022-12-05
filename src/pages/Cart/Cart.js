@@ -10,27 +10,28 @@ import Button from "../../components/Button";
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
-  const { amount } = cart;
-
-  return (
-    <section>
-      <Breadcrumb title="Cart" />
-      <CartHeader />
-      {amount === 0 && <CartEmpty />}
-      {amount > 0 && (
-        <>
-          <CartItems />
-          <div className={styles["summary-wrapper"]}>
-            <CartPromo />
-            <CartSummary {...cart} />
-            <Button to="/checkout" fill>
-              checkout
-            </Button>
-          </div>
-        </>
-      )}
-    </section>
-  );
+  const { amount, isLoading } = cart;
+  if (!isLoading) {
+    return (
+      <section>
+        <Breadcrumb title="Cart" />
+        <CartHeader />
+        {amount === 0 && <CartEmpty />}
+        {amount > 0 && (
+          <>
+            <CartItems />
+            <div className={styles["summary-wrapper"]}>
+              <CartPromo />
+              <CartSummary {...cart} />
+              <Button to="/checkout" fill>
+                checkout
+              </Button>
+            </div>
+          </>
+        )}
+      </section>
+    );
+  }
 };
 
 export default Cart;

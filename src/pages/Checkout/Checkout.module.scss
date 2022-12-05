@@ -1,8 +1,6 @@
 @use "../../assets/media" as *;
 
 .wrapper {
-  margin-top: 6rem;
-
   header {
     margin-bottom: 5rem;
     text-align: center;
@@ -51,7 +49,7 @@
   }
 }
 
-.spinner {
+.order-spinner {
   height: 12rem;
   width: 12rem;
   color: var(--color-primary-dark);
