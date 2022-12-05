@@ -4,7 +4,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { closeModal } from "../../features/modalSlice";
-import { clearCart, removeItem } from "../../features/cartSlice";
+import { clearCart, removeCartItem } from "../../features/cartSlice";
 import { clearOrders, loadTestOrders } from "../../features/ordersSlice";
 import {
   resetProducts,
@@ -33,7 +33,7 @@ const Modal = ({ children, className }) => {
       dispatch(updateWishlist());
     }
     if (action === "remove" && page === "cart") {
-      dispatch(removeItem(id));
+      dispatch(removeCartItem(id));
     }
     if (action === "remove" && page === "wishlist") {
       dispatch(removeWishlist(id));
