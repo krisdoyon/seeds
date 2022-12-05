@@ -1,5 +1,7 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, current } from "@reduxjs/toolkit";
+import { API_URL } from "../assets/config";
 import data from "../assets/seeds.json";
+import axios from "axios";
 
 const initialFilters = {
   new: false,
@@ -8,20 +10,35 @@ const initialFilters = {
   search: "",
 };
 
+export const fetchProducts = createAsyncThunk(
+  "productsSlice/fetchProducts",
+  async (_, thunkAPI) => {
+    try {
+      const response = await axios(`${API_URL}/products.json`);
+      const data = response.data;
+      const newProducts = [];
+      for (const key in data) {
+        newProducts.push({ databaseId: key, ...data[key] });
+      }
+
+      return newProducts;
+    } catch (error) {
+      console.log("message", error.message);
+      console.log("response", error.response);
+      console.log("error", error);
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
 const initialState = {
-  allProducts: JSON.parse(localStorage.getItem("products")) || [...data],
-  get currentProducts() {
-    return this.allProducts;
-  },
-  get newProducts() {
-    return this.allProducts.filter((product) => product.details.isNew);
-  },
-  allCategories: [...new Set(data.map((product) => product.category))].sort(
-    (a, b) => a.localeCompare(b)
-  ),
+  allProducts: null,
+  currentProducts: null,
+  allCategories: null,
+  newProducts: null,
   filters: initialFilters,
   currentProduct: {},
-  error: false,
+  notFound: false,
   sort: "title-descending",
   wishlist: {
     items: JSON.parse(localStorage.getItem("wishlist")) || [],
@@ -29,6 +46,7 @@ const initialState = {
       return this.items.length;
     },
   },
+  isLoading: false,
 };
 
 const productsSlice = createSlice({
@@ -36,9 +54,9 @@ const productsSlice = createSlice({
   initialState,
   reducers: {
     loadProducts: (state, { payload: category }) => {
-      state.error = false;
+      state.notFound = false;
       if (category && !state.allCategories.find((cat) => cat === category)) {
-        state.error = true;
+        state.notFound = true;
       }
       if (!category) category = "all";
       let newProducts =
@@ -97,21 +115,28 @@ const productsSlice = createSlice({
       state.filters = initialFilters;
     },
     loadSingleProduct: (state, { payload: id }) => {
-      state.error = false;
+      state.notFound = false;
       const product = state.allProducts.find((product) => product.id === id);
       if (!product) {
-        state.error = true;
+        state.notFound = true;
         return;
       }
       state.currentProduct = product;
     },
-    updateProducts: (state, { payload: products }) => {
-      products.forEach((product) => {
-        const toUpdate = state.allProducts.find(
-          (item) => item.id === product.id
-        );
-        toUpdate.inStock = toUpdate.inStock - product.quantity;
-      });
+    // updateProducts: (state, { payload: products }) => {
+    //   products.forEach((product) => {
+    //     const toUpdate = state.allProducts.find(
+    //       (item) => item.id === product.id
+    //     );
+    //     toUpdate.inStock = toUpdate.inStock - product.quantity;
+    //   });
+    // },
+    updateAllProducts: (state, { payload: APIproducts }) => {
+      const newProducts = [];
+      for (const key in APIproducts) {
+        newProducts.push({ databaseId: key, ...APIproducts[key] });
+      }
+      state.allProducts = newProducts;
     },
     resetProducts: (state) => {
       state.allProducts = [...data];
@@ -143,6 +168,21 @@ const productsSlice = createSlice({
       state.wishlist.items = newWishlistItems;
     },
   },
+  extraReducers: (builder) => {
+    builder.addCase(fetchProducts.pending, (state) => {
+      state.isLoading = true;
+      state.error = null;
+    });
+    builder.addCase(fetchProducts.fulfilled, (state, { payload }) => {
+      state.allProducts = payload;
+      state.newProducts = payload.filter((product) => product.details.isNew);
+      state.allCategories = [
+        ...new Set(payload.map((product) => product.category)),
+      ].sort((a, b) => a.localeCompare(b));
+      state.isLoading = false;
+    });
+    builder.addCase(fetchProducts.rejected, (state) => {});
+  },
 });
 
 export const {
@@ -157,6 +197,7 @@ export const {
   removeWishlist,
   clearWishlist,
   updateWishlist,
+  updateAllProducts,
 } = productsSlice.actions;
 
 export default productsSlice.reducer;
