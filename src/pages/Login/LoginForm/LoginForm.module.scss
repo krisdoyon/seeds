@@ -8,8 +8,6 @@
   border: 1px solid var(--color-grey-3);
   border-radius: var(--border-radius);
   width: 100%;
-  align-self: center;
-  margin: auto 0;
 
   input {
     padding: 1rem 1.4rem;
@@ -18,11 +16,38 @@
   label {
     font-size: 2rem;
   }
+}
 
-  button {
-    align-self: center;
-    font-size: 1.6rem;
-    font-weight: 400;
-    padding: 1.2rem 4rem;
+.submit {
+  align-self: center;
+  font-size: 1.6rem;
+  font-weight: 400;
+  padding: 1.2rem 4rem;
+}
+
+.btn-container {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.text-btn {
+  color: var(--color-primary-dark);
+  text-transform: none;
+  font-size: inherit;
+
+  &:hover {
+    text-decoration: underline;
   }
+}
+
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.error-msg {
+  font-size: 1.4rem;
+  margin-top: 0.4rem;
+  color: #e32c2b;
 }
