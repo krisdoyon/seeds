@@ -1,51 +1,36 @@
-import { useDispatch, useSelector } from "react-redux";
+import styles from "./Orders.module.scss";
+import { useSelector } from "react-redux";
 import Breadcrumb from "../../components/Breadcrumb";
 import Button from "../../components/Button";
+import Spinner from "../../components/Spinner/Spinner";
 import OrderPreview from "./OrderPreview";
-import styles from "./Orders.module.scss";
-import { openModal } from "../../features/modalSlice";
 
 const Orders = () => {
-  const { orders } = useSelector((state) => state.orders);
-  const dispatch = useDispatch();
+  const { orders, isLoading } = useSelector((state) => state.orders);
+  const { isLoggedIn } = useSelector((state) => state.auth);
 
   return (
     <section>
       <Breadcrumb title="orders" />
       <header className={styles.header}>
         <h2>Your Orders</h2>
-        {orders.length === 0 && (
-          <p className={styles["no-orders"]}>No orders to show.</p>
-        )}
-        <div className={styles["btn-container"]}>
-          {orders.length > 0 && (
-            <Button
-              fill
-              onClick={() =>
-                dispatch(
-                  openModal({
-                    type: "confirm",
-                    action: "clear",
-                    page: "orders",
-                  })
-                )
-              }
-            >
-              CLEAR ORDERS
+        {isLoading && <Spinner />}
+        {!isLoading && !isLoggedIn && (
+          <>
+            <p className={styles.message}>
+              Log in to see your previously placed orders.
+            </p>
+            <Button to="/login" fill>
+              Log in
             </Button>
-          )}
-          <Button
-            fill
-            onClick={() =>
-              dispatch(openModal({ type: "confirm", action: "load" }))
-            }
-          >
-            Load Test Orders
-          </Button>
-        </div>
+          </>
+        )}
+        {!isLoading && isLoggedIn && orders.length === 0 && (
+          <p className={styles.message}>No orders to show.</p>
+        )}
       </header>
 
-      {orders.length > 0 && (
+      {!isLoading && isLoggedIn && orders.length > 0 && (
         <div className={styles.orders}>
           <header>
             <p>Order Number</p>
