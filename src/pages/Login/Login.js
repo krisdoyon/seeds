@@ -14,7 +14,7 @@ const Login = () => {
     if (isLoggedIn) {
       navigate("/account");
     }
-  }, [isLoggedIn]);
+  }, [isLoggedIn, navigate]);
 
   const toggleAuthState = () => {
     setIsLogin((prevState) => !prevState);
