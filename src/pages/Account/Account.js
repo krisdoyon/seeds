@@ -7,7 +7,7 @@ const Account = () => {
   return (
     <section>
       <Breadcrumb title="account" />
-      <p>{`User ID: ${userId}`}</p>
+      <h2>Welcome back!</h2>
     </section>
   );
 };
