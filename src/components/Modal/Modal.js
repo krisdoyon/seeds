@@ -5,18 +5,13 @@ import ReactDOM from "react-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { closeModal } from "../../features/modalSlice";
 import { clearCart, removeCartItem } from "../../features/cartSlice";
-import { clearOrders, loadTestOrders } from "../../features/ordersSlice";
-import {
-  resetProducts,
-  updateProducts,
-  updateWishlist,
-  clearWishlist,
-  removeWishlist,
-} from "../../features/productsSlice";
-import testOrders from "../../assets/testOrders.json";
+import { clearWishlist, removeWishlist } from "../../features/productsSlice";
+import { returnOrder } from "../../features/ordersSlice";
+import { useNavigate } from "react-router-dom";
 
 const Modal = ({ children, className }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { type, action, page, title, id } = useSelector((state) => state.modal);
 
   const handleConfirm = () => {
@@ -26,31 +21,22 @@ const Modal = ({ children, className }) => {
     if (action === "clear" && page === "wishlist") {
       dispatch(clearWishlist());
     }
-    if (action === "clear" && page === "orders") {
-      dispatch(clearOrders());
-      dispatch(clearCart());
-      dispatch(resetProducts());
-      dispatch(updateWishlist());
-    }
     if (action === "remove" && page === "cart") {
       dispatch(removeCartItem(id));
     }
     if (action === "remove" && page === "wishlist") {
       dispatch(removeWishlist(id));
     }
-    if (action === "load") {
-      dispatch(clearCart());
-      dispatch(resetProducts());
-      dispatch(loadTestOrders(testOrders));
-      testOrders.forEach((order) => dispatch(updateProducts(order.products)));
-      dispatch(updateWishlist());
+    if (action === "return" && page === "orders") {
+      dispatch(returnOrder(id));
+      navigate("/orders");
     }
     dispatch(closeModal());
   };
 
   return ReactDOM.createPortal(
     <div className={`${styles.modal} ${className}`}>
-      {type !== undefined && (
+      {type !== null && (
         <Button
           className={styles["btn-close"]}
           onClick={() => dispatch(closeModal())}
@@ -77,7 +63,15 @@ const Modal = ({ children, className }) => {
             </div>
           </>
         )}
-        {(action === "remove" || action === "clear" || action === "load") && (
+        {action === "return" && (
+          <>
+            <div className={styles.text}>
+              <p>Are you sure you want to return</p>
+              <strong>Order #{title}?</strong>
+            </div>
+          </>
+        )}
+        {type === "confirm" && (
           <div className={styles["modal-btn-container"]}>
             <Button
               fill

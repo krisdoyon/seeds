@@ -3,10 +3,12 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   isConfirmModalOpen: false,
   isPromoModalOpen: false,
-  title: "",
-  id: "",
-  type: "",
-  action: "",
+  isErrorModalOpen: false,
+  isSuccessModalOpen: false,
+  title: null,
+  id: null,
+  type: null,
+  action: null,
 };
 
 const modalSlice = createSlice({
@@ -15,17 +17,21 @@ const modalSlice = createSlice({
   reducers: {
     openModal: (state, { payload: { type, action, page, title, id } }) => {
       state.type = type;
-      state.action = action || "";
-      state.page = page || "";
+      state.action = action || null;
+      state.page = page || null;
+      state.title = title || null;
+      state.id = id || null;
       if (type === "confirm") {
         state.isConfirmModalOpen = true;
       }
       if (type === "promo") {
         state.isPromoModalOpen = true;
       }
-      if (action === "remove") {
-        state.title = title;
-        state.id = id;
+      if (type === "error") {
+        state.isErrorModalOpen = true;
+      }
+      if (type === "success") {
+        state.isSuccessModalOpen = true;
       }
     },
     closeModal: () => initialState,
