@@ -2,7 +2,7 @@
   <img src="./public/img/logo-background.png" alt="Havest Seed logo" style="height:150px">
 </p>
 
-**Harvest Seed Company is an e-commerce website built with React and Redux Toolkit.**
+**Harvest Seed Company is an e-commerce website built with React, Redux and Firebase.**
 
 - The live site is available to view and use at: https://seeds.krisdoyon.com
 
@@ -13,16 +13,34 @@
 # Table of Contents
 
 1. [Overview](#overview)
-2. [Features](#features)
-3. [Technologies used](#technologies-used)
-4. [Project architecture](#project-architecture)
-5. [Challenges](#challenges)
-6. [Data](#data)
-7. [Screenshots](#screenshots)
+2. [Things Learned](#things-i-learnedpracticed)
+3. [Features](#features)
+4. [Technologies used](#technologies-used)
+5. [Project architecture](#project-architecture)
+6. [Challenges](#challenges)
+7. [Data](#data)
+8. [Screenshots](#screenshots)
 
 # Overview
 
 I created this site with with the intention of building on my React skills with a project of slightly higher complexity. Specifically my goal was to focus on creating an mantaining a clean file structure organized into page specific and site wide reusable components, and also to practice managing multiple states at once using Redux. Other areas that I focused on and praciced include form validation, sorting and filtering data, and using the local storage API. I chose vegetable seeds as the content for this project as I am an avid gardener.
+
+# Things I Learned/Practiced
+
+- Managing multiple states using Redux Toolkit
+- Input/form validation
+- First time implementing a text search input to filter results
+- Using React Router (common layouts, useParams/useNavigate hooks, acitve nav buttons)
+- Using React portals to render modal and overlay
+- Pros and cons of styled components vs. SCSS modules
+- More practice using local storage
+- Creating custom checkbox and button components
+
+- Using React.lazy for lazy loading components
+- Using custom hooks
+- Connecting to database (firebase)
+- Setting up .env
+- JSON web tokens
 
 # Features
 
@@ -40,7 +58,6 @@ Users can:
 
 - React
 - React Router
-- React Portals
 - SCSS Modules
 - Redux Toolkit
 - Local Storage API
@@ -70,7 +87,7 @@ Another area that proved somewhat challenging was validation of inputs in the ch
 In general, creating this app was great practice with slightly more complex state mangement. Some additional situations that I had to come up with solutions for included:
 
 - Preventing the user from adding a higher quantity of an item to the cart than are currently in stock.
-- Addressing edge cases of users already having items in their cart when test orders are loaded or all orders are cleared.
+- Addressing edge cases of users already having items in their cart when test orders are loaded or when all orders are cleared.
 - Updating the "in stock" quantities in all appropriate places when orders are placed.
 
 # Data
