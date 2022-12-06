@@ -1,30 +1,35 @@
-import { useDispatch, useSelector } from "react-redux";
-import Button from "../../../components/Button";
-import CheckoutInput from "./CheckoutInput";
-import CheckoutSelect from "./CheckoutSelect";
 import styles from "./CheckoutForm.module.scss";
-import { addOrder } from "../../../features/ordersSlice";
-import { clearCart } from "../../../features/cartSlice";
-import Checkbox from "../../../components/Checkbox";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+// ACTIONS
+import { placeOrder } from "../../../features/ordersSlice";
 import {
   resetForm,
   updateShippingSame,
   validateForm,
 } from "../../../features/checkoutSlice";
+// UTILS
+import { generateOrderNumber } from "../../../utils/generateOrderNumber";
 import { stateOptions, monthOptions } from "./CheckoutSelectOptions";
-import {
-  updateProducts,
-  updateWishlist,
-} from "../../../features/productsSlice";
+// COMPONENTS
+import Checkbox from "../../../components/Checkbox";
+import Button from "../../../components/Button";
+import CheckoutInput from "./CheckoutInput";
+import CheckoutSelect from "./CheckoutSelect";
 
-const CheckoutForm = ({ setIsSubmitted, setIsLoading }) => {
+const CheckoutForm = ({
+  isSpinnerShown,
+  setIsSubmitted,
+  setIsSpinnerShown,
+}) => {
+  const dispatch = useDispatch();
   const { cartItems, subtotal, promo, shippingCost, tax, total } = useSelector(
     (state) => state.cart
   );
+  const { orders, isLoading, error } = useSelector((state) => state.orders);
   const { shippingSame, isFormValid } = useSelector((state) => state.checkout);
-  const dispatch = useDispatch();
 
-  const placeOrder = (e) => {
+  const submitOrder = (e) => {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(e.target));
     const billing = {
@@ -61,28 +66,43 @@ const CheckoutForm = ({ setIsSubmitted, setIsLoading }) => {
         expYear: data.payExpYear,
       },
     };
-    setIsLoading(true);
-    setTimeout(() => {
-      dispatch(
-        addOrder({
-          products: cartItems,
-          payment,
-          billing,
-          shipping,
-          shippingSame,
-        })
-      );
-      dispatch(updateProducts(cartItems));
-      dispatch(updateWishlist());
-      dispatch(clearCart());
-      dispatch(resetForm());
-      setIsSubmitted(true);
-      setIsLoading(false);
-    }, 3000);
+    let orderNumber;
+    do {
+      orderNumber = generateOrderNumber();
+      // eslint-disable-next-line no-loop-func
+    } while (orders.some((order) => order.orderNumber === orderNumber));
+    const order = {
+      orderNumber,
+      date: new Date().getTime(),
+      displayDate: new Intl.DateTimeFormat("en-US", {
+        month: "long",
+        day: "2-digit",
+        year: "numeric",
+      }).format(new Date().getTime()),
+      amount: cartItems.length,
+      products: cartItems,
+      billing,
+      shipping,
+      payment,
+      shippingSame,
+    };
+    setIsSpinnerShown(true);
+    dispatch(placeOrder(order));
   };
 
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      if (isSpinnerShown && !isLoading && error === null) {
+        dispatch(resetForm());
+        setIsSubmitted(true);
+        setIsSpinnerShown(false);
+      }
+    }, 1000);
+    return () => clearTimeout(timeout);
+  }, [isLoading, isSpinnerShown, error, dispatch]);
+
   return (
-    <form className={styles.form} onSubmit={placeOrder}>
+    <form className={styles.form} onSubmit={submitOrder}>
       <div className={styles["form-section"]}>
         <h3 className={styles.heading}>Contact Information</h3>
         <CheckoutInput

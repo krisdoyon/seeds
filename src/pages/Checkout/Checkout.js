@@ -23,24 +23,29 @@ const Checkout = () => {
   const cart = useSelector((state) => state.cart);
   const { cartItems, isLoading: isFetching } = cart;
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isSpinnerShown, setIsSpinnerShown] = useState(false);
   const { currentOrder } = useSelector((state) => state.orders);
 
   useEffect(() => {
-    if (cartItems.length === 0 && !isLoading && !isSubmitted && !isFetching) {
+    if (
+      cartItems.length === 0 &&
+      !isSpinnerShown &&
+      !isSubmitted &&
+      !isFetching
+    ) {
       navigate("/cart");
     }
-  }, [cartItems, isSubmitted, isLoading, navigate, isFetching]);
+  }, [cartItems, isSubmitted, isSpinnerShown, navigate, isFetching]);
 
   useEffect(() => {
-    if (!isLoading) {
+    if (!isSpinnerShown) {
       document.documentElement.scrollTo({
         top: 0,
         left: 0,
         behavior: "instant",
       });
     }
-  }, [isLoading]);
+  }, [isSpinnerShown]);
 
   if (isFetching) {
     return <Spinner />;
@@ -68,7 +73,8 @@ const Checkout = () => {
               <h2 className={styles.heading}>Checkout</h2>
               <CheckoutForm
                 setIsSubmitted={setIsSubmitted}
-                setIsLoading={setIsLoading}
+                setIsSpinnerShown={setIsSpinnerShown}
+                isSpinnerShown={isSpinnerShown}
               />
             </div>
             <div className={styles["summary-wrapper"]}>
@@ -79,7 +85,7 @@ const Checkout = () => {
           </div>
         </>
       )}
-      {isLoading && (
+      {isSpinnerShown && (
         <>
           <Overlay className={styles.overlay} />
           <Modal className={styles.modal}>
