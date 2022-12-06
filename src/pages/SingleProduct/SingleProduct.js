@@ -14,7 +14,6 @@ import { addCartItem } from "../../features/cartSlice";
 import { formatPrice } from "../../utils/formatPrice";
 // COMPONENTS
 import Breadcrumb from "../../components/Breadcrumb";
-import { addItem } from "../../features/cartSlice";
 import { OnSaleTag, NewTag } from "../../components/Tags";
 import WishlistButton from "./WishlistButton";
 import AddButton from "./AddButton";
