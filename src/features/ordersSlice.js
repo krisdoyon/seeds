@@ -1,10 +1,99 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { generateOrderNumber } from "../utils/generateOrderNumber";
+import axios from "axios";
+import { API_URL } from "../assets/config";
+import { sendProductUpdates } from "./productsSlice";
+import { clearCart } from "./cartSlice";
+
+export const placeOrder = createAsyncThunk(
+  "ordersSlice/placeOrder",
+  async (order, thunkAPI) => {
+    try {
+      const {
+        auth: { userId, token },
+      } = thunkAPI.getState();
+      const { data: products } = await axios(`${API_URL}/products.json`);
+      const quantityUpdates = order.products.map((product) => {
+        const { databaseId, quantity } = product;
+        return {
+          databaseId,
+          newData: { inStock: products[databaseId].inStock - quantity },
+        };
+      });
+      if (quantityUpdates.some((update) => update.newData.inStock < 0)) {
+        throw new Error(`Not enough in stock, please try again`);
+      }
+      const {
+        data: { name: databaseId },
+      } = await axios.post(
+        `${API_URL}/users/${userId}/orders.json?auth=${token}`,
+        order
+      );
+      await thunkAPI.dispatch(sendProductUpdates(quantityUpdates));
+      await thunkAPI.dispatch(clearCart());
+      return { databaseId, ...order };
+    } catch (error) {
+      thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const returnOrder = createAsyncThunk(
+  "ordersSlice/returnOrder",
+  async (databaseId, thunkAPI) => {
+    try {
+      const {
+        auth: { userId, token },
+        orders: { orders },
+      } = thunkAPI.getState();
+      const { products: orderProducts } = orders.find(
+        (order) => order.databaseId === databaseId
+      );
+      await axios.delete(
+        `${API_URL}/users/${userId}/orders/${databaseId}.json?auth=${token}`
+      );
+      const { data: products } = await axios(`${API_URL}/products.json`);
+      const quantityUpdates = orderProducts.map((product) => {
+        const { databaseId, quantity } = product;
+        return {
+          databaseId,
+          newData: { inStock: products[databaseId].inStock + quantity },
+        };
+      });
+      await thunkAPI.dispatch(sendProductUpdates(quantityUpdates));
+      return databaseId;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const fetchOrders = createAsyncThunk(
+  "ordersSlice/getOrders",
+  async (_, thunkAPI) => {
+    try {
+      const {
+        auth: { userId, token },
+      } = thunkAPI.getState();
+      const { data: orders } = await axios(
+        `${API_URL}/users/${userId}/orders.json?auth=${token}`
+      );
+      const loadedOrders = [];
+      for (const key in orders) {
+        loadedOrders.push({ databaseId: key, ...orders[key] });
+      }
+      return loadedOrders;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
 
 const initialState = {
   orders: JSON.parse(localStorage.getItem("orders")) || [],
   currentOrder: "",
-  error: false,
+  error: null,
+  isLoading: false,
 };
 
 const ordersSlice = createSlice({
@@ -49,12 +138,53 @@ const ordersSlice = createSlice({
       }
       state.currentOrder = order;
     },
-    clearOrders: (state) => {
-      state.orders = [];
-    },
-    loadTestOrders: (state, { payload }) => {
-      state.orders = payload;
-    },
+  },
+  extraReducers: (builder) => {
+    // placeOrder
+    builder.addCase(placeOrder.pending, (state) => {
+      state.isLoading = true;
+      state.error = null;
+    });
+    builder.addCase(placeOrder.fulfilled, (state, { payload: order }) => {
+      state.isLoading = false;
+      state.orders.push(order);
+      state.currentOrder = order;
+    });
+    builder.addCase(placeOrder.rejected, (state, { payload }) => {
+      state.isLoading = false;
+      state.error = payload;
+      console.log(payload);
+    });
+
+    // fetchOrders
+    builder.addCase(fetchOrders.pending, (state) => {
+      state.isLoading = true;
+      state.error = null;
+    });
+    builder.addCase(fetchOrders.fulfilled, (state, { payload: orders }) => {
+      state.isLoading = false;
+      state.orders = orders;
+    });
+    builder.addCase(fetchOrders.rejected, (state, { payload }) => {
+      state.isLoading = false;
+      state.error = payload;
+    });
+
+    // returnOrder
+    builder.addCase(returnOrder.pending, (state) => {
+      state.isLoading = true;
+      state.error = null;
+    });
+    builder.addCase(returnOrder.fulfilled, (state, { payload: databaseId }) => {
+      state.isLoading = false;
+      state.orders = state.orders.filter(
+        (order) => order.databaseId !== databaseId
+      );
+    });
+    builder.addCase(returnOrder.rejected, (state, { payload }) => {
+      state.isLoading = false;
+      state.error = payload;
+    });
   },
 });
 
