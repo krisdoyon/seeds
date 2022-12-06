@@ -1,6 +1,5 @@
-import { createAsyncThunk, createSlice, current } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { API_URL } from "../assets/config";
-import data from "../assets/seeds.json";
 import axios from "axios";
 
 const initialFilters = {
@@ -20,12 +19,27 @@ export const fetchProducts = createAsyncThunk(
       for (const key in data) {
         newProducts.push({ databaseId: key, ...data[key] });
       }
-
       return newProducts;
     } catch (error) {
-      console.log("message", error.message);
-      console.log("response", error.response);
-      console.log("error", error);
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const sendProductUpdates = createAsyncThunk(
+  "productsSlice/updateProduct",
+  // Expects an array of products where each product is an object of the form ex: {databaseId, newData:{inStock: 3}}
+  async (products, thunkAPI) => {
+    try {
+      for (const product of products) {
+        await axios.patch(
+          `${API_URL}/products/${product.databaseId}.json`,
+          product.newData
+        );
+      }
+      await thunkAPI.dispatch(fetchProducts());
+      thunkAPI.dispatch(updateWishlist());
+    } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -47,6 +61,7 @@ const initialState = {
     },
   },
   isLoading: false,
+  error: null,
 };
 
 const productsSlice = createSlice({
@@ -138,9 +153,6 @@ const productsSlice = createSlice({
       }
       state.allProducts = newProducts;
     },
-    resetProducts: (state) => {
-      state.allProducts = [...data];
-    },
 
     // WISHLIST
     addWishlist: (state, { payload: id }) => {
@@ -182,6 +194,12 @@ const productsSlice = createSlice({
       state.isLoading = false;
     });
     builder.addCase(fetchProducts.rejected, (state) => {});
+
+    builder.addCase(sendProductUpdates.pending, (state) => {});
+    builder.addCase(sendProductUpdates.fulfilled, (state) => {});
+    builder.addCase(sendProductUpdates.rejected, (state, { payload }) => {
+      console.log(payload);
+    });
   },
 });
 
