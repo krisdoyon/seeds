@@ -4,8 +4,10 @@ import { navLinks } from "./navLinks";
 import CartButton from "./CartButton";
 import WishlistButton from "./WishlistButton/WishlistButton";
 import AccountButton from "./AccountButton/AccountButton";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
+  const { userId } = useSelector((state) => state.auth);
   return (
     <header className={styles.header}>
       <nav className={styles.nav}>
@@ -36,6 +38,20 @@ const Navbar = () => {
               </li>
             );
           })}
+          {userId === process.env["REACT_APP_ADMIN_ID"] && (
+            <li key="5">
+              <NavLink
+                to="/inventory"
+                className={({ isActive }) =>
+                  isActive
+                    ? `${styles.active} ${styles.link}`
+                    : `${styles.link}`
+                }
+              >
+                Inventory
+              </NavLink>
+            </li>
+          )}
         </ul>
       </nav>
     </header>

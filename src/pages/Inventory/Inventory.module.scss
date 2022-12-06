@@ -1,0 +1,21 @@
+.wrapper {
+  // max-width: 100%;
+}
+
+.content {
+  margin-top: 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(min-content, 1fr)) 10rem;
+  justify-items: center;
+  font-weight: 600;
+  padding: 1rem 0;
+  gap: 1rem;
+  align-items: center;
+  height: 100%;
+}
