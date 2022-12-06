@@ -1,25 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { SIGNUP_URL, LOGIN_URL, API_URL } from "../assets/config";
+import { SIGNUP_URL, LOGIN_URL } from "../assets/config";
 import axios from "axios";
-
-export const sendTestRequest = createAsyncThunk(
-  "authSlice/sendTestRequest",
-  async ({ userId, token }, thunkAPI) => {
-    try {
-      const data = {
-        name: "Kris",
-        age: 32,
-      };
-      const response = await axios.post(
-        `${API_URL}/users/${userId}.json?auth=${token}`,
-        data
-      );
-      console.log(response);
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error);
-    }
-  }
-);
 
 export const sendAuthRequest = createAsyncThunk(
   "authSlice/sendAuthRequest",
@@ -59,7 +40,7 @@ const initialState = {
   expirationTime: localStorage.getItem("expirationTime") || null,
   userId: localStorage.getItem("userId") || null,
   isLoggedIn: false,
-  isLoading: false,
+  isLoading: true,
 };
 
 const authSlice = createSlice({
@@ -82,6 +63,7 @@ const authSlice = createSlice({
         state.userId = localStorage.getItem("userId");
         state.isLoggedIn = true;
       }
+      state.isLoading = false;
     },
     logout: (state) => {
       state.token = null;
