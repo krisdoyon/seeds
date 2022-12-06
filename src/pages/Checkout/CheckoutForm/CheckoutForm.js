@@ -99,7 +99,8 @@ const CheckoutForm = ({
       }
     }, 1000);
     return () => clearTimeout(timeout);
-  }, [isLoading, isSpinnerShown, error, dispatch]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isLoading, isSpinnerShown, error]);
 
   return (
     <form className={styles.form} onSubmit={submitOrder}>
