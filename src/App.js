@@ -12,9 +12,12 @@ import "./assets/main.scss";
 import { calculateTotals, fetchCartItems } from "./features/cartSlice";
 import { closeModal } from "./features/modalSlice";
 import { fetchProducts } from "./features/productsSlice";
-import Login from "./pages/Login/Login";
 import { getTokenData } from "./features/authSlice";
-import Spinner from "./components/Spinner/Spinner";
+import { fetchOrders } from "./features/ordersSlice";
+// HOOKS
+import { useLogoutTimer } from "./hooks/useLogoutTimer";
+// SPINNER
+import Spinner from "./components/Spinner";
 // MAIN PAGE COMPONENTS
 const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() => import("./pages/About"));
@@ -24,17 +27,18 @@ const Shop = lazy(() => import("./pages/Shop"));
 const Orders = lazy(() => import("./pages/Orders"));
 const SingleOrder = lazy(() => import("./pages/SingleOrder"));
 const PageNotFound = lazy(() => import("./pages/PageNotFound"));
-const Checkout = lazy(() => import("./pages/Checkout/Checkout"));
+const Checkout = lazy(() => import("./pages/Checkout"));
 const Wishlist = lazy(() => import("./pages/Wishlist"));
 const Account = lazy(() => import("./pages/Account"));
-
+const Login = lazy(() => import("./pages/Login"));
+const Inventory = lazy(() => import("./pages/Inventory"));
 // FOOTER PAGE COMPONENTS
 const Shipping = lazy(() => import("./pages/Policies/Shipping"));
 const Returns = lazy(() => import("./pages/Policies/Returns"));
 const Terms = lazy(() => import("./pages/Policies/Terms"));
 const FAQ = lazy(() => import("./pages/FAQ"));
 // MODAL
-const Modal = lazy(() => import("./components/Modal/Modal"));
+const Modal = lazy(() => import("./components/Modal"));
 const Overlay = lazy(() => import("./components/Overlay"));
 
 const showSpinner = () => <Spinner />;
@@ -48,9 +52,9 @@ function App() {
   const { isConfirmModalOpen, isPromoModalOpen } = useSelector(
     (state) => state.modal
   );
+  const { isLoggedIn } = useSelector((state) => state.auth);
 
   useEffect(() => {
-    dispatch(fetchProducts());
     if (cartId) dispatch(fetchCartItems(cartId));
   }, [cartId, dispatch]);
 
@@ -63,10 +67,15 @@ function App() {
   }, [wishlistItems]);
 
   useEffect(() => {
-    console.log("INITIAL RENDER");
     dispatch(getTokenData());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    dispatch(fetchProducts());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (isLoggedIn) dispatch(fetchOrders());
+  }, [isLoggedIn, dispatch]);
+
+  useLogoutTimer();
 
   return (
     <Layout>
@@ -96,6 +105,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <Account />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/inventory"
+            element={
+              <ProtectedRoute admin={true}>
+                <Inventory />
               </ProtectedRoute>
             }
           />
