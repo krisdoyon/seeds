@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice, current } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { API_URL } from "../assets/config";
 import axios from "axios";
 import { updateAllProducts } from "./productsSlice";
@@ -36,6 +36,7 @@ export const fetchCartItems = createAsyncThunk(
           quantity: cart[key].quantity,
         });
       }
+      thunkAPI.dispatch(updateAllProducts(products));
       return cartItems;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -94,7 +95,9 @@ export const sendQuantityUpdate = createAsyncThunk(
         [databaseId]: { quantity: newQuantity },
       });
       thunkAPI.dispatch(updateAllProducts(products));
-    } catch (error) {}
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
   }
 );
 
@@ -107,7 +110,9 @@ export const removeCartItem = createAsyncThunk(
       } = thunkAPI.getState();
       await axios.delete(`${API_URL}/carts/${cartId}/${cartItemId}.json`);
       return cartItemId;
-    } catch (error) {}
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
   }
 );
 
@@ -118,10 +123,11 @@ export const clearCart = createAsyncThunk(
       const {
         cart: { cartId },
       } = thunkAPI.getState();
-      console.log(cartId);
       await axios.delete(`${API_URL}/carts/${cartId}.json`);
       localStorage.removeItem("cartId");
-    } catch (error) {}
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
   }
 );
 
@@ -136,7 +142,6 @@ const cartSlice = createSlice({
       if (action === "decrease" && cartItem.quantity > 1) --cartItem.quantity;
     },
     calculateTotals: (state) => {
-      console.log("calculating totals");
       let subtotal = 0;
       let amount = 0;
       state.cartItems.forEach((item) => {
