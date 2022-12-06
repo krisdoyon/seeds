@@ -4,23 +4,32 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 import OrderSummary from "../../components/OrderSummary";
 import { loadSingleOrder } from "../../features/ordersSlice";
+import { openModal } from "../../features/modalSlice";
 import PageNotFound from "../PageNotFound";
 import Breadcrumb from "../../components/Breadcrumb";
 import Button from "../../components/Button";
+import Spinner from "../../components/Spinner/Spinner";
 
 const SingleOrder = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(loadSingleOrder(id));
-  }, [dispatch, id]);
-
   const {
-    currentOrder: { orderNumber, displayDate },
+    currentOrder: { orderNumber, displayDate, databaseId },
     error,
+    isLoading,
   } = useSelector((state) => state.orders);
+
+  useEffect(() => {
+    if (!isLoading) {
+      dispatch(loadSingleOrder(id));
+    }
+  }, [dispatch, isLoading, id]);
+
+  if (isLoading) {
+    return <Spinner />;
+  }
 
   if (error) {
     return <PageNotFound />;
@@ -40,6 +49,22 @@ const SingleOrder = () => {
         <header>
           <h2>{`Order #${orderNumber}`}</h2>
           <p>{`Placed on ${displayDate}`}</p>
+          <Button
+            fill
+            onClick={() => {
+              dispatch(
+                openModal({
+                  type: "confirm",
+                  action: "return",
+                  page: "orders",
+                  title: orderNumber,
+                  id: databaseId,
+                })
+              );
+            }}
+          >
+            Return Order
+          </Button>
         </header>
         <OrderSummary />
       </section>
