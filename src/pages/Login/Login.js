@@ -2,16 +2,13 @@ import styles from "./Login.module.scss";
 import { useEffect, useState } from "react";
 import Breadcrumb from "../../components/Breadcrumb";
 import LoginForm from "./LoginForm/LoginForm";
-import { useSelector, useDispatch } from "react-redux";
-import Button from "../../components/Button";
-import { sendTestRequest } from "../../features/authSlice";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [isLogin, setIsLogin] = useState(true);
-  const { userId, token, isLoggedIn } = useSelector((state) => state.auth);
+  const { isLoggedIn } = useSelector((state) => state.auth);
 
   useEffect(() => {
     if (isLoggedIn) {
