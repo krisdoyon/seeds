@@ -4,10 +4,19 @@ import { navLinks } from "./navLinks";
 import CartButton from "./CartButton";
 import WishlistButton from "./WishlistButton/WishlistButton";
 import AccountButton from "./AccountButton/AccountButton";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import Button from "../../components/Button";
+import { logout } from "../../features/authSlice";
+import { resetForm } from "../../features/accountSlice";
 
 const Navbar = () => {
-  const { userId } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+  const { userId, isLoggedIn } = useSelector((state) => state.auth);
+  const handleLogout = () => {
+    dispatch(logout());
+    dispatch(resetForm());
+  };
+
   return (
     <header className={styles.header}>
       <nav className={styles.nav}>
@@ -16,7 +25,17 @@ const Navbar = () => {
             <img src="/img/logo.png" alt="logo" className={styles.logo} />
           </Link>
           <div className={styles["btn-container"]}>
-            <AccountButton />
+            {!isLoggedIn && (
+              <Button to="/login" fill>
+                Log in
+              </Button>
+            )}
+            {isLoggedIn && (
+              <Button fill onClick={handleLogout}>
+                Log out
+              </Button>
+            )}
+            {isLoggedIn && <AccountButton />}
             <WishlistButton />
             <CartButton />
           </div>
@@ -39,7 +58,7 @@ const Navbar = () => {
             );
           })}
           {userId === process.env["REACT_APP_ADMIN_ID"] && (
-            <li key="5">
+            <li key={5}>
               <NavLink
                 to="/inventory"
                 className={({ isActive }) =>
