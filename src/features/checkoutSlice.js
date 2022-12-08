@@ -1,6 +1,6 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, current } from "@reduxjs/toolkit";
 import { formatCheckoutInput } from "../utils/formatCheckoutInput";
-import { validateCheckoutInput } from "../utils/validateCheckoutInput";
+import { validateInput } from "../utils/validateInput";
 
 const initialState = {
   contact: {
@@ -94,10 +94,10 @@ const checkoutSlice = createSlice({
   name: "checkout",
   initialState,
   reducers: {
-    updateForm: (state, { payload: { id, value, category, touched } }) => {
-      value = formatCheckoutInput(id, value);
-      const { hasError, error } = validateCheckoutInput(id, value);
-      state[category][id] = { value, touched, hasError, error };
+    updateForm: (state, { payload: { name, value, category, touched } }) => {
+      value = formatCheckoutInput(name, value);
+      const { hasError, error } = validateInput(name, value);
+      state[category][name] = { value, touched, hasError, error };
     },
     validateForm: (state) => {
       let isFormValid = true;
@@ -127,6 +127,17 @@ const checkoutSlice = createSlice({
     },
     resetForm: () => initialState,
     loadTestInfo: () => testInfo,
+    loadProfileInfo: (state, { payload }) => {
+      ["billing", "contact", "shipping"].forEach((category) => {
+        for (const key in state[category]) {
+          state[category][key].value = payload[category][key].value;
+          if (state[category][key].value !== "") {
+            state[category][key].hasError = false;
+          }
+        }
+        state.shippingSame = payload.shippingSame;
+      });
+    },
   },
 });
 
@@ -136,6 +147,7 @@ export const {
   validateForm,
   resetForm,
   loadTestInfo,
+  loadProfileInfo,
 } = checkoutSlice.actions;
 
 export default checkoutSlice.reducer;
