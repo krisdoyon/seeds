@@ -27,7 +27,6 @@ const CheckoutForm = ({
     useSelector((state) => state.cart);
   const { orders, isLoading, error } = useSelector((state) => state.orders);
   const { shippingSame, isFormValid } = useSelector((state) => state.checkout);
-  console.log(amount);
   const submitOrder = (e) => {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(e.target));
