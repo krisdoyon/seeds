@@ -1,7 +1,7 @@
 import styles from "./Policy.module.scss";
 import Breadcrumb from "../../components/Breadcrumb";
 
-export const Shipping = () => {
+const Shipping = () => {
   return (
     <section className={styles.wrapper}>
       <Breadcrumb title="Shipping" />
@@ -66,3 +66,5 @@ export const Shipping = () => {
     </section>
   );
 };
+
+export default Shipping;
