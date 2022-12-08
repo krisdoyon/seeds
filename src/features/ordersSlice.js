@@ -10,7 +10,7 @@ export const placeOrder = createAsyncThunk(
   async (order, thunkAPI) => {
     try {
       const {
-        auth: { userId, token },
+        auth: { userId, token, isLoggedIn },
       } = thunkAPI.getState();
       const { data: products } = await axios(`${API_URL}/products.json`);
       const quantityUpdates = order.products.map((product) => {
@@ -23,12 +23,22 @@ export const placeOrder = createAsyncThunk(
       if (quantityUpdates.some((update) => update.newData.inStock < 0)) {
         throw new Error(`Not enough in stock, please try again`);
       }
-      const {
-        data: { name: databaseId },
-      } = await axios.post(
-        `${API_URL}/users/${userId}/orders.json?auth=${token}`,
-        order
-      );
+      let databaseId;
+      if (isLoggedIn) {
+        const {
+          data: { name },
+        } = await axios.post(
+          `${API_URL}/users/${userId}/orders.json?auth=${token}`,
+          order
+        );
+        databaseId = name;
+        return { databaseId, ...order };
+      } else {
+        const {
+          data: { name },
+        } = await axios.post(`${API_URL}/guestOrders.json`, order);
+        databaseId = name;
+      }
       await thunkAPI.dispatch(sendProductUpdates(quantityUpdates));
       await thunkAPI.dispatch(clearCart());
       return { databaseId, ...order };
@@ -147,7 +157,9 @@ const ordersSlice = createSlice({
     });
     builder.addCase(placeOrder.fulfilled, (state, { payload: order }) => {
       state.isLoading = false;
-      state.orders.push(order);
+      if (order) {
+        state.orders.push(order);
+      }
       state.currentOrder = order;
     });
     builder.addCase(placeOrder.rejected, (state, { payload }) => {
