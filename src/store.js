@@ -5,6 +5,7 @@ import modalReducer from "./features/modalSlice";
 import ordersReducer from "./features/ordersSlice";
 import checkoutReducer from "./features/checkoutSlice";
 import authReducer from "./features/authSlice";
+import accountReducer from "./features/accountSlice";
 
 export const store = configureStore({
   reducer: {
@@ -14,5 +15,6 @@ export const store = configureStore({
     orders: ordersReducer,
     checkout: checkoutReducer,
     auth: authReducer,
+    account: accountReducer,
   },
 });
