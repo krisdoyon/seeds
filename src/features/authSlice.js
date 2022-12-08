@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { SIGNUP_URL, LOGIN_URL } from "../assets/config";
+import { SIGNUP_URL, LOGIN_URL, API_URL } from "../assets/config";
+import { fetchProfile } from "./accountSlice";
 import axios from "axios";
 
 export const sendAuthRequest = createAsyncThunk(
@@ -9,7 +10,7 @@ export const sendAuthRequest = createAsyncThunk(
     if (requestType === "signup") url = SIGNUP_URL;
     if (requestType === "login") url = LOGIN_URL;
     try {
-      const response = await axios.post(
+      const authResponse = await axios.post(
         url,
         {
           email,
@@ -22,8 +23,26 @@ export const sendAuthRequest = createAsyncThunk(
           },
         }
       );
-      return response.data;
+
+      const { idToken, localId } = authResponse.data;
+      if (requestType === "signup") {
+        const data = {
+          contact: { email },
+        };
+        await axios.put(
+          `${API_URL}/users/${localId}/profile.json?auth=${idToken}`,
+          data
+        );
+      }
+
+      if (requestType === "login") {
+        await thunkAPI.dispatch(
+          fetchProfile({ userId: localId, token: idToken })
+        );
+      }
+      return authResponse.data;
     } catch (error) {
+      console.log(error);
       return thunkAPI.rejectWithValue(error.response.data.error.message);
     }
   }
