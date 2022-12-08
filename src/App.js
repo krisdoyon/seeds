@@ -49,9 +49,8 @@ function App() {
   const { items: wishlistItems } = useSelector(
     (state) => state.products.wishlist
   );
-  const { isConfirmModalOpen, isPromoModalOpen } = useSelector(
-    (state) => state.modal
-  );
+  const { isConfirmModalOpen, isPromoModalOpen, isErrorModalOpen } =
+    useSelector((state) => state.modal);
 
   useEffect(() => {
     if (cartId) dispatch(fetchCartItems(cartId));
@@ -76,7 +75,7 @@ function App() {
   return (
     <Layout>
       <Suspense fallback={showSpinner()}>
-        {(isConfirmModalOpen || isPromoModalOpen) && (
+        {(isConfirmModalOpen || isPromoModalOpen || isErrorModalOpen) && (
           <>
             <Overlay onClick={() => dispatch(closeModal())} />
             <Modal />

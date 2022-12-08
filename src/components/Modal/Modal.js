@@ -12,7 +12,9 @@ import { useNavigate } from "react-router-dom";
 const Modal = ({ children, className }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { type, action, page, title, id } = useSelector((state) => state.modal);
+  const { type, action, page, title, id, error, message } = useSelector(
+    (state) => state.modal
+  );
 
   const handleConfirm = () => {
     if (action === "clear" && page === "cart") {
@@ -84,6 +86,13 @@ const Modal = ({ children, className }) => {
               Confirm
             </Button>
           </div>
+        )}
+        {type === "error" && (
+          <>
+            <strong>Error:</strong>
+            <p>{message}</p>
+            <p>{error}</p>
+          </>
         )}
         {type === "promo" && (
           <>
