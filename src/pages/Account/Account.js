@@ -58,10 +58,9 @@ const Account = () => {
           <Form onSubmit={handleUpdate} className={styles.form}>
             <div className={formStyles["form-section"]}>
               <h3 className={styles.subheading}>Update your profile:</h3>
-              <div>
-                <p>
-                  <strong>Email Address:</strong> {email.value}
-                </p>
+              <h3 className={formStyles.heading}>Contact Information</h3>
+              <div className={styles.email}>
+                <strong>Email Address:</strong> {email.value}
               </div>
               <FormInput
                 slice="account"

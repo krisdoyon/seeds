@@ -1,6 +1,3 @@
-.form {
-}
-
 .container {
   max-width: 100rem;
   margin: 0 auto;
@@ -16,4 +13,11 @@
   font-size: 2.2rem;
   color: var(--color-primary-dark);
   margin: 0 auto;
+  margin-bottom: 2rem;
+}
+
+.email {
+  strong {
+    font-weight: 600;
+  }
 }
