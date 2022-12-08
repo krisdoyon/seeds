@@ -13,11 +13,11 @@ import { calculateTotals, fetchCartItems } from "./features/cartSlice";
 import { closeModal } from "./features/modalSlice";
 import { fetchProducts } from "./features/productsSlice";
 import { getTokenData } from "./features/authSlice";
-import { fetchOrders } from "./features/ordersSlice";
 // HOOKS
 import { useLogoutTimer } from "./hooks/useLogoutTimer";
 // SPINNER
 import Spinner from "./components/Spinner";
+import { useLogin } from "./hooks/useLogin";
 // MAIN PAGE COMPONENTS
 const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() => import("./pages/About"));
@@ -52,7 +52,6 @@ function App() {
   const { isConfirmModalOpen, isPromoModalOpen } = useSelector(
     (state) => state.modal
   );
-  const { isLoggedIn } = useSelector((state) => state.auth);
 
   useEffect(() => {
     if (cartId) dispatch(fetchCartItems(cartId));
@@ -71,10 +70,7 @@ function App() {
     dispatch(fetchProducts());
   }, [dispatch]);
 
-  useEffect(() => {
-    if (isLoggedIn) dispatch(fetchOrders());
-  }, [isLoggedIn, dispatch]);
-
+  useLogin();
   useLogoutTimer();
 
   return (
