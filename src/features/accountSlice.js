@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk, current } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { validateInput } from "../utils/validateInput";
 import axios from "axios";
 import { API_URL } from "../assets/config";
@@ -57,11 +57,6 @@ export const sendProfileUpdate = createAsyncThunk(
 export const fetchProfile = createAsyncThunk(
   "accountSlice/fetchProfile",
   async ({ userId, token }, thunkAPI) => {
-    if (!userId || !token) {
-      const {
-        auth: { userId, token },
-      } = thunkAPI.getState();
-    }
     try {
       const { data } = await axios(
         `${API_URL}/users/${userId}/profile.json?auth=${token}`

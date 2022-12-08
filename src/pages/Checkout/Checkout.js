@@ -14,7 +14,6 @@ import { ImSpinner3 } from "react-icons/im";
 import Overlay from "../../components/Overlay";
 import Modal from "../../components/Modal";
 import { loadTestInfo, loadProfileInfo } from "../../features/checkoutSlice";
-import { store } from "store";
 
 import Spinner from "../../components/Spinner/Spinner";
 
