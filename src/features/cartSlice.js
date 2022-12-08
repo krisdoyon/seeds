@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { API_URL } from "../assets/config";
 import axios from "axios";
 import { updateAllProducts } from "./productsSlice";
+import { openModal } from "./modalSlice";
 
 const initialPromo = {
   code: null,
@@ -39,6 +40,13 @@ export const fetchCartItems = createAsyncThunk(
       thunkAPI.dispatch(updateAllProducts(products));
       return cartItems;
     } catch (error) {
+      thunkAPI.dispatch(
+        openModal({
+          type: "error",
+          message: "Couldn't get your cart items from the database",
+          error: error.message,
+        })
+      );
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -75,6 +83,13 @@ export const addCartItem = createAsyncThunk(
         product: { databaseId, quantity, ...products[databaseId] },
       };
     } catch (error) {
+      thunkAPI.dispatch(
+        openModal({
+          type: "error",
+          message: "Couldn't add item to your cart",
+          error: error.message,
+        })
+      );
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -96,6 +111,13 @@ export const sendQuantityUpdate = createAsyncThunk(
       });
       thunkAPI.dispatch(updateAllProducts(products));
     } catch (error) {
+      thunkAPI.dispatch(
+        openModal({
+          type: "error",
+          message: "Couldn't send quantity update to the database",
+          error: error.message,
+        })
+      );
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -111,6 +133,13 @@ export const removeCartItem = createAsyncThunk(
       await axios.delete(`${API_URL}/carts/${cartId}/${cartItemId}.json`);
       return cartItemId;
     } catch (error) {
+      thunkAPI.dispatch(
+        openModal({
+          type: "error",
+          message: "Couldn't remove item from your cart",
+          error: error.message,
+        })
+      );
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -126,6 +155,13 @@ export const clearCart = createAsyncThunk(
       await axios.delete(`${API_URL}/carts/${cartId}.json`);
       localStorage.removeItem("cartId");
     } catch (error) {
+      thunkAPI.dispatch(
+        openModal({
+          type: "error",
+          message: "Couldn't clear your cart",
+          error: error.message,
+        })
+      );
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -176,10 +212,14 @@ const cartSlice = createSlice({
   },
   extraReducers: (builder) => {
     // addCartItem
-    builder.addCase(addCartItem.pending, (state) => {});
+    builder.addCase(addCartItem.pending, (state) => {
+      state.isLoading = true;
+      state.error = null;
+    });
     builder.addCase(
       addCartItem.fulfilled,
       (state, { payload: { cartId, product } }) => {
+        state.isLoading = false;
         localStorage.setItem("cartId", cartId);
         state.cartId = cartId;
         let cartItem = state.cartItems.find((item) => item.id === product.id);
@@ -194,10 +234,24 @@ const cartSlice = createSlice({
       }
     );
     builder.addCase(addCartItem.rejected, (state, { payload }) => {
-      console.error(payload);
+      state.error = payload;
+      state.isLoading = false;
     });
 
-    // fetchProducts
+    // sendQuantityUpdate
+    builder.addCase(sendQuantityUpdate.pending, (state) => {
+      state.isLoading = true;
+      state.error = null;
+    });
+    builder.addCase(sendQuantityUpdate.fulfilled, (state) => {
+      state.isLoading = false;
+    });
+    builder.addCase(sendQuantityUpdate.rejected, (state, { payload }) => {
+      state.isLoading = false;
+      state.error = payload;
+    });
+
+    // fetchCartItems
     builder.addCase(fetchCartItems.pending, (state) => {
       state.error = null;
       state.isLoading = true;
@@ -212,16 +266,33 @@ const cartSlice = createSlice({
     });
 
     // removeCartItem
-    builder.addCase(removeCartItem.pending, (state, { payload }) => {});
+    builder.addCase(removeCartItem.pending, (state, { payload }) => {
+      state.isLoading = true;
+      state.error = null;
+    });
     builder.addCase(removeCartItem.fulfilled, (state, { payload }) => {
+      state.isLoading = false;
       state.cartItems = state.cartItems.filter(
         (item) => item.databaseId !== payload
       );
     });
+    builder.addCase(removeCartItem.rejected, (state, { payload }) => {
+      state.isLoading = false;
+      state.error = payload;
+    });
 
     // clearCart
+    builder.addCase(clearCart.pending, (state) => {
+      state.isLoading = true;
+      state.error = null;
+    });
     builder.addCase(clearCart.fulfilled, (state) => {
+      state.isLoading = false;
       state.cartItems = [];
+    });
+    builder.addCase(clearCart.rejected, (state, { payload }) => {
+      state.isLoading = false;
+      state.error = payload;
     });
   },
 });

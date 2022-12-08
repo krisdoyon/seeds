@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { API_URL } from "../assets/config";
 import axios from "axios";
+import { openModal } from "./modalSlice";
 
 const initialFilters = {
   new: false,
@@ -21,6 +22,13 @@ export const fetchProducts = createAsyncThunk(
       }
       return newProducts;
     } catch (error) {
+      thunkAPI.dispatch(
+        openModal({
+          type: "error",
+          message: "Couldn't load products",
+          error: error.message,
+        })
+      );
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -40,6 +48,13 @@ export const sendProductUpdates = createAsyncThunk(
       await thunkAPI.dispatch(fetchProducts());
       thunkAPI.dispatch(updateWishlist());
     } catch (error) {
+      thunkAPI.dispatch(
+        openModal({
+          type: "error",
+          message: "Couldn't send product updates",
+          error: error.message,
+        })
+      );
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -138,14 +153,6 @@ const productsSlice = createSlice({
       }
       state.currentProduct = product;
     },
-    // updateProducts: (state, { payload: products }) => {
-    //   products.forEach((product) => {
-    //     const toUpdate = state.allProducts.find(
-    //       (item) => item.id === product.id
-    //     );
-    //     toUpdate.inStock = toUpdate.inStock - product.quantity;
-    //   });
-    // },
     updateAllProducts: (state, { payload: APIproducts }) => {
       const newProducts = [];
       for (const key in APIproducts) {
@@ -181,6 +188,7 @@ const productsSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
+    // fetchProducts
     builder.addCase(fetchProducts.pending, (state) => {
       state.isLoading = true;
       state.error = null;
@@ -193,12 +201,22 @@ const productsSlice = createSlice({
       ].sort((a, b) => a.localeCompare(b));
       state.isLoading = false;
     });
-    builder.addCase(fetchProducts.rejected, (state) => {});
+    builder.addCase(fetchProducts.rejected, (state, { payload }) => {
+      state.error = payload;
+      state.isLoading = false;
+    });
 
-    builder.addCase(sendProductUpdates.pending, (state) => {});
-    builder.addCase(sendProductUpdates.fulfilled, (state) => {});
+    // sendProductUpdates
+    builder.addCase(sendProductUpdates.pending, (state) => {
+      state.isLoading = true;
+      state.error = null;
+    });
+    builder.addCase(sendProductUpdates.fulfilled, (state) => {
+      state.isLoading = false;
+    });
     builder.addCase(sendProductUpdates.rejected, (state, { payload }) => {
-      console.log(payload);
+      state.isLoading = false;
+      state.error = payload;
     });
   },
 });

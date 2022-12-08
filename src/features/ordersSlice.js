@@ -4,6 +4,7 @@ import axios from "axios";
 import { API_URL } from "../assets/config";
 import { sendProductUpdates } from "./productsSlice";
 import { clearCart } from "./cartSlice";
+import { openModal } from "./modalSlice";
 
 export const placeOrder = createAsyncThunk(
   "ordersSlice/placeOrder",
@@ -20,6 +21,7 @@ export const placeOrder = createAsyncThunk(
           newData: { inStock: products[databaseId].inStock - quantity },
         };
       });
+
       if (quantityUpdates.some((update) => update.newData.inStock < 0)) {
         throw new Error(`Not enough in stock, please try again`);
       }
@@ -32,7 +34,6 @@ export const placeOrder = createAsyncThunk(
           order
         );
         databaseId = name;
-        return { databaseId, ...order };
       } else {
         const {
           data: { name },
@@ -43,7 +44,14 @@ export const placeOrder = createAsyncThunk(
       await thunkAPI.dispatch(clearCart());
       return { databaseId, ...order };
     } catch (error) {
-      thunkAPI.rejectWithValue(error.message);
+      thunkAPI.dispatch(
+        openModal({
+          type: "error",
+          message: "Couldn't place your order",
+          error: error.message,
+        })
+      );
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
@@ -73,6 +81,13 @@ export const returnOrder = createAsyncThunk(
       await thunkAPI.dispatch(sendProductUpdates(quantityUpdates));
       return databaseId;
     } catch (error) {
+      thunkAPI.dispatch(
+        openModal({
+          type: "error",
+          message: "Couldn't return your order",
+          error: error.message,
+        })
+      );
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -94,6 +109,13 @@ export const fetchOrders = createAsyncThunk(
       }
       return loadedOrders;
     } catch (error) {
+      thunkAPI.dispatch(
+        openModal({
+          type: "error",
+          message: "Couldn't get your orders from the database",
+          error: error.message,
+        })
+      );
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -165,7 +187,6 @@ const ordersSlice = createSlice({
     builder.addCase(placeOrder.rejected, (state, { payload }) => {
       state.isLoading = false;
       state.error = payload;
-      console.log(payload);
     });
 
     // fetchOrders

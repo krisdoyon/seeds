@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { validateInput } from "../utils/validateInput";
 import axios from "axios";
 import { API_URL } from "../assets/config";
+import { openModal } from "./modalSlice";
 
 const initialState = {
   contact: {
@@ -49,6 +50,13 @@ export const sendProfileUpdate = createAsyncThunk(
         updates
       );
     } catch (error) {
+      thunkAPI.dispatch(
+        openModal({
+          type: "error",
+          message: "Couldn't update your profile",
+          error: error.message,
+        })
+      );
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -63,6 +71,13 @@ export const fetchProfile = createAsyncThunk(
       );
       return data;
     } catch (error) {
+      thunkAPI.dispatch(
+        openModal({
+          type: "error",
+          message: "Couldn't get your profile information from the database",
+          error: error.message,
+        })
+      );
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -105,6 +120,7 @@ const accountSlice = createSlice({
     resetForm: () => initialState,
   },
   extraReducers: (builder) => {
+    // fetchProfile
     builder.addCase(fetchProfile.pending, (state) => {
       state.isLoading = true;
       state.error = null;
@@ -123,11 +139,20 @@ const accountSlice = createSlice({
     builder.addCase(fetchProfile.rejected, (state, { payload }) => {
       state.error = payload;
       state.isLoading = false;
-      console.log("fetch profile failed");
     });
 
+    // sendProfileUpdate
+    builder.addCase(sendProfileUpdate.pending, (state) => {
+      state.isLoading = true;
+      state.error = null;
+    });
     builder.addCase(sendProfileUpdate.fulfilled, (state) => {
+      state.isLoading = false;
       state.isFormValid = false;
+    });
+    builder.addCase(sendProfileUpdate.rejected, (state, { payload }) => {
+      state.error = payload;
+      state.isLoading = false;
     });
   },
 });

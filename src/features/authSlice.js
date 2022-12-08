@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { SIGNUP_URL, LOGIN_URL, API_URL } from "../assets/config";
 import { fetchProfile } from "./accountSlice";
 import axios from "axios";
+import { openModal } from "./modalSlice";
 
 export const sendAuthRequest = createAsyncThunk(
   "authSlice/sendAuthRequest",
@@ -42,7 +43,13 @@ export const sendAuthRequest = createAsyncThunk(
       }
       return authResponse.data;
     } catch (error) {
-      console.log(error);
+      thunkAPI.dispatch(
+        openModal({
+          type: "error",
+          message: "Couldn't send account authorization request",
+          error: error.message,
+        })
+      );
       return thunkAPI.rejectWithValue(error.response.data.error.message);
     }
   }
@@ -60,6 +67,7 @@ const initialState = {
   userId: localStorage.getItem("userId") || null,
   isLoggedIn: false,
   isLoading: true,
+  error: null,
 };
 
 const authSlice = createSlice({
@@ -97,6 +105,7 @@ const authSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(sendAuthRequest.pending, (state) => {
       state.isLoading = true;
+      state.error = null;
     });
     builder.addCase(sendAuthRequest.fulfilled, (state, { payload: data }) => {
       state.token = data.idToken;
@@ -112,6 +121,7 @@ const authSlice = createSlice({
     });
     builder.addCase(sendAuthRequest.rejected, (state, { payload }) => {
       state.isLoading = false;
+      state.error = payload;
       if (payload === "EMAIL_EXISTS") {
         state.emailInput.hasError = true;
         state.emailInput.touched = true;
