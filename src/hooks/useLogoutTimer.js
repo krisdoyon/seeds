@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { logout } from "../features/authSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { resetForm } from "../features/accountSlice";
 
 export const useLogoutTimer = () => {
   const dispatch = useDispatch();
@@ -11,6 +12,7 @@ export const useLogoutTimer = () => {
     const timeout = setTimeout(() => {
       if (isLoggedIn) {
         dispatch(logout());
+        dispatch(resetForm());
       }
     }, timeRemaining);
 
