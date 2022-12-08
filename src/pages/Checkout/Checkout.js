@@ -13,7 +13,8 @@ import OrderSummary from "../../components/OrderSummary";
 import { ImSpinner3 } from "react-icons/im";
 import Overlay from "../../components/Overlay";
 import Modal from "../../components/Modal";
-import { loadTestInfo } from "../../features/checkoutSlice";
+import { loadTestInfo, loadProfileInfo } from "../../features/checkoutSlice";
+import { store } from "store";
 
 import Spinner from "../../components/Spinner/Spinner";
 
@@ -25,6 +26,8 @@ const Checkout = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSpinnerShown, setIsSpinnerShown] = useState(false);
   const { currentOrder } = useSelector((state) => state.orders);
+  const { isLoggedIn } = useSelector((state) => state.auth);
+  const { account } = useSelector((state) => state);
 
   useEffect(() => {
     if (
@@ -60,14 +63,33 @@ const Checkout = () => {
             <Button fill to="/cart" className={styles["btn-back"]}>
               back to cart
             </Button>
-            <Button
-              fill
-              className={styles["btn-back"]}
-              onClick={() => dispatch(loadTestInfo())}
-            >
-              Load Test Info
-            </Button>
+            {!isLoggedIn && (
+              <Button
+                fill
+                className={styles["btn-back"]}
+                onClick={() => dispatch(loadTestInfo())}
+              >
+                Load Test Info
+              </Button>
+            )}
+            {isLoggedIn && (
+              <Button
+                fill
+                className={styles["btn-back"]}
+                onClick={() => dispatch(loadProfileInfo(account))}
+              >
+                Load Profile Info
+              </Button>
+            )}
           </div>
+          {!isLoggedIn && (
+            <div className={styles["login-container"]}>
+              <p>Already have an account?</p>
+              <Button to="/login" className={styles["text-btn"]}>
+                Log in
+              </Button>
+            </div>
+          )}
           <div className={styles.content}>
             <div>
               <h2 className={styles.heading}>Checkout</h2>

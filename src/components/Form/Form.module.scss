@@ -1,0 +1,43 @@
+@use "/src/assets/media" as *;
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.form-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.heading {
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+.row-2-col {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.row-3-col {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.submit {
+  align-self: center;
+  padding: 1.6rem 5rem;
+  font-size: 1.6rem;
+}
+
+.checkbox {
+  margin-bottom: 1.2rem;
+  @include respond(800) {
+    font-size: 1.6rem;
+  }
+}

@@ -1,40 +1,42 @@
-import styles from "./CheckoutForm.module.scss";
+import styles from "./FormInput.module.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { updateForm, validateForm } from "../../../features/checkoutSlice";
 
-const CheckoutInput = ({ type, id, label, placeholder, category }) => {
+export const FormInput = ({ slice, type, name, label, category, ...props }) => {
+  const { updateForm, validateForm } = require(`/src/features/${slice}Slice`);
   const dispatch = useDispatch();
   const { value, touched, hasError, error } = useSelector(
-    (state) => state.checkout[category][id]
+    (state) => state[slice][category][name]
   );
   return (
     <div className={styles.wrapper}>
       <input
         className={`${touched && hasError ? styles.invalid : ""}`}
-        placeholder={placeholder || label}
-        id={id}
+        placeholder={props.placeholder || label}
         type={type}
         onChange={(e) => {
           dispatch(
-            updateForm({ id, category, value: e.target.value, touched: false })
+            updateForm({
+              name,
+              category,
+              value: e.target.value,
+              touched: false,
+            })
           );
           dispatch(validateForm());
         }}
         value={value}
-        name={id}
+        name={name}
         onBlur={(e) => {
           dispatch(
-            updateForm({ id, category, value: e.target.value, touched: true })
+            updateForm({ name, category, value: e.target.value, touched: true })
           );
           dispatch(validateForm());
         }}
       />
-      <label htmlFor={id}>{label}</label>
+      <label htmlFor={name}>{label}</label>
       {touched && hasError && (
         <div className={styles["error-msg"]}>{error}</div>
       )}
     </div>
   );
 };
-
-export default CheckoutInput;

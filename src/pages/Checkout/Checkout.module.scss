@@ -24,6 +24,22 @@
   gap: 1.4rem;
 }
 
+.text-btn {
+  color: var(--color-primary-dark);
+  text-transform: none;
+  font-size: inherit;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.login-container {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
 .content {
   margin-top: 3.6rem;
   display: grid;

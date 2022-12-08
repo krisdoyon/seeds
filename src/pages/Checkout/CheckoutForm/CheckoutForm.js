@@ -1,21 +1,21 @@
-import styles from "./CheckoutForm.module.scss";
+import styles from "components/Form/Form.module.scss";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // ACTIONS
-import { placeOrder } from "../../../features/ordersSlice";
-import {
-  resetForm,
-  updateShippingSame,
-  validateForm,
-} from "../../../features/checkoutSlice";
+import { placeOrder } from "features/ordersSlice";
+import { resetForm } from "features/checkoutSlice";
 // UTILS
-import { generateOrderNumber } from "../../../utils/generateOrderNumber";
-import { stateOptions, monthOptions } from "./CheckoutSelectOptions";
+import { generateOrderNumber } from "utils/generateOrderNumber";
+import { monthOptions } from "components/Form/Inputs/selectOptions";
 // COMPONENTS
-import Checkbox from "../../../components/Checkbox";
-import Button from "../../../components/Button";
-import CheckoutInput from "./CheckoutInput";
-import CheckoutSelect from "./CheckoutSelect";
+import Button from "components/Button";
+import {
+  Form,
+  FormInput,
+  FormSelect,
+  FormBilling,
+  FormShipping,
+} from "components/Form";
 
 const CheckoutForm = ({
   isSpinnerShown,
@@ -23,12 +23,11 @@ const CheckoutForm = ({
   setIsSpinnerShown,
 }) => {
   const dispatch = useDispatch();
-  const { cartItems, subtotal, promo, shippingCost, tax, total } = useSelector(
-    (state) => state.cart
-  );
+  const { cartItems, subtotal, promo, shippingCost, tax, total, amount } =
+    useSelector((state) => state.cart);
   const { orders, isLoading, error } = useSelector((state) => state.orders);
   const { shippingSame, isFormValid } = useSelector((state) => state.checkout);
-
+  console.log(amount);
   const submitOrder = (e) => {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(e.target));
@@ -79,7 +78,7 @@ const CheckoutForm = ({
         day: "2-digit",
         year: "numeric",
       }).format(new Date().getTime()),
-      amount: cartItems.length,
+      amount,
       products: cartItems,
       billing,
       shipping,
@@ -103,185 +102,70 @@ const CheckoutForm = ({
   }, [isLoading, isSpinnerShown, error]);
 
   return (
-    <form className={styles.form} onSubmit={submitOrder}>
+    <Form onSubmit={submitOrder}>
       <div className={styles["form-section"]}>
         <h3 className={styles.heading}>Contact Information</h3>
-        <CheckoutInput
+        <FormInput
+          slice="checkout"
           category="contact"
           type="email"
-          id="email"
+          name="email"
           label="Email Address"
           required
         />
-        <CheckoutInput
+        <FormInput
+          slice="checkout"
           category="contact"
           type="text"
-          id="phone"
+          name="phone"
           label="Phone number"
           required
         />
       </div>
-      <div className={styles["form-section"]}>
-        <h3 className={styles.heading}>Billing Address</h3>
-        <div className={styles["row-2-col"]}>
-          <CheckoutInput
-            category="billing"
-            type="text"
-            id="billFirst"
-            label="First name"
-            required
-          />
-          <CheckoutInput
-            category="billing"
-            type="text"
-            id="billLast"
-            label="Last name"
-            required
-          />
-        </div>
-        <CheckoutInput
-          category="billing"
-          type="text"
-          id="billAddress1"
-          label="Address"
-          required
-        />
-        <CheckoutInput
-          category="billing"
-          type="text"
-          id="billAddress2"
-          label="Apt, suite etc. (optional)"
-        />
-        <div className={styles["row-3-col"]}>
-          <CheckoutInput
-            category="billing"
-            type="text"
-            id="billCity"
-            label="City"
-            required
-          />
-          <CheckoutSelect
-            label="State"
-            category="billing"
-            id="billState"
-            options={stateOptions}
-            required
-          />
-          <CheckoutInput
-            category="billing"
-            type="text"
-            id="billZip"
-            label="ZIP code"
-            required
-          />
-        </div>
-      </div>
-      <div className={styles["form-section"]}>
-        <h3 className={styles.heading}>Shipping Address</h3>
-        <Checkbox
-          className={styles.checkbox}
-          label="Same as billing address"
-          checked={shippingSame}
-          onChange={() => {
-            dispatch(updateShippingSame());
-            dispatch(validateForm());
-          }}
-        />
-        {!shippingSame && (
-          <>
-            <div className={styles["row-2-col"]}>
-              <CheckoutInput
-                category="shipping"
-                type="text"
-                id="shipFirst"
-                label="First name"
-                required
-              />
-              <CheckoutInput
-                category="shipping"
-                type="text"
-                id="shipLast"
-                label="Last name"
-                required
-              />
-            </div>
-            <CheckoutInput
-              category="shipping"
-              type="text"
-              id="shipAddress1"
-              label="Address"
-              required
-            />
-            <CheckoutInput
-              category="shipping"
-              type="text"
-              id="shipAddress2"
-              label="Apt, suite etc. (optional)"
-            />
-            <div className={styles["row-3-col"]}>
-              <CheckoutInput
-                category="shipping"
-                type="text"
-                id="shipCity"
-                label="City"
-                required
-              />
-              <CheckoutSelect
-                label="State"
-                category="shipping"
-                id="shipState"
-                options={stateOptions}
-                required
-              />
-              <CheckoutInput
-                category="shipping"
-                type="text"
-                id="shipZip"
-                label="ZIP code"
-                required
-              />
-            </div>
-          </>
-        )}
-      </div>
+      <FormBilling slice={"checkout"} />
+      <FormShipping slice={"checkout"} />
       <div className={styles["form-section"]}>
         <h3 className={styles.heading}>Payment Information</h3>
         <div className={styles["row-2-col"]}>
-          <CheckoutInput
+          <FormInput
+            slice="checkout"
             category="payment"
             type="text"
-            id="payName"
+            name="payName"
             label="Name on card"
             required
           />
-          <CheckoutInput
+          <FormInput
+            slice="checkout"
             category="payment"
             type="text"
-            id="payCardNum"
+            name="payCardNum"
             label="Card number"
             required
           />
         </div>
         <div className={styles["row-3-col"]}>
-          <CheckoutSelect
+          <FormSelect
+            slice="checkout"
             label="Expiration month"
             category="payment"
-            id="payExpMonth"
+            name="payExpMonth"
             options={monthOptions}
             required
           />
-          <CheckoutInput
+          <FormInput
+            slice="checkout"
             category="payment"
             type="text"
-            id="payExpYear"
+            name="payExpYear"
             label="Expiration year"
             required
           />
-
-          <CheckoutInput
+          <FormInput
+            slice="checkout"
             category="payment"
             type="text"
-            id="payCardCode"
+            name="payCardCode"
             label="Security code"
             required
           />
@@ -291,7 +175,7 @@ const CheckoutForm = ({
       <Button fill disabled={!isFormValid} className={styles.submit}>
         Submit Order
       </Button>
-    </form>
+    </Form>
   );
 };
 
