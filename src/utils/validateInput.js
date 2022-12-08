@@ -1,7 +1,7 @@
-export const validateCheckoutInput = (id, value) => {
+export const validateInput = (name, value) => {
   let hasError = false;
   let error = "";
-  switch (id) {
+  switch (name) {
     case "email":
       if (value.trim() === "") {
         hasError = true;

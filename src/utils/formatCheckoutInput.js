@@ -1,5 +1,5 @@
-export const formatCheckoutInput = (id, value) => {
-  switch (id) {
+export const formatCheckoutInput = (name, value) => {
+  switch (name) {
     case "payExpYear":
       value = value.replaceAll(" ", "");
       if (value.length > 4) {
