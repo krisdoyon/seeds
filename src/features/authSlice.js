@@ -109,14 +109,15 @@ const authSlice = createSlice({
     });
     builder.addCase(sendAuthRequest.fulfilled, (state, { payload: data }) => {
       state.token = data.idToken;
-      state.isLoggedIn = true;
       state.userId = data.localId;
+      state.expirationTime = Date.now() + data.expiresIn * 1000;
       localStorage.setItem("token", data.idToken);
       localStorage.setItem(
         "expirationTime",
         Date.now() + data.expiresIn * 1000
       );
       localStorage.setItem("userId", data.localId);
+      state.isLoggedIn = true;
       state.isLoading = false;
     });
     builder.addCase(sendAuthRequest.rejected, (state, { payload }) => {
