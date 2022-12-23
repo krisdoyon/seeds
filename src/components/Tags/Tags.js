@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Tags.module.scss";
 
-export const OnSaleTag = ({ className }) => {
+export const OnSaleTag = () => {
   return (
     <div className={`${styles.tag} ${styles["on-sale"]} ${styles.className}`}>
       on sale
