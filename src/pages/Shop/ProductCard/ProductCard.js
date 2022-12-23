@@ -25,7 +25,7 @@ const ProductCard = ({
 }) => {
   return (
     <article className={styles.card}>
-      <Link to={linkURL}>
+      <Link to={linkURL} data-testid={"product-card-link"}>
         <div className={styles["img-container"]}>
           <img src={imgURL} alt="" />
           {isNew && <NewTag />}
@@ -33,7 +33,10 @@ const ProductCard = ({
             {inStock === 0 && <SoldOutTag />}
             {inStock <= 5 && inStock >= 1 && <LowStockTag />}
           </div>
-          <FaSearch className={styles["magnify-icon"]} />
+          <FaSearch
+            className={styles["magnify-icon"]}
+            data-testid="magnify-icon"
+          />
         </div>
         <div className={styles.info}>
           <h2 className={styles.title}>{title}</h2>
