@@ -1,15 +1,23 @@
-"use strict";
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
-import { API_URL } from "./config.js";
-import axios from "axios";
-import data from "./seeds.json" assert { type: "json" };
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyAt1Mw31odpqYNLDT1jLuTkSkVKPofZvz8",
+  authDomain: "seeds-22950.firebaseapp.com",
+  databaseURL: "https://seeds-22950-default-rtdb.firebaseio.com",
+  projectId: "seeds-22950",
+  storageBucket: "seeds-22950.appspot.com",
+  messagingSenderId: "1033673740633",
+  appId: "1:1033673740633:web:f35b5d08c36689355abc48",
+  measurementId: "G-0CMZ1XC5HP",
+};
 
-// const API_URL = "https://seeds-22950-default-rtdb.firebaseio.com/";
-
-// const postProduct = async (product) => {
-//   await axios.post(`${API_URL}/products.json`, product);
-// };
-
-// data.forEach((product) => {
-//   postProduct(product);
-// });
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+// eslint-disable-next-line no-unused-vars
+const analytics = getAnalytics(app);

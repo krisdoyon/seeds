@@ -18,6 +18,8 @@ import { useLogoutTimer } from "./hooks/useLogoutTimer";
 // SPINNER
 import Spinner from "./components/Spinner";
 import { useLogin } from "./hooks/useLogin";
+
+import "./assets/firebase.js";
 // MAIN PAGE COMPONENTS
 const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() => import("./pages/About"));
