@@ -13,12 +13,21 @@ const QuantityBtns = ({
   return (
     <div
       className={`${styles.wrapper} ${className} ${small ? styles.small : ""}`}
+      aria-label="quantity-btns"
     >
-      <Button className={styles.decrease} onClick={handleDecrease}>
+      <Button
+        className={styles.decrease}
+        onClick={handleDecrease}
+        aria-label="decrease-quantity"
+      >
         <FaMinus className={styles.icon} />
       </Button>
       <div className={styles.quantity}>{quantity}</div>
-      <Button className={styles.increase} onClick={handleIncrease}>
+      <Button
+        className={styles.increase}
+        onClick={handleIncrease}
+        aria-label="increase-quantity"
+      >
         <FaPlus className={styles.icon} />
       </Button>
     </div>
