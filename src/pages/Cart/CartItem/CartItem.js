@@ -16,7 +16,6 @@ const CartItem = ({
   salePrice,
   price,
   inStock,
-  category,
   imgURL,
   linkURL,
   databaseId,
@@ -84,6 +83,7 @@ const CartItem = ({
           )
         }
         fill
+        aria-label="remove button"
       >
         X
       </Button>
