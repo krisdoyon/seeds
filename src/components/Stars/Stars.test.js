@@ -1,7 +1,11 @@
-import { render, screen } from "@testing-library/react";
+import { cleanup, render, screen } from "@testing-library/react";
 import Stars from "./Stars";
 
-describe("Stars component", () => {
+afterEach(() => {
+  cleanup();
+});
+
+describe("<Stars />", () => {
   it("should render 1 full star with four empty stars", () => {
     const testProps = { avg: 1, num: 50 };
 

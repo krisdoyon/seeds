@@ -20,8 +20,8 @@ beforeEach(() => {
   };
 });
 
-describe("Product card component", () => {
-  it("should render the product card component in the document", () => {
+describe("<ProductCard />", () => {
+  it("should render the component without crashing", () => {
     render(
       <Router>
         <ProductCard {...testProps} />;
