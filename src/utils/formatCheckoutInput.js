@@ -24,9 +24,6 @@ export const formatCheckoutInput = (name, value) => {
         value = value.slice(0, 4);
       }
       break;
-    case "billZip":
-    case "shipZip":
-      break;
     default:
       break;
   }
