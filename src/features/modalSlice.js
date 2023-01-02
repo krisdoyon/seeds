@@ -20,8 +20,6 @@ const modalSlice = createSlice({
       state,
       { payload: { type, action, page, title, id, error, message } }
     ) => {
-      console.log(error);
-      console.log(message);
       state.type = type;
       state.action = action || null;
       state.page = page || null;
