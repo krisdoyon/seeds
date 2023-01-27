@@ -14,12 +14,11 @@
 
 1. [Overview](#overview)
 2. [Things Learned](#things-i-learnedpracticed)
-3. [Features](#features)
-4. [Technologies used](#technologies-used)
-5. [Project architecture](#project-architecture)
-6. [Challenges](#challenges)
-7. [Data](#data)
-8. [Screenshots](#screenshots)
+3. [Technologies used](#technologies-used)
+4. [Project architecture](#project-architecture)
+5. [Challenges](#challenges)
+6. [Data](#data)
+7. [Screenshots](#screenshots)
 
 # Overview
 
@@ -37,7 +36,7 @@ I created this site with with the intention of building on my React skills with 
 - Using React.lazy for lazy loading components
 - Using custom hooks
 - Setting up and using values from .env file
-- Using JSON web tokens for authentication 
+- Using JSON web tokens for authentication
 - Writing unit and integration tests using Jest and the React Testing Library
 
 # Technologies used
@@ -48,9 +47,9 @@ I created this site with with the intention of building on my React skills with 
 - SCSS Modules
 - Jest
 - React Testing Library
-- JSON web tokens
 - Axios HTTP library
 - Firebase realtime database & authentication service
+- JSON web tokens
 
 # Project Architecture
 
