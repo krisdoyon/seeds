@@ -27,40 +27,30 @@ I created this site with with the intention of building on my React skills with 
 
 # Things I Learned/Practiced
 
-- Managing multiple states using Redux Toolkit
+- Dispatching HTTP actions using Redux async thunks
 - Input/form validation
 - First time implementing a text search input to filter results
 - Using React Router (common layouts, useParams/useNavigate hooks, acitve nav buttons)
 - Using React portals to render modal and overlay
 - Pros and cons of styled components vs. SCSS modules
-- More practice using local storage
 - Creating custom checkbox and button components
-
 - Using React.lazy for lazy loading components
 - Using custom hooks
-- Connecting to database (firebase)
-- Setting up .env
-- JSON web tokens
-
-# Features
-
-Users can:
-
-- Add and remove products from their cart and wishlist.
-- Keep track of all previously placed orders.
-- Load a set of test orderes and clear all orders to reset app to initial state.
-- Search for products by name or category.
-- Filter products by category, new, on sale, or in stock.
-- Sort products alphabetically or by price.
-- Apply a promo code in their cart.
+- Setting up and using values from .env file
+- Using JSON web tokens for authentication 
+- Writing unit and integration tests using Jest and the React Testing Library
 
 # Technologies used
 
 - React
+- Redux
 - React Router
 - SCSS Modules
-- Redux Toolkit
-- Local Storage API
+- Jest
+- React Testing Library
+- JSON web tokens
+- Axios HTTP library
+- Firebase realtime database & authentication service
 
 # Project Architecture
 
